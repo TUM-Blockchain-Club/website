@@ -2,9 +2,20 @@
   "name": "c24-website",
   "version": "1.0.0",
   "description": "Website of TUM Blockchain Club",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend:dev": "npm --workspace frontend run dev",
+    "frontend:build": "npm --workspace frontend run build",
+    "frontend:start": "npm --workspace frontend run start",
+    "frontend:lint": "npm --workspace frontend run lint",
+    "backend:build": "npm --workspace backend run build",
+    "backend:deploy": "npm --workspace backend run deploy",
+    "backend:develop": "npm --workspace backend run develop",
+    "backend:start": "npm --workspace backend run start",
+    "backend:strapi": "npm --workspace backend run strapi",
+    "dev": "npm-run-all --parallel frontend:dev backend:develop"
   },
   "repository": {
     "type": "git",
@@ -20,5 +31,12 @@
   "bugs": {
     "url": "https://github.com/TUM-Blockchain-Club/website/issues"
   },
-  "homepage": "https://github.com/TUM-Blockchain-Club/website#readme"
+  "homepage": "https://github.com/TUM-Blockchain-Club/website#readme",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
 }
