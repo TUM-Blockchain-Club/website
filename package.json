@@ -1,0 +1,24 @@
+{
+  "name": "c24-website",
+  "version": "1.0.0",
+  "description": "Website of TUM Blockchain Club",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TUM-Blockchain-Club/website.git"
+  },
+  "keywords": [
+    "next",
+    "strapi",
+    "blockchain"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TUM-Blockchain-Club/website/issues"
+  },
+  "homepage": "https://github.com/TUM-Blockchain-Club/website#readme"
+}
