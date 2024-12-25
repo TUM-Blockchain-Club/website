@@ -1,3 +1,5 @@
+// TODO: move to the flat structure
+
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
