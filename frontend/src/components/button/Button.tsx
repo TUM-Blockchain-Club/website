@@ -4,7 +4,6 @@ import { cva, VariantProps } from "class-variance-authority";
 import classNames from "classnames";
 
 import "./button.css";
-import { ChevronRightIcon } from "@radix-ui/react-icons";
 
 const buttonVariants = cva(
   "button font-sans flex justify-center items-center gap-2 transition-all duration-200 ",
