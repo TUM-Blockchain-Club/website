@@ -15,7 +15,8 @@
     "start:b": "npm --workspace strapi run start",
     "strapi": "npm --workspace strapi run strapi",
     "dev": "npm-run-all --parallel dev:f dev:b",
-    "build": "npm-run-all --parallel build:f build:b"
+    "build": "npm-run-all --parallel build:f build:b",
+    "storybook": "npm --workspace frontend run storybook"
   },
   "repository": {
     "type": "git",

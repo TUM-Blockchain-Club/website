@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .tbc-button-cta {
+        @apply bg-foreground text-background px-4 py-2 text-base font-bold relative;
+    }
+
+    .tbc-button-primary {
+        @apply bg-transparent text-foreground px-3 py-1.5 text-sm font-bold border-solid border-foreground border
+    }
+
+    .tbc-button-secondary {
+        @apply bg-transparent text-foreground px-3 py-1.5 text-sm hover:underline underline-offset-2
+    }
+}
