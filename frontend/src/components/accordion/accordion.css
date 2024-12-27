@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-  .accordion-vertical {
-    @apply flex flex-col w-full h-full;
-  }
-
-  .accordion-horizontal {
-    @apply flex flex-row w-full h-full;
-  }
-
   .accordion-title-vertical {
     @apply top-1/2 -translate-y-1/2 left-4;
   }

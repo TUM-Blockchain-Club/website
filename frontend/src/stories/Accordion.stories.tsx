@@ -58,7 +58,16 @@ export const Horizontal: Story = {
         {items.map((item, index) => (
           <Accordion.Item key={index} index={index} title={item.title} image={item.image}>
             <Accordion.Content>
-              {item.content}
+              <div className='absolute w-full overflow-x-hidden h-full bottom-0 left-0 z-10 p-4 flex items-end' style={{ background: 'linear-gradient(0deg, rgba(10, 0, 22, 0.75) 30%, rgba(10, 0, 22, 0.00) 100%)' }}>
+                <div className='flex min-w-96 w-96 flex-col gap-4 justify-end'>
+                  <h3 className='font-heading font-bold text-xl'>{item.content}</h3>
+                  <p className='text-md'>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    Expedita perferendis, aperiam minima tempore ipsa quas dicta consequatur nulla velit
+                  </p>
+                  
+                </div>
+              </div>
             </Accordion.Content>
           </Accordion.Item>
         ))}
@@ -67,7 +76,7 @@ export const Horizontal: Story = {
   ),
   args: {
     orientation: 'horizontal',
-    width: 500,
+    width: 720,
     height: 300,
   },
 };

@@ -22,12 +22,12 @@ const AccordionItemContext = createContext<{
 } | null>(null);
 
 const accordionVariants = cva(
-  "accordion",
+  "flex w-full h-full",
   {
     variants: {
       orientation: {
-        vertical: "accordion-vertical",
-        horizontal: "accordion-horizontal",
+        vertical: "flex-col",
+        horizontal: "flex-row",
       },
     },
     defaultVariants: {
@@ -114,7 +114,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
             layout="fill"
             objectFit="cover"
             className={classNames("absolute inset-0 w-full h-full transition-opacity duration-300 grayscale", 
-                {"brightness-50": openIndex !== index}
+                {"brightness-75": openIndex !== index}
             )}
           />
         )}
@@ -131,7 +131,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
         })}>
           {title}
         </div>
-        {openIndex === index && children}
+        {children}
       </div>
     </AccordionItemContext.Provider>
   );
@@ -150,8 +150,8 @@ export const AccordionContent: React.FC<AccordionContentProps> = ({ children, cl
 
   return (
     <div
-      className={classNames("absolute", className, {
-        "hidden": openIndex !== index,
+      className={classNames("absolute w-full h-full transition-all duration-200", className, {
+        "opacity-0": openIndex !== index,
       })}
       {...divProps}
     >
