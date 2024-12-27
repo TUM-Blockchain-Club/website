@@ -5,6 +5,7 @@ export default {
     "./.storybook/*.css",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/stories/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.css",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
