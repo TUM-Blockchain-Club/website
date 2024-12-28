@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext, forwardRef } from "react";
+import React, { useState, useEffect, createContext, useContext, forwardRef, useRef, useImperativeHandle } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import classNames from "classnames";
 import Image from 'next/image';
@@ -10,11 +10,17 @@ const AccordionContext = createContext<{
   setOpenIndex: (index: number) => void;
   setIsPaused: (isPaused: boolean) => void;
   orientation: "vertical" | "horizontal";
+  count: number;
+  width: number;
+  height: number;
 }>({
   openIndex: 0,
   setOpenIndex: () => {},
   setIsPaused: () => {},
   orientation: "vertical",
+  count: 0,
+  width: 0,
+  height: 0,
 });
 
 const AccordionItemContext = createContext<{
@@ -45,6 +51,8 @@ export interface AccordionRootProps extends AccordionVariantProps, Pick<React.Co
 export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps }, ref) => {
   const [openIndex, setOpenIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const compRef = useRef<HTMLDivElement>(null);
 
   if (!orientation) {
     orientation = "vertical";
@@ -58,10 +66,26 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ c
     return () => clearInterval(interval);
   }, [isPaused, autoSlideInterval, children]);
 
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (compRef.current) {
+        setDimensions({
+          width: compRef.current.offsetWidth,
+          height: compRef.current.offsetHeight,
+        });
+      }
+    };
+
+    window.addEventListener("resize", updateDimensions);
+    updateDimensions();
+
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, [compRef, compRef.current?.offsetWidth, compRef.current?.offsetHeight]);
+
   return (
-    <AccordionContext.Provider value={{ openIndex, setOpenIndex, orientation, setIsPaused }}>
+    <AccordionContext.Provider value={{ openIndex, setOpenIndex, orientation, setIsPaused, count: React.Children.count(children), width: dimensions.width, height: dimensions.height }}>
       <div
-        ref={ref}
+        ref={compRef}
         className={accordionVariants({ orientation , className: classNames(className, "w-full h-full text-white") })}
         role="tablist"
         aria-orientation={orientation}
@@ -85,11 +109,13 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
   if (!context) {
     throw new Error("AccordionItem must be used within an AccordionRoot");
   }
-  const { openIndex, setOpenIndex, orientation } = context;
+  const { openIndex, setOpenIndex, orientation, count, width, height } = context;
 
   const handleToggle = () => {
     setOpenIndex(index);
   };
+
+  const sizeAdjustment = `calc(${height}px - ${4 * (count - 1)}rem)`;
 
   return (
     <AccordionItemContext.Provider value={{ index }}>
@@ -108,14 +134,17 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
         onMouseLeave={() => context.setIsPaused(false)}
       >      
           {image && (
-          <Image
-            src={image}
-            alt={title}
-            layout="fill"
-            objectFit="cover"
-            className={classNames("absolute inset-0 w-full h-full transition-opacity duration-300 grayscale", 
+          <div
+            className={classNames("absolute inset-0 transition-opacity duration-300 grayscale left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2", 
                 {"brightness-75": openIndex !== index}
             )}
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              height: orientation === "vertical" ? `calc(${height}px - ${4 * (count - 1)}rem)` : `${height}px`,
+              width: orientation === "horizontal" ? `calc(${width}px - ${4 * (count - 1)}rem)` : `${width}px`,
+            }}
           />
         )}
         {
