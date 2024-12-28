@@ -8,6 +8,10 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
   },
+  args: {
+    rotationSpeed: { control: { type: 'number' }, defaultValue: 0.001 },
+    flyingDotCount: { control: { type: 'number' }, defaultValue: 25 },
+  },
   tags: ['autodocs'],
 } satisfies Meta;
 
@@ -15,5 +19,8 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => <ThreeJSGlobe />,
+  args: {
+    rotationSpeed: 0.001,
+    flyingDotCount: 25,
+  },
 };

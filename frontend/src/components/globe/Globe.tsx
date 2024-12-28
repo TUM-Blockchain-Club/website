@@ -2,13 +2,17 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { CatmullRomCurve3, Vector3 } from "three";
 
-export const ThreeJSGlobe: React.FC = () => {
+interface ThreeJSGlobeProps {
+  rotationSpeed: number;
+  flyingDotCount: number;
+}
+
+export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ rotationSpeed = 0.001 , flyingDotCount = 25 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer;
     let dots: Vector3[] = [];
-    const rotationSpeed = 0.001;
 
     const init = () => {
       scene = new THREE.Scene();
@@ -58,33 +62,33 @@ export const ThreeJSGlobe: React.FC = () => {
       camera.position.set(0, -100, 600);
       camera.lookAt(0, 0, 0);
 
-      spawnArcsContinuously(25);
+      spawnFlyingDotsContinuously(flyingDotCount);
     };
 
-    const spawnArcsContinuously = (activeArcs: number) => {
+    const spawnFlyingDotsContinuously = (activeFlyingDots: number) => {
       let activeAnimations = 0;
 
-      const spawnArc = () => {
-        if (activeAnimations < activeArcs) {
+      const spawnFlyingDot = () => {
+        if (activeAnimations < activeFlyingDots) {
           const start = dots[Math.floor(Math.random() * dots.length)];
           const end = dots[Math.floor(Math.random() * dots.length)];
 
           if (start.y < 0 && end.y < 0) {
-            createAnimatedArc(start, end, () => {
+            createAnimatedFlyingDot(start, end, () => {
               activeAnimations--;
-              spawnArc();
+              spawnFlyingDot();
             });
             activeAnimations++;
           }
         }
 
-        setTimeout(spawnArc, Math.random() * 1000);
+        setTimeout(spawnFlyingDot, Math.random() * 1000);
       };
 
-      spawnArc();
+      spawnFlyingDot();
     };
 
-    const createAnimatedArc = (start: Vector3, end: Vector3, onComplete: () => void) => {
+    const createAnimatedFlyingDot = (start: Vector3, end: Vector3, onComplete: () => void) => {
       const midPoint = new Vector3().addVectors(start, end).multiplyScalar(0.5);
       const arcHeight = Math.sin(Math.PI / 2) * start.distanceTo(end) * 0.4;
       const upwardOffset = new Vector3()
@@ -140,7 +144,7 @@ export const ThreeJSGlobe: React.FC = () => {
         renderer.dispose();
       }
     };
-  }, []);
+  }, [rotationSpeed, flyingDotCount]);
 
   return <div ref={containerRef} style={{ width: "100%", height: "100vh" }} />;
 };
