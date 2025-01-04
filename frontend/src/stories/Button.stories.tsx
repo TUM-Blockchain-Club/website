@@ -29,10 +29,27 @@ export const CTA: Story = {
   },
 };
 
+export const CTAWithIcon: Story = {
+  args: {
+    buttonType: 'cta',
+    children: 'Call to Action',
+    Icon: ChevronRightIcon,
+  },
+};
+
+
 export const Primary: Story = {
   args: {
     buttonType: 'primary',
     children: 'Primary',
+  },
+};
+
+export const PrimaryWithButton: Story = {
+  args: {
+    buttonType: 'primary',
+    children: 'Primary',
+    Icon: ChevronRightIcon,
   },
 };
 
@@ -41,5 +58,12 @@ export const Secondary: Story = {
     buttonType: 'secondary',
     children: 'Secondary',
     Icon: ChevronRightIcon,
+  },
+};
+
+export const Link: Story = {
+  args: {
+    buttonType: 'link',
+    children: 'Link',
   },
 };

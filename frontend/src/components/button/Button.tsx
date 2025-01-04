@@ -13,6 +13,7 @@ const buttonVariants = cva(
         cta: "tbc-button-cta",
         primary: "tbc-button-primary",
         secondary: "tbc-button-secondary",
+        link: "tbc-button-link",
       },
     },
     defaultVariants: {
@@ -34,6 +35,8 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
   (props, ref) => {
     const { asChild, buttonType, disabled, className, children, Icon, ...buttonProps } = props;
 
+    const content = asChild ? children : <>{children} {Icon && <Icon />}</>;
+
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
@@ -43,13 +46,13 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
         className={buttonVariants({
           className: classNames(className, {
             "opacity-50 cursor-not-allowed": disabled,
+            "with-icon": Boolean(Icon),
           }),
           buttonType,
         })}
         ref={ref}
       >
-        {children}
-        {Icon && <Icon />}
+        {content}
       </Comp>
     );
   },
