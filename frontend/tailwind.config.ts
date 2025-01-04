@@ -1,3 +1,4 @@
+import { access } from "fs";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -17,11 +18,18 @@ export default {
         body: ["var(--font-inter)", "sans"],
         sans: ["var(--font-inter)", "sans"],
       },
+      backgroundImage: {
+        'header-gradient': 'linear-gradient(180deg, #030007 3.38%, rgba(3, 0, 7, 0.75) 44.44%, rgba(3, 0, 7, 0.00) 100%)',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
         interactive: "var(--interactive)",
+        accent: "var(--accent)",
       },
+      padding: {
+        "4.5": "1.375rem",
+      }
     },
   },
   plugins: [],

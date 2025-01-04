@@ -19,10 +19,12 @@
   --background: #ffffff;
   --foreground: #03000b;
   --interactive: var(--violet-3);
+  --accent: #532096;
 }
 
 html[data-mode="dark"] {
   --background: #03000b;
   --foreground: #ffffff;
   --interactive: var(--violet-12);
+  --accent: #672eb3;
 }
