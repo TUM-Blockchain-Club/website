@@ -50,14 +50,12 @@ export const Header = forwardRef<HeaderElement, HeaderProps>((props, ref) => {
         <header 
             ref={ref} 
             className={classNames(
-                "w-full relative",
-                "dark:bg-header-gradient fixed md:top-0 md:left-0 md:right-0",
-                "md:py-4",
+                "w-full dark:bg-header-gradient fixed lg:top-0 lg:left-0 lg:right-0",
                 className
             )} 
             {...rest}
         >
-            <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div className="max-w-5xl mx-auto flex justify-between items-center lg:pt-8 lg:pb-12 py-4 px-4 xl:px-0">
                 {logo && (
                     <Link href="/" className="flex items-center">
                         <img src={logo} alt="Logo" className="h-8" />
@@ -71,14 +69,14 @@ export const Header = forwardRef<HeaderElement, HeaderProps>((props, ref) => {
                 
                 {/* Mobile menu button */}
                 <button 
-                    className="md:hidden text-foreground"
+                    className="lg:hidden text-foreground"
                     onClick={() => setIsMobileMenuOpen(true)}
                 >
                     <HamburgerMenuIcon className="w-6 h-6" />
                 </button>
 
                 {/* Desktop navigation */}
-                <nav className="hidden md:flex items-center gap-12">
+                <nav className="hidden lg:flex items-center gap-12">
                     {menuLinks.map((link) => (
                         <Button
                             key={link.name}
@@ -96,7 +94,7 @@ export const Header = forwardRef<HeaderElement, HeaderProps>((props, ref) => {
                 {isMobileMenuOpen && (
                     <FullScreenMenu 
                         menuLinks={menuLinks} 
-                        className="md:hidden"
+                        className="lg:hidden"
                         onClose={() => setIsMobileMenuOpen(false)}
                     />
                 )}
