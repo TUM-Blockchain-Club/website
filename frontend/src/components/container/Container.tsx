@@ -17,7 +17,7 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
         ref={ref}
         className={classNames(
           "mx-auto max-w-5xl",
-          "lg:overflow-visible overflow-hidden",
+          "lg:overflow-visible overflow-hidden xl:px-0 px-4",
           className
         )}
       >
