@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import { Header } from "@/components/header";
+
 import "./globals.css";
+import { MenuLink } from "@/components/header/Header";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -18,16 +21,23 @@ export const metadata: Metadata = {
   keywords: ["TUM", "Blockchain"],
 };
 
+const menuLinks : MenuLink[] = [
+  {
+    name: "About",
+    url: "/about",
+    buttonType: "link"
+  }
+]
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${manrope.variable} ${inter.variable} antialiased`}
-      >
+    <html lang="en" data-mode="dark" className={`${manrope.variable} ${inter.variable} antialiased bg-background overflow-x-hidden`}>
+      <body>
+        <Header menuLinks={menuLinks}/>
         {children}
       </body>
     </html>
