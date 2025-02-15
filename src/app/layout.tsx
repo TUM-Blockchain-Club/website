@@ -27,6 +27,26 @@ const menuLinks : MenuLink[] = [
     name: "About",
     url: "/about",
     buttonType: "link"
+  },
+  {
+    name: "Events",
+    url: "/about",
+    buttonType: "link"
+  },
+  {
+    name: "Industry",
+    url: "/about",
+    buttonType: "link"
+  },
+  {
+    name: "Conference",
+    url: "/about",
+    buttonType: "link"
+  },
+  {
+    name: "Join Us",
+    url: "/about",
+    buttonType: "primary"
   }
 ]
 

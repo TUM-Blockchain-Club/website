@@ -7,11 +7,9 @@ interface ThreeJSGlobeProps {
   rotationSpeed?: number;
   flyingDotCount?: number;
   className?: string;
-  width: number;
-  height: number;
 }
 
-export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationSpeed = 0.001 , flyingDotCount = 25, width, height }) => {
+export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationSpeed = 0.001, flyingDotCount = 25 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,9 +18,9 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
 
     const init = () => {
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 2000);
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
       renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(width, height);
+      renderer.setSize(window.innerWidth, window.innerHeight);
 
       if (containerRef.current) {
         containerRef.current.appendChild(renderer.domElement);
@@ -132,9 +130,9 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
     };
 
     const handleResize = () => {
-      camera.aspect = width / height;
+      camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
+      renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
     window.addEventListener("resize", handleResize);
@@ -148,7 +146,7 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
         renderer.dispose();
       }
     };
-  }, [rotationSpeed, flyingDotCount, width, height]);
+  }, [rotationSpeed, flyingDotCount]);
 
-  return <div ref={containerRef} className={classNames(className, "overflow-hidden")} style={{ width, height }} />;
+  return <div ref={containerRef} className={classNames(className, "overflow-hidden")} />;
 };

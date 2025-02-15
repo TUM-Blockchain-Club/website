@@ -28,3 +28,7 @@ html[data-mode="dark"] {
   --interactive: var(--violet-12);
   --accent: #672eb3;
 }
+
+.web-header {
+  background: linear-gradient(180deg, #030007 3.38%, rgba(3, 0, 7, 0.75) 44.44%, rgba(3, 0, 7, 0.00) 100%);
+}
