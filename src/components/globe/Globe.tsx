@@ -1,13 +1,17 @@
+import classNames from "classnames";
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { CatmullRomCurve3, Vector3 } from "three";
 
 interface ThreeJSGlobeProps {
-  rotationSpeed: number;
-  flyingDotCount: number;
+  rotationSpeed?: number;
+  flyingDotCount?: number;
+  className?: string;
+  width: number;
+  height: number;
 }
 
-export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ rotationSpeed = 0.001 , flyingDotCount = 25 }) => {
+export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationSpeed = 0.001 , flyingDotCount = 25, width, height }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -16,9 +20,9 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ rotationSpeed = 0.00
 
     const init = () => {
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+      camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 2000);
       renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(width, height);
 
       if (containerRef.current) {
         containerRef.current.appendChild(renderer.domElement);
@@ -105,7 +109,7 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ rotationSpeed = 0.00
       scene.add(movingPoint);
 
       let t = 0;
-      const speed = 0.01;
+      const speed = 0.0025;
 
       const animatePoint = () => {
         if (t <= 1) {
@@ -128,9 +132,9 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ rotationSpeed = 0.00
     };
 
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(width, height);
     };
 
     window.addEventListener("resize", handleResize);
@@ -144,7 +148,7 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ rotationSpeed = 0.00
         renderer.dispose();
       }
     };
-  }, [rotationSpeed, flyingDotCount]);
+  }, [rotationSpeed, flyingDotCount, width, height]);
 
-  return <div ref={containerRef} style={{ width: "100%", height: "100vh" }} />;
+  return <div ref={containerRef} className={classNames(className, "overflow-hidden")} style={{ width, height }} />;
 };

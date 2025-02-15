@@ -2,7 +2,7 @@ import { Container } from "@/components/container";
 import { forwardRef } from "react";
 import { Social } from "@/components/social";
 import { Button } from "@/components/button";
-import { faDiscord, faInstagram, faLinkedin, faMedium, faTelegram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faGithub, faInstagram, faLinkedin, faMedium, faTelegram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import classNames from "classnames";
 
@@ -27,6 +27,7 @@ export const Footer = forwardRef<FooterElement, FooterProps>((prop, ref) => {
                         <Social icon={faLinkedin} href="https://www.linkedin.com/company/tum-blockchain-club/" title="LinkedIn"/>
                         <Social icon={faDiscord} href="https://discord.gg/7V7KG8SESF" title="Discord"/>
                         <Social icon={faTelegram} href="https://t.me/+6SMYu7pub0E1MGUy" title="Telegram"/>
+                        <Social icon={faGithub} href={"https://github.com/TUM-Blockchain-Club"} title="GitHub"/>
                         <Social icon={faMedium} href={"https:/medium.com/@tumblockchainclub"} title="Medium"/>
                     </div>
                 </div>
