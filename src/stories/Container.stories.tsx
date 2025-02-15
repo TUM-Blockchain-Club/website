@@ -26,7 +26,7 @@ export const Default: Story = {
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
-              className="flex-shrink-0 w-40 h-40 bg-white rounded-lg shadow-md flex items-center justify-center"
+              className="shrink-0 w-40 h-40 bg-white rounded-lg shadow-md flex items-center justify-center"
             >
               Scroll Item {i + 1}
             </div>
