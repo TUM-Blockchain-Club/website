@@ -1,72 +1,33 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../../.storybook/*.css';
-@source '../../**/*.css';
+@layer components {
+  .tbc-button-cta {
+    @apply bg-foreground text-background px-4 py-2 text-base font-bold relative;
 
-@custom-variant dark (&:is([data-mode="dark"] *));
-
-@theme {
-  --font-heading: var(--font-manrope), sans;
-  --font-body: var(--font-inter), sans;
-  --font-sans: var(--font-inter), sans;
-
-  --background-image-header-gradient: linear-gradient(
-    180deg,
-    #030007 3.38%,
-    rgba(3, 0, 7, 0.75) 44.44%,
-    rgba(3, 0, 7, 0) 100%
-  );
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-interactive: var(--interactive);
-  --color-accent: var(--accent);
-
-  --padding-4_5: 1.375rem;
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    .with-icon {
+      @apply pe-6;
+    }
   }
-}
 
-@utility tbc-button-cta {
-  @apply bg-foreground text-background px-4 py-2 text-base font-bold relative;
+  .tbc-button-primary {
+    @apply bg-transparent text-foreground px-3 py-1.5 text-sm font-bold border-solid border-foreground border hover:bg-white/20;
 
-  .with-icon {
-    @apply pe-6;
+    .with-icon {
+      @apply pe-4.5;
+    }
   }
-}
 
-@utility tbc-button-primary {
-  @apply bg-transparent text-foreground px-3 py-1.5 text-sm font-bold border-solid border-foreground border hover:bg-white/20;
+  .tbc-button-secondary {
+    @apply bg-transparent text-foreground px-3 py-1.5 text-sm hover:underline underline-offset-2;
 
-  .with-icon {
-    @apply pe-4.5;
+    .with-icon {
+      @apply pe-4.5;
+    }
   }
-}
 
-@utility tbc-button-secondary {
-  @apply bg-transparent text-foreground px-3 py-1.5 text-sm hover:underline underline-offset-2;
-
-  .with-icon {
-    @apply pe-4.5;
+  .tbc-button-link {
+    @apply bg-transparent text-foreground text-sm hover:underline underline-offset-2;
   }
-}
-
-@utility tbc-button-link {
-  @apply bg-transparent text-foreground text-sm hover:underline underline-offset-2;
 }

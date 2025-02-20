@@ -1,54 +1,15 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@source '../../../.storybook/*.css';
-@source '../../**/*.css';
-
-@custom-variant dark (&:is([data-mode="dark"] *));
-
-@theme {
-  --font-heading: var(--font-manrope), sans;
-  --font-body: var(--font-inter), sans;
-  --font-sans: var(--font-inter), sans;
-
-  --background-image-header-gradient: linear-gradient(
-    180deg,
-    #030007 3.38%,
-    rgba(3, 0, 7, 0.75) 44.44%,
-    rgba(3, 0, 7, 0) 100%
-  );
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-interactive: var(--interactive);
-  --color-accent: var(--accent);
-
-  --padding-4_5: 1.375rem;
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+@layer components {
+  .accordion-title-vertical {
+    @apply top-1/2 -translate-y-1/2 left-4;
   }
-}
 
-@utility accordion-title-vertical {
-  @apply top-1/2 -translate-y-1/2 left-4;
-}
-
-@utility accordion-title-horizontal {
-  writing-mode: vertical-rl;
-  @apply transform
+  .accordion-title-horizontal {
+    writing-mode: vertical-rl;
+    @apply transform
       left-1/2 -translate-x-1/2 bottom-4 rotate-180;
+  }
 }
