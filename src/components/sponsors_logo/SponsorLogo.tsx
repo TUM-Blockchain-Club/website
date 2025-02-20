@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { StaticImageData } from "next/image";
 import Link from "next/link";
 
 export interface SponsorLogoProps {
@@ -10,13 +9,13 @@ export interface SponsorLogoProps {
 
 export const SponsorLogo: React.FC<SponsorLogoProps> = ({ image, name, link }) => {
     const LogoContent = () => (
-        <div className="relative border border-accent">
-            <div className="w-full aspect-video  transition-all duration-300 opacity-50 hover:opacity-100">
+        <div className="flex justify-center items-center h-full">
+            <div className="relative w-36 h-12">
                 <Image
                     src={image}
                     alt={name}
                     fill
-                    className="px-8 py-6 object-contain"
+                    className="object-contain flex justify-content-center transition-all duration-150 opacity-50 hover:opacity-100 filter grayscale hover:grayscale-0"
                 />
             </div>
         </div>

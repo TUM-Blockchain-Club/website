@@ -1,9 +1,8 @@
 import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { ThreeJSGlobe } from "@/components/globe";
-import { SponsorLogo } from "@/components/sponsors_logo";
-import { ChevronRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { SponsorList } from "./sponsor_list";
 
 export default function Home() {
   return (
@@ -32,13 +31,7 @@ export default function Home() {
             <h3 className="text-accent uppercase font-heading font-bold tracking-widest text-sm text-center lg:text-start">
               Collaborated with
             </h3>
-            <div className="grid grid-flow-row grid-cols-2 lg:grid-cols-5">
-              <SponsorLogo 
-                image="/sui_logo.svg"
-                name="Sui"
-                link="https://sui.io"
-                />
-            </div>
+            <SponsorList/>
           </div>
         </section>
       </Container>

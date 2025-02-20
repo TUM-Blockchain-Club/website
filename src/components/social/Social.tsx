@@ -2,7 +2,6 @@ import Link, { LinkProps } from "next/link";
 import { forwardRef } from "react";
 import classNames from "classnames";
 import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
-import { icon } from "@fortawesome/fontawesome-svg-core";
 
 export interface SocialProps extends Pick<LinkProps, "href">, Pick<FontAwesomeIconProps, "icon"> {
     title?: string
