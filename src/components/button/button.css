@@ -4,7 +4,19 @@
 
 @layer components {
   .tbc-button-cta {
-    @apply bg-foreground text-background px-4 py-2 text-base font-bold relative;
+    @apply bg-foreground text-background px-4 py-2 text-base font-bold;
+    @apply transition-all duration-150 shadow-[0px_0px_0px_0px_theme(colors.accent)];
+    @apply relative top-0 left-0;
+
+    &:hover {
+      @apply -top-1 -left-1;
+      @apply shadow-[4px_4px_0px_0px_theme(colors.accent)];
+    }
+
+    &:active {
+      @apply top-0 left-0;
+      @apply shadow-[0px_0px_0px_0px_theme(colors.accent)];
+    }
 
     .with-icon {
       @apply pe-6;

@@ -6,7 +6,7 @@ import classNames from "classnames";
 import "./button.css";
 
 const buttonVariants = cva(
-  "button font-sans flex justify-center items-center gap-2 transition-all duration-200 ",
+  "button font-sans flex justify-center items-center gap-2 transition-all duration-200 select-none",
   {
     variants: {
       buttonType: {
