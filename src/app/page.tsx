@@ -7,7 +7,7 @@ import { SponsorList } from "./sponsor_list";
 export default function Home() {
   return (
     <main>
-      <ThreeJSGlobe className="absolute left-0 top-0 mix-blend-screen -translate-y-1/2 -z-10"/>
+      <ThreeJSGlobe className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 mix-blend-screen -z-10"/>
       <Container asChild className="min-h-[75vh] pt-96 lg:pt-[550px] relative text-foreground flex flex-col gap-28">
         <section>
           <div className="flex flex-col gap-2 lg:gap-4">

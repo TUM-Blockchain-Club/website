@@ -18,9 +18,12 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
 
     const init = () => {
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+      camera = new THREE.PerspectiveCamera(75, 1, 0.1, 2000);
       renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      
+      let size = Math.max(window.innerWidth, window.innerHeight);
+      size = Math.min(size, 1820);
+      renderer.setSize(size, size);
 
       if (containerRef.current) {
         containerRef.current.appendChild(renderer.domElement);
@@ -72,8 +75,13 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
 
       const spawnFlyingDot = () => {
         if (activeAnimations < activeFlyingDots) {
-          const start = dots[Math.floor(Math.random() * dots.length)];
-          const end = dots[Math.floor(Math.random() * dots.length)];
+          let startIndex = Math.floor(Math.random() * dots.length);
+          let endIndex = Math.floor(Math.random() * dots.length);
+          while (endIndex === startIndex) {
+            endIndex = Math.floor(Math.random() * dots.length);
+          }
+          const start = dots[startIndex];
+          const end = dots[endIndex];
 
           if (start.y < 0 && end.y < 0) {
             createAnimatedFlyingDot(start, end, () => {
@@ -130,9 +138,10 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
     };
 
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      const size = Math.min(window.innerWidth, window.innerHeight);
+      camera.aspect = 1;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(size, size);
     };
 
     window.addEventListener("resize", handleResize);
@@ -148,5 +157,5 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
     };
   }, [rotationSpeed, flyingDotCount]);
 
-  return <div ref={containerRef} className={classNames(className, "overflow-hidden")} />;
+  return <div ref={containerRef} className={classNames(className, "overflow-hidden", "flex items-center justify-center")} />;
 };
