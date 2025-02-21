@@ -1,3 +1,5 @@
+"use client"
+
 import { SponsorLogo, SponsorLogoProps } from "@/components/sponsors_logo"
 
 // Must be exactly 10 sponsors
