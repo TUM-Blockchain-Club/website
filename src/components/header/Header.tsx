@@ -3,7 +3,7 @@ import { Button, ButtonProps } from "../button";
 import Link from "next/link";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
-
+import Image from "next/image";
 export interface MenuLink extends Pick<ButtonProps, "buttonType"> {
     name: string;
     url: string;
@@ -62,13 +62,13 @@ export const Header = forwardRef<HeaderElement, HeaderProps>((props, ref) => {
     return (
         <header 
             ref={ref} 
-            className={classNames("web-header z-20 h-[180px] fixed w-screen pt-[35px]", className)} 
+            className={classNames("web-header z-20 h-[120px] fixed w-screen pt-[35px]", className)} 
             {...rest}
         >
-            <div className="container mx-auto max-w-5xl flex items-center justify-between px-4">
+            <div className="container mx-auto lg:-translate-x-4 max-w-5xl flex items-center justify-between px-4 lg:px-0">
                 {/* Logo */}
-                <Link href="/" className="font-bold text-xl">
-                    {logo}
+                <Link href="/" className="font-bold text-xl w-36 h-12 relative">
+                    <Image src={logo ?? ""} alt="TUM Blockchain Club" fill className="object-contain"/>
                 </Link>
 
                 {/* Desktop Menu */}

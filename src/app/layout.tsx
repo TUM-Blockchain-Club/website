@@ -56,9 +56,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-mode="dark" className={`${manrope.variable} ${inter.variable} antialiased bg-background overflow-x-hidden`}>
+    <html lang="en" data-mode="dark" className={`${manrope.variable} ${inter.variable} antialiased bg-background overflow-x-hidden max-w-screen`}>
       <body>
-        <Header menuLinks={menuLinks}/>
+        <Header menuLinks={menuLinks} logo="/tbc-wordmark.png"/>
           {children}
         <Footer/>
       </body>

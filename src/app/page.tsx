@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="text-foreground">
-      <ThreeJSGlobe className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 mix-blend-screen -z-10"/>
+      <ThreeJSGlobe className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 mix-blend-screen -z-10 w-screen h-screen"/>
       <Container asChild className="min-h-[75vh] pt-96 lg:pt-[550px] relative text-foreground flex flex-col gap-28">
         <section>
           <div className="flex flex-col gap-2 lg:gap-4">
@@ -83,24 +83,31 @@ export default function Home() {
       </Container>
       <Container asChild className="py-12 mt-12 xl:mt-24">
         <section>
-          <div className="flex flex-col gap-4 lg:gap-6 lg:ps-20">
-            <div className="flex flex-col gap-2">
-              <h3 className="text-accent text-center uppercase font-heading font-bold tracking-widest lg:text-start">
-                More than a group of students
-              </h3>
-              <h1 className="text-3xl text-center lg:text-start lg:text-[48px] font-heading font-bold leading-tight">
-                A Growing Family
-              </h1>
-            </div>
-            <p className="font-body text-center lg:text-start text-md lg:text-lg">
-              With 57 active members, we are the biggest student-run
-              <br/>blockchain club in Germany.
-            </p>
-            <div className="flex gap-6 flex-col lg:flex-row items-center mt-10 lg:mt-3">
-              <Button asChild buttonType="cta" className="w-fit">
-                <Link href={"#"}>Be a part</Link>
-              </Button>
-            </div>
+          <div className="flex flex-col gap-4 lg:gap-6">
+            <div className="flex">
+              <div className="flex flex-col gap-4 lg:gap-6 w-1/2 lg:ps-20">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-accent text-center uppercase font-heading font-bold tracking-widest lg:text-start">
+                    More than a group of students
+                  </h3>
+                  <h1 className="text-3xl text-center lg:text-start lg:text-[48px] font-heading font-bold leading-tight">
+                    A Growing Family
+                  </h1>
+                </div>
+                <p className="font-body text-center lg:text-start text-md lg:text-lg">
+                  With 57 active members, we are the biggest student-run
+                  blockchain club in Germany.
+                </p>
+                <div className="flex gap-6 flex-col lg:flex-row items-center mt-10 lg:mt-3">
+                  <Button asChild buttonType="cta" className="w-fit">
+                    <Link href={"#"}>Be a part</Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="w-1/2">
+
+              </div>
+            </div>          
           </div>
         </section>
       </Container>
