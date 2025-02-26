@@ -157,5 +157,5 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
     };
   }, [rotationSpeed, flyingDotCount]);
 
-  return <div ref={containerRef} className={classNames(className, "overflow-hidden", "flex items-center justify-center")} />;
+  return <div ref={containerRef} className={classNames(className, "overflow-x-hidden", "flex items-center justify-center w-screen")} />;
 };

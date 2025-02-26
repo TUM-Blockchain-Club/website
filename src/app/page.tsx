@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="text-foreground">
-      <ThreeJSGlobe className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 mix-blend-screen -z-10 w-screen h-screen"/>
+      <ThreeJSGlobe className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 mix-blend-screen -z-10"/>
       <Container asChild className="min-h-[75vh] pt-96 lg:pt-[550px] relative text-foreground flex flex-col gap-28">
         <section>
           <div className="flex flex-col gap-2 lg:gap-4">
@@ -104,8 +104,10 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="w-1/2">
-
+              <div className="w-1/2 flex flex-col gap-4 lg:gap-6">
+                <div className="flex gap-4 lg:gap-6">
+                  <div></div>
+                </div>
               </div>
             </div>          
           </div>
