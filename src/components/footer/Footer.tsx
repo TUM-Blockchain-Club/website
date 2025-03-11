@@ -10,7 +10,7 @@ type FooterElement = React.ComponentRef<"footer">
 interface FooterProps extends React.ComponentPropsWithoutRef<"footer"> { }
 
 export const Footer = forwardRef<FooterElement, FooterProps>((prop, ref) => {
-    const {className, ...footerProps} = prop;
+    const { className, ...footerProps } = prop;
     return (
         <footer {...footerProps} className={classNames(className, "bg-accent px-4")} ref={ref}>
             <Container className="flex flex-col justify-between py-4 min-h-[480px] lg:min-h-[360px]">
@@ -18,17 +18,17 @@ export const Footer = forwardRef<FooterElement, FooterProps>((prop, ref) => {
                     <span className="font-heading font-bold text-xl md:text-3xl lg:text-5xl text-white">TUM Blockchain Club <span title="eingetragener Verein" className="cursor-help">e.V.</span></span>
                     <p className="font-body leading-tight text-white">
                         Arcisstraße 21 (c/o AStA)
-                        <br/>80333 Munich
-                        <br/>Germany
+                        <br />80333 Munich
+                        <br />Germany
                     </p>
                     <div className="flex gap-2 mt-4 flex-wrap">
-                        <Social icon={faXTwitter} href="https://twitter.com/tbc_munich" title="X (Retarded Twitter)"/>
-                        <Social icon={faInstagram} href="https://www.instagram.com/tumblockchain/" title="Instagram"/>
-                        <Social icon={faLinkedin} href="https://www.linkedin.com/company/tum-blockchain-club/" title="LinkedIn"/>
-                        <Social icon={faDiscord} href="https://discord.gg/7V7KG8SESF" title="Discord"/>
-                        <Social icon={faTelegram} href="https://t.me/+6SMYu7pub0E1MGUy" title="Telegram"/>
-                        <Social icon={faGithub} href={"https://github.com/TUM-Blockchain-Club"} title="GitHub"/>
-                        <Social icon={faMedium} href={"https:/medium.com/@tumblockchainclub"} title="Medium"/>
+                        <Social icon={faXTwitter} href="https://twitter.com/tbc_munich" title="X (Retarded Twitter)" />
+                        <Social icon={faInstagram} href="https://www.instagram.com/tumblockchain/" title="Instagram" />
+                        <Social icon={faLinkedin} href="https://www.linkedin.com/company/tum-blockchain-club/" title="LinkedIn" />
+                        <Social icon={faDiscord} href="https://discord.gg/7V7KG8SESF" title="Discord" />
+                        <Social icon={faTelegram} href="https://t.me/+6SMYu7pub0E1MGUy" title="Telegram" />
+                        <Social icon={faGithub} href={"https://github.com/TUM-Blockchain-Club"} title="GitHub" />
+                        <Social icon={faMedium} href={"https:/medium.com/@tumblockchainclub"} title="Medium" />
                     </div>
                 </div>
                 <div className="flex flex-col gap-2">
@@ -46,7 +46,7 @@ export const Footer = forwardRef<FooterElement, FooterProps>((prop, ref) => {
                     <div className="text-white font-body text-sm">
                         Copyright {new Date().getFullYear()} by TUM Blockchain Club
                     </div>
-                </div>                
+                </div>
             </Container>
         </footer>
     )

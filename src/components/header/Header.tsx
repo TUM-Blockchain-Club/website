@@ -65,7 +65,7 @@ export const Header = forwardRef<HeaderElement, HeaderProps>((props, ref) => {
             className={classNames("web-header z-20 h-[120px] fixed w-screen pt-[35px]", className)} 
             {...rest}
         >
-            <div className="container mx-auto lg:-translate-x-4 max-w-5xl flex items-center justify-between px-4 lg:px-0">
+            <div className="container mx-auto lg:-translate-x-2 max-w-5xl flex items-center justify-between px-4 lg:px-0">
                 {/* Logo */}
                 <Link href="/" className="font-bold text-xl w-36 h-12 relative">
                     <Image src={logo ?? ""} alt="TUM Blockchain Club" fill className="object-contain"/>
