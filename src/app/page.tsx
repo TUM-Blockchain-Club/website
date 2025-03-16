@@ -5,10 +5,11 @@ import Link from "next/link";
 import { SponsorList } from "./sponsor_list";
 import { SlideShow } from "./slideshow";
 import Image from "next/image";
+
 export default function Home() {
   return (
     <main className="text-foreground">
-      <ThreeJSGlobe className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 mix-blend-screen -z-10"/>
+      <ThreeJSGlobe className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 mix-blend-screen -z-10" />
       <Container asChild className="min-h-[75vh] pt-96 lg:pt-[550px] relative text-foreground flex flex-col gap-28">
         <section>
           <div className="flex flex-col gap-2 lg:gap-4">
@@ -32,7 +33,7 @@ export default function Home() {
             <h3 className="text-accent uppercase font-heading font-bold tracking-widest text-sm text-center lg:text-start">
               Collaborated with
             </h3>
-            <SponsorList/>
+            <SponsorList />
           </div>
         </section>
       </Container>
@@ -49,20 +50,20 @@ export default function Home() {
               </h1>
             </div>
             <p className="font-body text-center lg:text-start text-md lg:text-lg">
-              TUM Blockchain Club is a legally registered non-profit organization under German law and an officially accredited student club at the 
-              Technical University of Munich. Our mission extends beyond academics—we are committed to shaping the future of blockchain 
-              technology through impactful education, events, and collaborations. With a strong foundation and serious intent, we aim to leave a 
+              TUM Blockchain Club is a legally registered non-profit organization under German law and an officially accredited student club at the
+              Technical University of Munich. Our mission extends beyond academics—we are committed to shaping the future of blockchain
+              technology through impactful education, events, and collaborations. With a strong foundation and serious intent, we aim to leave a
               lasting mark on the global blockchain ecosystem.
             </p>
           </div>
           <div className="relative w-full h-[720px] mt-20 filter grayscale hover:grayscale-0 transition-all duration-150">
-            <Image src="/group_photo.webp" alt="Our group photo" fill className="object-cover"/>
+            <Image src="/group_photo.webp" alt="Our group photo" fill className="object-cover" />
           </div>
         </section>
       </Container>
       <Container asChild className="py-12 mt-12 xl:mt-24">
         <section>
-        <div className="flex flex-col gap-4 lg:gap-6 w-full">
+          <div className="flex flex-col gap-4 lg:gap-6 w-full">
             <div className="flex flex-col gap-2 w-full justify-center items-center">
               <h3 className="text-accent text-center uppercase font-heading font-bold tracking-widest lg:text-start">
                 Our Vision
@@ -72,12 +73,12 @@ export default function Home() {
               </h1>
             </div>
             <p className="font-body text-center text-md lg:text-lg">
-              We strive to create meaningful and sustainable impact by connecting best-in mind students with 
-              <br/>various aspect of blockchain realm.
+              We strive to create meaningful and sustainable impact by connecting best-in mind students with
+              <br />various aspect of blockchain realm.
             </p>
           </div>
           <div className="w-full h-[500px] mt-20">
-            <SlideShow/>
+            <SlideShow />
           </div>
         </section>
       </Container>
@@ -109,7 +110,9 @@ export default function Home() {
                   <div></div>
                 </div>
               </div>
-            </div>          
+            </div>
+            <div>
+            </div>
           </div>
         </section>
       </Container>
