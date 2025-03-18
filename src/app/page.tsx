@@ -7,8 +7,11 @@ import { SlideShow } from "./slideshow";
 import Image from "next/image";
 
 export default function Home() {
+  const galleryImageWidth = 350 * 3 / 4;
+  const galleryImageHeight = 264 * 3 / 4;
+
   return (
-    <main className="text-foreground">
+    <div>
       <ThreeJSGlobe className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 mix-blend-screen -z-10" />
       <Container asChild className="min-h-[75vh] pt-96 lg:pt-[550px] relative text-foreground flex flex-col gap-28">
         <section>
@@ -84,9 +87,9 @@ export default function Home() {
       </Container>
       <Container asChild className="py-12 mt-12 xl:mt-24">
         <section>
-          <div className="flex flex-col gap-4 lg:gap-6">
+          <div className="flex flex-col gap-4">
             <div className="flex">
-              <div className="flex flex-col gap-4 lg:gap-6 w-1/2 lg:ps-20">
+              <div className="flex flex-col gap-4 lg:gap-6 w-1/2 lg:pt-12">
                 <div className="flex flex-col gap-2">
                   <h3 className="text-accent text-center uppercase font-heading font-bold tracking-widest lg:text-start">
                     More than a group of students
@@ -101,21 +104,56 @@ export default function Home() {
                 </p>
                 <div className="flex gap-6 flex-col lg:flex-row items-center mt-10 lg:mt-3">
                   <Button asChild buttonType="cta" className="w-fit">
-                    <Link href={"#"}>Be a part</Link>
+                    <Link href={"#"}>Take Part</Link>
                   </Button>
                 </div>
               </div>
-              <div className="w-1/2 flex flex-col gap-4 lg:gap-6">
-                <div className="flex gap-4 lg:gap-6">
-                  <div></div>
+              <div className="w-1/2 flex flex-col gap-4" id={"side-gallery"}>
+                <div className="flex gap-4 overflow-x-hidden ps-8">
+                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                </div>
+                <div className="flex gap-4 overflow-x-hidden">
+                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
                 </div>
               </div>
             </div>
-            <div>
+            <div className="flex gap-4 overflow-x-hidden justify-center" id="bottom-gallery">
+                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
             </div>
           </div>
         </section>
       </Container>
-    </main>
+      <Container asChild className="py-12 mt-12 xl:mt-24">
+        <section>
+          <div className="flex flex-col gap-4 lg:gap-6">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-accent uppercase font-heading font-bold tracking-widest text-center lg:text-start">
+                Open 
+              </h3>
+              <h1 className="text-3xl text-center lg:text-start lg:text-[48px] font-heading font-bold leading-tight">
+                From the best, 
+                <br/>For the best
+              </h1>
+            </div>
+            <p>
+            As an accredited student club at the Technical University of Munich (TUM), the TUM Blockchain Club is 
+            driven by a team of dedicated TUM students. Our members are distinguished by their excellence in the field, 
+            embodying the problem-solving spirit and innovative thinking that TUM is renowned for. Notably, TUM 
+            has been recognized as the top university in Germany, ranking 28th worldwide in the QS World University Rankings 2025.
+            </p>
+            <div className="flex gap-6 flex-col lg:flex-row items-center mt-10 lg:mt-3">
+              <Button asChild buttonType="cta" className="w-fit">
+                <Link href={"#"}>Collaborate Together</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </Container>
+    </div>
   );
 }

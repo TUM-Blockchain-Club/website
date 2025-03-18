@@ -32,3 +32,11 @@ html[data-mode="dark"] {
 .web-header {
   background: linear-gradient(180deg, #030007 3.38%, rgba(3, 0, 7, 0.75) 44.44%, rgba(3, 0, 7, 0.00) 100%);
 }
+
+#side-gallery {
+  mask: linear-gradient(275deg, #000000 20%, rgba(0, 0, 0, 0) 91%) add;
+}
+
+#bottom-gallery {
+  mask: linear-gradient(180deg, #000000 40%, rgba(0, 0, 0, 0) 91%) add;
+}

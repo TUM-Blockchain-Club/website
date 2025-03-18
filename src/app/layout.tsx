@@ -59,7 +59,9 @@ export default function RootLayout({
     <html lang="en" data-mode="dark" className={`${manrope.variable} ${inter.variable} antialiased bg-background overflow-x-hidden max-w-screen`}>
       <body>
         <Header menuLinks={menuLinks} logo="/tbc-wordmark.png"/>
+        <main className="text-foreground pb-24">
           {children}
+        </main>
         <Footer/>
       </body>
     </html>
