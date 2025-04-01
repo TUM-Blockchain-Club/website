@@ -46,30 +46,37 @@ const SocialIcon = ({ href, children, bgColor }) => (
 
 const OurTeam = () => {
   return (
-    <div className="px-4 md:px-8 lg:px-16 py-10 text-white">
-      <div className="text-center max-w-xl mx-auto mb-10 w-full justify-center items-center">
-      <h3 className="text-accent text-center uppercase font-heading font-bold tracking-widest ">
-        Together, We Create
-      </h3>
-      <h1 className="text-3xl text-center lg:text-[48px] font-heading font-bold leading-tight">
-        Meet the Team
-      </h1>
+    <div className="px-4 md:px-8 lg:px-16 py-16 text-white">
+      <div className="text-center max-w-xl mx-auto mb-12">
+        <h3 className="text-accent text-center uppercase font-heading font-bold tracking-widest">
+          Together, We Create
+        </h3>
+        <h1 className="text-3xl text-center lg:text-5xl font-heading font-bold leading-tight">
+          Meet the Team
+        </h1>
       </div>
 
-      <div className="flex flex-wrap -mx-3 justify-center">
+      <div className="flex flex-wrap -mx-4 justify-center">
         {teamMembers.map((member, idx) => (
-          <div key={idx} className="w-1/2 md:w-1/3 lg:w-1/4 px-3 mb-6">
-            <div className="bg-gradient-to-br from-white/5 to-white/10 rounded-3xl shadow-md p-4 flex flex-col items-center text-center min-h-[280px]">
-              <div className="w-32 h-32 rounded-full overflow-hidden mb-2 border-2 border-white/20 shadow-sm">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover"
-                />
+          <div key={idx} className="w-1/2 sm:w-1/3 lg:w-1/4 px-4 mb-8">
+            <div className="bg-white/5 border border-white/10 rounded-3xl shadow-lg p-6 flex flex-col items-center text-center hover:-translate-y-1 hover:shadow-xl transition-transform duration-300 relative overflow-hidden">
+              
+              {/* Glowing ring avatar */}
+              <div className="relative mb-3">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 blur-md animate-pulse z-0"></div>
+                <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-white relative z-10">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-              <h6 className="text-base font-semibold text-white">{member.name}</h6>
-              <span className="text-xs text-blue-400 mb-3">{member.role}</span>
-              <div className="flex space-x-2 mt-auto">
+
+              <h6 className="text-lg font-semibold">{member.name}</h6>
+              <span className="text-sm text-blue-400 mb-3">{member.role}</span>
+
+              <div className="flex space-x-3 mt-auto">
                 <SocialIcon href="#" bgColor="bg-blue-600">
                   {/* LinkedIn */}
                   <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4">
