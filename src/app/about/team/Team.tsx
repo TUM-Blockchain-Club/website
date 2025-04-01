@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Code, Users, Megaphone, BookOpen, Briefcase } from 'lucide-react'; // You can swap icons
+import { Globe, Code, Users, Megaphone, BookOpen, Briefcase } from 'lucide-react';
 
 const teamMembers = [
   {
@@ -66,29 +66,39 @@ const OurTeam = () => {
       <div className="flex flex-wrap -mx-4 justify-center">
         {teamMembers.map((member, idx) => (
           <div key={idx} className="w-1/2 sm:w-1/3 lg:w-1/4 px-4 mb-8">
-            <div className="relative p-5 rounded-3xl border border-fuchsia-500/40 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.05),_transparent)] shadow-[0_0_20px_rgba(255,0,255,0.15)] hover:shadow-[0_0_30px_rgba(255,0,255,0.3)] transition-shadow duration-300 group">
-              
-              {/* Grid overlay effect */}
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none rounded-3xl z-0" />
-              
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-fuchsia-500 mb-3 shadow-md">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            <div className="relative group p-5 rounded-3xl border border-accent bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.05),_transparent)] shadow-[0_0_20px_rgba(255,0,255,0.15)] hover:shadow-[0_0_30px_rgba(255,0,255,0.3)] transition-shadow duration-300 overflow-hidden">
 
-                <h6 className="text-lg font-semibold mb-1">{member.name}</h6>
-                
-                {/* Role with icon */}
-                <span className="flex items-center justify-center text-sm text-fuchsia-400 font-medium gap-1 mb-4">
+              {/* Neon grid overlay */}
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none rounded-3xl z-0" />
+
+              {/* Left neon stripe */}
+              <div className="absolute left-0 top-0 h-full w-1 bg-accent rounded-tr-3xl rounded-br-3xl z-10" />
+
+              <div className="relative z-10 flex flex-col items-center">
+                {/* Role Label */}
+                {/* Role with Icon */}
+                <div className="flex items-center justify-center text-sm text-fuchsia-400 font-medium gap-1 mb-4">
                   {member.icon}
                   {member.role}
-                </span>
+                </div>
 
-                {/* Socials */}
+                {/* Glowing Avatar */}
+                <div className="relative mb-3">
+                  <div className="absolute inset-0 rounded-full bg-accent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-accent relative z-10 shadow-md">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Name */}
+                <h6 className="text-lg font-semibold mb-1">{member.name}</h6>
+
+
+                {/* Social Icons */}
                 <div className="flex space-x-3">
                   <SocialIcon href="#" bgColor="bg-blue-600">
                     {/* LinkedIn */}
