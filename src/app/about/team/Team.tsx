@@ -54,7 +54,7 @@ const SocialIcon = ({ href, children, bgColor }) => (
 const OurTeam = () => {
   return (
     <div className="px-4 md:px-8 lg:px-16 py-16 text-white">
-      <div className="text-center max-w-xl mx-auto mb-12">
+      <div className="flex flex-col gap-2 w-full justify-center items-center mb-12">
         <h3 className="text-accent text-center uppercase font-heading font-bold tracking-widest">
           Together, We Create
         </h3>
