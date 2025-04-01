@@ -68,7 +68,7 @@ const Timeline = () => {
   const handleClick = (index) => setActiveIndex(index);
 
   return (
-    <div className="py-28 text-white">
+    <div className="py-0 text-white">
       <div className="text-center mb-16">
         <h3 className="text-fuchsia-500 uppercase tracking-widest font-bold text-sm mb-2">
           From Idea to Impact
@@ -77,7 +77,7 @@ const Timeline = () => {
       </div>
 
       <div
-        className="flex justify-center items-center gap-4 overflow-hidden max-w-[100vw] xl:max-w-[1600px]  w-full"
+        className="flex justify-center items-center gap-4 overflow-hidden max-w-[100vw] xl:max-w-[1600px] w-full"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -106,6 +106,7 @@ const Timeline = () => {
                     isActive ? 'opacity-100' : 'opacity-30'
                   }`}
                 />
+
                 <div
                   className={`absolute inset-0 ${
                     isActive ? 'bg-black/80' : 'bg-black/60'
@@ -127,6 +128,20 @@ const Timeline = () => {
                     </>
                   )}
                 </div>
+
+                {isActive ? (
+                  <div className="" /> // absolute inset-0 bg-gradient-to-t from-fuchsia-500/50 to-transparent
+                ) : (
+                  <div className="absolute inset-0 bg-black" />
+                )}
+
+                {!isActive && (
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="bg-black px-2 py-1 rounded-md shadow-md transform -rotate-90 text-lg sm:text-xl lg:text-2xl font-bold tracking-wide whitespace-nowrap">
+                      {item.year}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           );
