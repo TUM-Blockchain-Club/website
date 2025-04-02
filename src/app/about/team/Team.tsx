@@ -1,5 +1,7 @@
 import React from 'react';
 import { Globe, Code, Users, Megaphone, BookOpen, Briefcase } from 'lucide-react';
+import { faDiscord, faGithub, faInstagram, faLinkedin, faMedium, faTelegram, faXTwitter } from "@fortawesome/free-brands-svg-icons"
+
 
 const teamMembers = [
   {
@@ -72,7 +74,7 @@ const OurTeam = () => {
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none rounded-3xl z-0" />
 
               {/* Left neon stripe */}
-              <div className="absolute left-0 top-0 h-full w-1 bg-accent rounded-tr-3xl rounded-br-3xl z-10" />
+              {/* <div className="absolute left-0 top-0 h-full w-1 bg-accent rounded-tr-3xl rounded-br-3xl z-10" /> */}
 
               <div className="relative z-10 flex flex-col items-center">
                 {/* Role Label */}
@@ -97,11 +99,10 @@ const OurTeam = () => {
                 {/* Name */}
                 <h6 className="text-lg font-semibold mb-1">{member.name}</h6>
 
-
                 {/* Social Icons */}
                 <div className="flex space-x-3">
-                  <SocialIcon href="#" bgColor="bg-blue-600">
-                    {/* LinkedIn */}
+                  <SocialIcon href="https://twitter.com/tbc_munich" bgColor="bg-blue-600">
+                    {/* LinkedIn */} 
                     <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4">
                       <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.7v2.2h.05c.52-1 1.8-2.2 3.7-2.2 3.95 0 4.7 2.6 4.7 6V24h-4v-7.5c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.9 1.95-2.9 4v7.6h-4V8z" />
                     </svg>

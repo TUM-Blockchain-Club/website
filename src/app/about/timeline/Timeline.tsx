@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 
 const timelineData = [
   {
-    year: 'Aug 2023',
+    year: 'Founding',
     title: 'e.V. Founding',
     desc: 'TUM Blockchain has set up the legal entity e.V. for funding.'
   },
@@ -60,7 +60,7 @@ const Timeline = () => {
       if (!pauseRef.current) {
         setActiveIndex((prev) => (prev + 1) % timelineData.length);
       }
-    }, 6000);
+    }, 4000);
   };
 
   const handleMouseEnter = () => (pauseRef.current = true);
@@ -70,7 +70,7 @@ const Timeline = () => {
   return (
     <div className="py-0 text-white">
       <div className="text-center mb-16">
-        <h3 className="text-fuchsia-500 uppercase tracking-widest font-bold text-sm mb-2">
+        <h3 className="text-accent uppercase tracking-widest font-bold text-sm mb-2">
           From Idea to Impact
         </h3>
         <h1 className="text-4xl sm:text-5xl font-bold">Our Story So Far</h1>
@@ -130,6 +130,8 @@ const Timeline = () => {
                 </div>
 
                 {isActive ? (
+                  
+                  
                   <div className="" /> // absolute inset-0 bg-gradient-to-t from-fuchsia-500/50 to-transparent
                 ) : (
                   <div className="absolute inset-0 bg-black" />
