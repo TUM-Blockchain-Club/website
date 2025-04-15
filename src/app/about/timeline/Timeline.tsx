@@ -103,7 +103,7 @@ const Timeline = () => {
                   src={placeholderImage}
                   alt={item.title}
                   className={`object-cover w-full h-full absolute inset-0 ${
-                    isActive ? 'opacity-100' : 'opacity-30'
+                    isActive ? 'opacity-150' : 'opacity-100'
                   }`}
                 />
 
