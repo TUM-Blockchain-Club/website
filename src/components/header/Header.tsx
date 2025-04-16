@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 import Image from "next/image";
+
 export interface MenuLink extends Pick<ButtonProps, "buttonType"> {
     name: string;
     url: string;
@@ -50,7 +51,7 @@ export const FullScreenMenu = forwardRef<HTMLDivElement, MenuProps>((props, ref)
 });
 FullScreenMenu.displayName = "FullScreenMenu";
 
-interface HeaderElement extends React.ComponentRef<"header"> { }
+export type HeaderElement = React.ComponentRef<"header">;
 export interface HeaderProps extends React.ComponentPropsWithoutRef<"header"> {
     logo?: string;
     menuLinks?: MenuLink[];
