@@ -1,0 +1,42 @@
+name: "Deploy Vercel"
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      VERCEL_TOKEN:
+        required: true
+      VERCEL_ORG_ID:
+        required: true
+      VERCEL_PROJECT_ID:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Vercel CLI
+        shell: bash
+        run: npm i -g vercel
+      - name: Install Dependencies
+        shell: bash
+        run: npm install
+      - name: Vercel Deploy
+        shell: bash
+        run: |
+          if [ "${{ inputs.environment }}" = "prod" ]; then 
+            vercel pull --environment=production --yes --token=${{ secrets.vercel_token }}
+            vercel deploy --public --yes --prod --logs --token=${{ secrets.vercel_token }}
+          else
+            vercel pull --environment=preview --yes --token=${{ secrets.vercel_token }}
+            vercel deploy --public --yes --logs --token=${{ secrets.vercel_token }}
+          fi
