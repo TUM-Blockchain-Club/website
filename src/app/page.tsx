@@ -17,7 +17,7 @@ export default function Home() {
         <section>
           <div className="flex flex-col gap-2 lg:gap-4">
             <h1 className="text-4xl text-center lg:text-start lg:text-[64px] font-heading font-bold leading-tight">
-              Empowering<br />People's Technology
+              Empowering<br />People&apos;s Technology
             </h1>
             <p className="font-body text-center lg:text-start text-md lg:text-xl">
               TUM Blockchain Club is fostering innovation through education,

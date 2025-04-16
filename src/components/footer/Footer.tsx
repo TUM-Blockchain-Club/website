@@ -6,8 +6,8 @@ import { faDiscord, faGithub, faInstagram, faLinkedin, faMedium, faTelegram, faX
 import Link from "next/link";
 import classNames from "classnames";
 
-type FooterElement = React.ComponentRef<"footer">
-interface FooterProps extends React.ComponentPropsWithoutRef<"footer"> { }
+export type FooterElement = React.ComponentRef<"footer">
+export type FooterProps = React.ComponentPropsWithoutRef<"footer"> 
 
 export const Footer = forwardRef<FooterElement, FooterProps>((prop, ref) => {
     const { className, ...footerProps } = prop;
@@ -51,3 +51,4 @@ export const Footer = forwardRef<FooterElement, FooterProps>((prop, ref) => {
         </footer>
     )
 })
+Footer.displayName = "Footer";

@@ -47,7 +47,7 @@ export interface AccordionRootProps extends AccordionVariantProps, Pick<React.Co
   autoSlideInterval?: number;
 }
 
-export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps }, _ref) => {
+export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps } ) => {
   const [openIndex, setOpenIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -126,8 +126,8 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
           "max-w-16": openIndex !== index && orientation === "horizontal",
           "cursor-pointer": openIndex !== index,
         })}
-        role="tabpanel"
-        aria-expanded={openIndex === index}
+        role="tab"
+        aria-selected={openIndex === index}
         onClick={handleToggle}
         onMouseEnter={() => context.setIsPaused(true)}
         onMouseLeave={() => context.setIsPaused(false)}
