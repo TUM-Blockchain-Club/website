@@ -71,7 +71,7 @@ export default function RootLayout({
         <Footer/>
         
         <JoinDialog 
-          joinUrl="/join" 
+          joinUrl="https://tally.so/r/wMGE7A" 
           deadline={applicationDeadline}
         />
       </body>

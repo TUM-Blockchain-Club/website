@@ -260,7 +260,7 @@ export const JoinDialog = ({
                 Dismiss for today
             </Button>
             <Button asChild buttonType="cta" tabIndex={0}>
-              <Link href={joinUrl}>Join Now</Link>
+              <Link href={joinUrl}>Apply Now</Link>
             </Button>
           </div>
         </Dialog.Content>
