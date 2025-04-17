@@ -6,6 +6,8 @@ import { SponsorList } from "./sponsor_list";
 import { SlideShow } from "./slideshow";
 import Image from "next/image";
 
+import atRestaurant1 from "@/images/family_photos/at_restaurant_1.png";
+
 export default function Home() {
   const galleryImageWidth = 350 * 3 / 4;
   const galleryImageHeight = 264 * 3 / 4;
@@ -114,7 +116,7 @@ export default function Home() {
               <div className="w-1/2 flex flex-col gap-4" id={"side-gallery"}>
                 <div className="flex gap-4 overflow-x-hidden ps-8">
                   <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
-                  <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+                  <Image src={atRestaurant1} width={galleryImageWidth} height={galleryImageHeight} alt="" />
                 </div>
                 <div className="flex gap-4 overflow-x-hidden">
                   <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />

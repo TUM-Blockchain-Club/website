@@ -11,10 +11,10 @@ import type { StaticImageData } from 'next/image';
 import './JoinDialog.css';
 
 // Import the images
-import metamaskImg from '@/images/metamask.png';
-import gitImg from '@/images/git.png';
-import hardhatImg from '@/images/hardhat.png';
-import bagImg from '@/images/bag.png';
+import metamaskImg from '@/images/stickers/metamask.png';
+import gitImg from '@/images/stickers/git.png';
+import hardhatImg from '@/images/stickers/hardhat.png';
+import bagImg from '@/images/stickers/bag.png';
 
 // Definition of an ornament with position and animation properties
 interface Ornament {
@@ -132,6 +132,17 @@ export const JoinDialog = ({
     },
   };
 
+  // Function to close dialog with animation
+  const closeDialog = useCallback(() => {
+    setAnimatingOut(true);
+    
+    // After animation duration, actually close the dialog
+    setTimeout(() => {
+      setDialogOpen(false);
+      setAnimatingOut(false);
+    }, 300);
+  }, []);
+
   // Initialization effect
   useEffect(() => {
     // Don't initialize anything if deadline has passed
@@ -177,18 +188,7 @@ export const JoinDialog = ({
     }, 1000);
     
     return () => clearInterval(intervalId);
-  }, [deadlineDate, isDeadlinePassed]);
-
-  // Function to close dialog with animation
-  const closeDialog = useCallback(() => {
-    setAnimatingOut(true);
-    
-    // After animation duration, actually close the dialog
-    setTimeout(() => {
-      setDialogOpen(false);
-      setAnimatingOut(false);
-    }, 300);
-  }, []);
+  }, [deadlineDate, isDeadlinePassed, closeDialog]);
 
   const handleDismiss = () => {
     // Set the dismissal date to the end of today
@@ -234,7 +234,7 @@ export const JoinDialog = ({
         <Dialog.Content 
           className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-2 text-foreground px-10 py-6 lg:px-20 lg:py-10 w-[90vw] max-w-2xl z-50 shadow-xl bg-background border border-border flex flex-col gap-8 ${
             animatingOut ? 'animate-scale-out' : 'animate-scale-in'
-          }`}
+          } dialog-container`}
           onPointerDownOutside={(e) => {
             if (animatingOut) {
               e.preventDefault();
@@ -258,7 +258,7 @@ export const JoinDialog = ({
             <div 
               key={index} 
               className={`absolute w-32 h-32 ornament-wrapper ${
-                animatingOut ? 'animate-ornament-exit' : 'animate-ornament-entry'
+                animatingOut ? '' : 'animate-ornament-entry'
               }`}
               style={{
                 left: ornament.position.x,

@@ -83,6 +83,11 @@
     will-change: transform;
   }
   
+  /* Unified exit animation for the dialog and ornaments */
+  .dialog-container.animate-scale-out .ornament-wrapper {
+    animation: fadeOut 0.3s ease-in forwards;
+  }
+  
   /* .ornament-wrapper:hover .ornament-image {
     animation: hoverRotate 0.3s forwards;
     transform: scale(1.1) rotate(calc(var(--rotation, 0deg) + 15deg));
