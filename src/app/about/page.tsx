@@ -6,6 +6,7 @@ import { Container } from "@/components/container";
 import { TeamConstellation } from "@/components/constellar";
 import Link from "next/link";
 import Image from "next/image";
+import Structure from "./club_structure/club_structure";
 import Timeline from "./timeline/Timeline";
 import OurTeam from "./team/Team";
 
@@ -33,6 +34,11 @@ export default function Home() {
       <Container asChild className="py-12 mt-12 xl:mt-24 w-full">
         <section>
           <Timeline />
+        </section>
+      </Container>
+      <Container asChild className="py-0 mt-12 xl:mt-24 w-full">
+        <section>
+          <Structure />
         </section>
       </Container>
       <Container asChild className="py-12 mt-12 xl:mt-24">
