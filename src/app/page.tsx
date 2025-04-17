@@ -110,20 +110,20 @@ export default function Home() {
               </div>
               <div className="w-1/2 flex flex-col gap-4" id={"side-gallery"}>
                 <div className="flex gap-4 overflow-x-hidden ps-8">
-                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                  <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+                  <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
                 </div>
                 <div className="flex gap-4 overflow-x-hidden">
-                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                  <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+                  <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
                 </div>
               </div>
             </div>
             <div className="flex gap-4 overflow-x-hidden justify-center" id="bottom-gallery">
-                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+              <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+              <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+              <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+              <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
             </div>
           </div>
         </section>
@@ -133,18 +133,18 @@ export default function Home() {
           <div className="flex flex-col gap-4 lg:gap-6">
             <div className="flex flex-col gap-2">
               <h3 className="text-accent uppercase font-heading font-bold tracking-widest text-center lg:text-start">
-                Open 
+                Open To Collaboration
               </h3>
               <h1 className="text-3xl text-center lg:text-start lg:text-[48px] font-heading font-bold leading-tight">
-                From the best, 
-                <br/>For the best
+                From the best,
+                <br />For the best
               </h1>
             </div>
             <p>
-            As an accredited student club at the Technical University of Munich (TUM), the TUM Blockchain Club is 
-            driven by a team of dedicated TUM students. Our members are distinguished by their excellence in the field, 
-            embodying the problem-solving spirit and innovative thinking that TUM is renowned for. Notably, TUM 
-            has been recognized as the top university in Germany, ranking 28th worldwide in the QS World University Rankings 2025.
+              As an accredited student club at the Technical University of Munich (TUM), the TUM Blockchain Club is
+              driven by a team of dedicated TUM students. Our members are distinguished by their excellence in the field,
+              embodying the problem-solving spirit and innovative thinking that TUM is renowned for. Notably, TUM
+              has been recognized as the top university in Germany, ranking 28th worldwide in the QS World University Rankings 2025.
             </p>
             <div className="flex gap-6 flex-col lg:flex-row items-center mt-10 lg:mt-3">
               <Button asChild buttonType="cta" className="w-fit">

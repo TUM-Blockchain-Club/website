@@ -26,22 +26,24 @@ const menuLinks : MenuLink[] = [
   {
     name: "About",
     url: "/about",
-    buttonType: "link"
+    buttonType: "secondary"
   },
   {
     name: "Events",
     url: "/about",
-    buttonType: "link"
+    buttonType: "secondary"
   },
   {
     name: "Industry",
-    url: "/about",
-    buttonType: "link"
+    url: "https://industry.tum-blockchain.com",
+    buttonType: "secondary",
+    target: "_blank"
   },
   {
     name: "Conference",
-    url: "/about",
-    buttonType: "link"
+    url: "https://conference.tum-blockchain.com",
+    buttonType: "secondary",
+    target: "_blank"
   },
   {
     name: "Join Us",
