@@ -5,7 +5,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '@/components/button';
 import Image from 'next/image';
-import classNames from 'classnames';
+import type { StaticImageData } from 'next/image';
 
 // Import the CSS file
 import './JoinDialog.css';
@@ -18,7 +18,7 @@ import bagImg from '@/images/bag.png';
 
 // Definition of an ornament with position and animation properties
 interface Ornament {
-  image: any; // StaticImageData
+  image: StaticImageData;
   alt: string;
   width: number;
   height: number;
@@ -79,9 +79,6 @@ export const JoinDialog = ({
     if (!deadlineDate) return false;
     return new Date() > deadlineDate;
   }, [deadlineDate]);
-  
-  // If deadline has passed, don't render the dialog
-  if (isDeadlinePassed) return null;
 
   // Hardcoded ornaments with fixed positions
   const ornaments: Record<string, Ornament> = {
@@ -184,8 +181,8 @@ export const JoinDialog = ({
     setIsOpen(false);
   };
 
-  if (timeLeft?.isExpired) {
-    return <></>;
+  if (timeLeft?.isExpired || isDeadlinePassed) {
+    return null;
   }
 
   return (
