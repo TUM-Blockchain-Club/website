@@ -53,6 +53,9 @@ const menuLinks : MenuLink[] = [
   }
 ]
 
+// Set application deadline - example: one month from now
+const applicationDeadline = new Date(2025, 4, 17, 22, 59, 59);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,7 +70,10 @@ export default function RootLayout({
         </main>
         <Footer/>
         
-        <JoinDialog joinUrl="/join" />
+        <JoinDialog 
+          joinUrl="/join" 
+          deadline={applicationDeadline}
+        />
       </body>
     </html>
   );

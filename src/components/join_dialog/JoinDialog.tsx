@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '@/components/button';
 import Image from 'next/image';
@@ -34,12 +34,54 @@ interface Ornament {
 
 export interface JoinDialogProps {
   joinUrl?: string;
+  deadline?: Date | string; // Application deadline
 }
+
+// Function to calculate time difference
+const calculateTimeLeft = (deadline: Date) => {
+  const now = new Date();
+  const difference = deadline.getTime() - now.getTime();
+  
+  if (difference <= 0) {
+    return { isExpired: true, days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
+  
+  return {
+    isExpired: false,
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / 1000 / 60) % 60),
+    seconds: Math.floor((difference / 1000) % 60)
+  };
+};
 
 export const JoinDialog = ({
   joinUrl = 'https://tum-blockchain.com/join',
+  deadline,
 }: JoinDialogProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<{
+    isExpired: boolean;
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  } | null>(null);
+  
+  // Parse the deadline
+  const deadlineDate = useMemo(() => {
+    if (!deadline) return null;
+    return deadline instanceof Date ? deadline : new Date(deadline);
+  }, [deadline]);
+  
+  // Check if deadline has already passed
+  const isDeadlinePassed = useMemo(() => {
+    if (!deadlineDate) return false;
+    return new Date() > deadlineDate;
+  }, [deadlineDate]);
+  
+  // If deadline has passed, don't render the dialog
+  if (isDeadlinePassed) return null;
 
   // Hardcoded ornaments with fixed positions
   const ornaments: Record<string, Ornament> = {
@@ -89,6 +131,9 @@ export const JoinDialog = ({
   };
 
   useEffect(() => {
+    // Don't initialize anything if deadline has passed
+    if (isDeadlinePassed) return;
+    
     // Check if the dialog has been dismissed today
     const dismissedUntil = localStorage.getItem('join-dialog-dismissed-until');
     if (dismissedUntil) {
@@ -107,7 +152,29 @@ export const JoinDialog = ({
     }, 1000);
     
     return () => clearTimeout(timer);
-  }, []);
+  }, [isDeadlinePassed]);
+  
+  // Update countdown timer every second
+  useEffect(() => {
+    if (!deadlineDate || isDeadlinePassed) return;
+    
+    // Initialize time left
+    setTimeLeft(calculateTimeLeft(deadlineDate));
+    
+    // Update timer every second
+    const intervalId = setInterval(() => {
+      const newTimeLeft = calculateTimeLeft(deadlineDate);
+      setTimeLeft(newTimeLeft);
+      
+      // If deadline has passed during the countdown, close the dialog
+      if (newTimeLeft.isExpired) {
+        setIsOpen(false);
+        clearInterval(intervalId);
+      }
+    }, 1000);
+    
+    return () => clearInterval(intervalId);
+  }, [deadlineDate, isDeadlinePassed]);
 
   const handleDismiss = () => {
     // Set the dismissal date to the end of today
@@ -117,11 +184,15 @@ export const JoinDialog = ({
     setIsOpen(false);
   };
 
+  if (timeLeft?.isExpired) {
+    return <></>;
+  }
+
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 animate-fade-in" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-2 text-foreground px-20 py-10 w-[90vw] max-w-lg z-50 shadow-xl animate-scale-in bg-background border border-border flex flex-col gap-8">
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-2 text-foreground px-20 py-10 w-[90vw] max-w-2xl z-50 shadow-xl animate-scale-in bg-background border border-border flex flex-col gap-8">
           {/* Ornaments with animation */}
           {Object.values(ornaments).map((ornament, index) => (
             <div 
@@ -152,18 +223,43 @@ export const JoinDialog = ({
           ))}
 
           {/* Content */}
-          <Dialog.Title className="text-2xl font-heading font-bold text-center">
-            Join TUM Blockchain Club
+          <Dialog.Title className="text-3xl font-heading font-bold text-center">
+            Apply for TUM Blockchain Club
           </Dialog.Title>
           <Dialog.Description className="text-center">
             Become a part of our community and join us on our journey to explore blockchain technology.
           </Dialog.Description>
           
+          {/* Countdown timer */}
+          {timeLeft && deadlineDate && (
+            <div className="text-center">
+              <p className="text-md uppercase font-semibold tracking-wide mb-2">Application Deadline</p>
+              <div className="flex justify-center gap-4">
+                <div className="text-center">
+                  <span className="text-2xl font-bold">{timeLeft.days}</span>
+                  <p className="text-xs uppercase">Days</p>
+                </div>
+                <div className="text-center">
+                  <span className="text-2xl font-bold">{timeLeft.hours}</span>
+                  <p className="text-xs uppercase">Hours</p>
+                </div>
+                <div className="text-center">
+                  <span className="text-2xl font-bold">{timeLeft.minutes}</span>
+                  <p className="text-xs uppercase">Minutes</p>
+                </div>
+                <div className="text-center">
+                  <span className="text-2xl font-bold">{timeLeft.seconds}</span>
+                  <p className="text-xs uppercase">Seconds</p>
+                </div>
+              </div>
+            </div>
+          )}
+          
           <div className="flex gap-4 justify-end">
             <Button buttonType="secondary" onClick={handleDismiss}>
                 Dismiss for today
             </Button>
-            <Button asChild buttonType="cta">
+            <Button asChild buttonType="cta" tabIndex={0}>
               <Link href={joinUrl}>Join Now</Link>
             </Button>
           </div>
