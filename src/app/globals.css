@@ -30,7 +30,7 @@ html[data-mode="dark"] {
 }
 
 #side-gallery {
-  mask: linear-gradient(275deg, #000000 20%, rgba(0, 0, 0, 0) 91%) add;
+  mask: linear-gradient(280deg, #000000 20%, rgba(0, 0, 0, 0) 85%) add;
 }
 
 #bottom-gallery {

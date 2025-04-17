@@ -7,6 +7,13 @@ import { SlideShow } from "./slideshow";
 import Image from "next/image";
 
 import atRestaurant1 from "@/images/family_photos/at_restaurant_1.png";
+import ethLondon from "@/images/family_photos/eth_london.jpeg";
+import ethBerlin from "@/images/family_photos/eth_berlin.jpeg";
+import onboarding2017 from "@/images/family_photos/onboarding_2017.png";
+import onboardingWeekend from "@/images/family_photos/onboarding_weekend.jpg";
+import parisBlockchainWeek from "@/images/family_photos/paris_blockchain_week.jpeg";
+import algorand from "@/images/family_photos/algorand.jpeg";
+import conference from "@/images/family_photos/conference.jpeg";
 
 export default function Home() {
   const galleryImageWidth = 350 * 3 / 4;
@@ -115,20 +122,20 @@ export default function Home() {
               </div>
               <div className="w-1/2 flex flex-col gap-4" id={"side-gallery"}>
                 <div className="flex gap-4 overflow-x-hidden ps-8">
-                  <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
-                  <Image src={atRestaurant1} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+                  <Image src={algorand} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+                  <Image src={atRestaurant1} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
                 </div>
                 <div className="flex gap-4 overflow-x-hidden">
-                  <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
-                  <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+                  <Image src={conference} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+                  <Image src={ethLondon} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
                 </div>
               </div>
             </div>
             <div className="flex gap-4 overflow-x-hidden justify-center" id="bottom-gallery">
-              <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
-              <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
-              <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
-              <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt="" />
+              <Image src={ethBerlin} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+              <Image src={onboarding2017} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+              <Image src={onboardingWeekend} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+              <Image src={parisBlockchainWeek} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
             </div>
           </div>
         </section>
