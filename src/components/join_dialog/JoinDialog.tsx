@@ -192,7 +192,7 @@ export const JoinDialog = ({
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 animate-fade-in" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-2 text-foreground px-20 py-10 w-[90vw] max-w-2xl z-50 shadow-xl animate-scale-in bg-background border border-border flex flex-col gap-8">
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-2 text-foreground px-10 py-6 lg:px-20 lg:py-10 w-[90vw] max-w-2xl z-50 shadow-xl animate-scale-in bg-background border border-border flex flex-col gap-8">
           {/* Ornaments with animation */}
           {Object.values(ornaments).map((ornament, index) => (
             <div 
@@ -255,7 +255,7 @@ export const JoinDialog = ({
             </div>
           )}
           
-          <div className="flex gap-4 justify-end">
+          <div className="flex flex-col-reverse lg:flex-row gap-2 lg:gap-4 justify-end">
             <Button buttonType="secondary" onClick={handleDismiss}>
                 Dismiss for today
             </Button>

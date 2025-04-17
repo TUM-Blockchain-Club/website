@@ -1,6 +1,7 @@
 "use client"
 
 import { AccordionRoot, AccordionItem, AccordionContent } from "@/components/accordion";
+import { useEffect, useState } from "react";
 
 const items = [
   {
@@ -51,8 +52,26 @@ const items = [
 ]
 
 export const SlideShow = () => {
+  const [orientation, setOrientation] = useState<"vertical" | "horizontal">("horizontal");
+
+  useEffect(() => {
+    // Function to update orientation based on screen size
+    const updateOrientation = () => {
+      setOrientation(window.innerWidth < 768 ? "vertical" : "horizontal");
+    };
+
+    // Set initial orientation
+    updateOrientation();
+
+    // Add event listener for resize events
+    window.addEventListener("resize", updateOrientation);
+
+    // Clean up event listener
+    return () => window.removeEventListener("resize", updateOrientation);
+  }, []);
+
   return (
-    <AccordionRoot orientation="horizontal">
+    <AccordionRoot orientation={orientation}>
       {items.map((item, index) => (
         <AccordionItem key={index} index={index} title={item.title} image={item.image}>
           <AccordionContent>

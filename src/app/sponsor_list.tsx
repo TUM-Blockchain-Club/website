@@ -86,12 +86,37 @@ const SponsorListLarge = () => {
     )
 }
 
+const SponsorListMobile = () => {
+    // Sort the sponsors by name
+    sponsors.sort((a, b) => a.name.localeCompare(b.name));
+
+    return (
+        <div className="flex flex-col w-full py-5 gap-12">
+            {[0, 2, 4, 6, 8].map((index) => (
+                <div key={index} className="flex w-full gap-12 justify-center">
+                    {sponsors.slice(index, index + 2).map((sponsor) => (
+                        <SponsorLogo
+                            key={sponsor.name}
+                            image={sponsor.image}
+                            name={sponsor.name}
+                            link={sponsor.link}
+                        />
+                    ))}
+                </div>
+            ))}
+        </div>
+    )
+}
+
 export const SponsorList = () => {
 
     return (
         <>
             <div className="hidden lg:block">
                 <SponsorListLarge/>
+            </div>
+            <div className="lg:hidden">
+                <SponsorListMobile/>
             </div>
         </>
     )

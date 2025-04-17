@@ -10,7 +10,7 @@ export interface SponsorLogoProps {
 export const SponsorLogo: React.FC<SponsorLogoProps> = ({ image, name, link }) => {
     const LogoContent = () => (
         <div className="flex justify-center items-center h-full">
-            <div className="relative w-36 h-12">
+            <div className="relative w-32 h-10 lg:w-36 lg:h-12">
                 <Image
                     src={image}
                     alt={name}
