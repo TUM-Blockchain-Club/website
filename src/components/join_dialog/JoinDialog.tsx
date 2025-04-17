@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '@/components/button';
 import Image from 'next/image';
@@ -59,7 +59,9 @@ export const JoinDialog = ({
   joinUrl = 'https://tum-blockchain.com/join',
   deadline,
 }: JoinDialogProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // Using a simpler approach with only one state for dialog visibility
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [animatingOut, setAnimatingOut] = useState(false);
   const [timeLeft, setTimeLeft] = useState<{
     isExpired: boolean;
     days: number;
@@ -127,6 +129,7 @@ export const JoinDialog = ({
     },
   };
 
+  // Initialization effect
   useEffect(() => {
     // Don't initialize anything if deadline has passed
     if (isDeadlinePassed) return;
@@ -145,7 +148,7 @@ export const JoinDialog = ({
     
     // Otherwise, show the dialog after a short delay
     const timer = setTimeout(() => {
-      setIsOpen(true);
+      setDialogOpen(true);
     }, 1000);
     
     return () => clearTimeout(timer);
@@ -165,7 +168,7 @@ export const JoinDialog = ({
       
       // If deadline has passed during the countdown, close the dialog
       if (newTimeLeft.isExpired) {
-        setIsOpen(false);
+        closeDialog();
         clearInterval(intervalId);
       }
     }, 1000);
@@ -173,28 +176,75 @@ export const JoinDialog = ({
     return () => clearInterval(intervalId);
   }, [deadlineDate, isDeadlinePassed]);
 
+  // Function to close dialog with animation
+  const closeDialog = useCallback(() => {
+    setAnimatingOut(true);
+    
+    // After animation duration, actually close the dialog
+    setTimeout(() => {
+      setDialogOpen(false);
+      setAnimatingOut(false);
+    }, 300);
+  }, []);
+
   const handleDismiss = () => {
     // Set the dismissal date to the end of today
     const today = new Date();
     today.setHours(23, 59, 59, 999);
     localStorage.setItem('join-dialog-dismissed-until', today.toISOString());
-    setIsOpen(false);
+    closeDialog();
   };
 
+  // Do not render anything if the deadline has passed
   if (timeLeft?.isExpired || isDeadlinePassed) {
     return null;
   }
 
-  return (
-    <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 animate-fade-in" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-2 text-foreground px-10 py-6 lg:px-20 lg:py-10 w-[90vw] max-w-2xl z-50 shadow-xl animate-scale-in bg-background border border-border flex flex-col gap-8">
+  // Custom Dialog implementation to have full control over the animation states
+  return dialogOpen ? (
+    <Dialog.Root 
+      open={true} // Always true when we render this component
+      modal={true}
+      onOpenChange={(open) => {
+        if (!open && !animatingOut) {
+          closeDialog();
+        }
+      }}
+    >
+      <Dialog.Portal forceMount>
+        <Dialog.Overlay 
+          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-50 ${
+            animatingOut ? 'animate-fade-out' : 'animate-fade-in'
+          }`} 
+        />
+        <Dialog.Content 
+          className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-2 text-foreground px-10 py-6 lg:px-20 lg:py-10 w-[90vw] max-w-2xl z-50 shadow-xl bg-background border border-border flex flex-col gap-8 ${
+            animatingOut ? 'animate-scale-out' : 'animate-scale-in'
+          }`}
+          onPointerDownOutside={(e) => {
+            if (animatingOut) {
+              e.preventDefault();
+            }
+          }}
+          onEscapeKeyDown={(e) => {
+            if (animatingOut) {
+              e.preventDefault();
+            }
+          }}
+          onInteractOutside={(e) => {
+            if (animatingOut) {
+              e.preventDefault();
+            }
+          }}
+          forceMount
+        >
           {/* Ornaments with animation */}
           {Object.values(ornaments).map((ornament, index) => (
             <div 
               key={index} 
-              className="absolute w-32 h-32 animate-ornament-entry ornament-wrapper"
+              className={`absolute w-32 h-32 ornament-wrapper ${
+                animatingOut ? 'animate-ornament-exit' : 'animate-ornament-entry'
+              }`}
               style={{
                 left: ornament.position.x,
                 top: ornament.position.y,
@@ -263,5 +313,5 @@ export const JoinDialog = ({
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
-  );
+  ) : null;
 };
