@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import "./globals.css";
 import { MenuLink } from "@/components/header/Header";
 import { Footer } from "@/components/footer";
+import { JoinDialog } from "@/components/join_dialog";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -65,6 +66,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer/>
+        
+        <JoinDialog joinUrl="/join" />
       </body>
     </html>
   );
