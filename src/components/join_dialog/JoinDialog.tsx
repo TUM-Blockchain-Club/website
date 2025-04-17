@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link';
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '@/components/button';
 import Image from 'next/image';
@@ -69,6 +69,9 @@ export const JoinDialog = ({
     minutes: number;
     seconds: number;
   } | null>(null);
+  
+  // Create a ref for the Apply Now button
+  const applyButtonRef = useRef<HTMLAnchorElement>(null);
   
   // Parse the deadline
   const deadlineDate = useMemo(() => {
@@ -195,6 +198,17 @@ export const JoinDialog = ({
     closeDialog();
   };
 
+  // Handle auto focus to the "Apply Now" button
+  const handleOpenAutoFocus = (event: Event) => {
+    // Prevent the default focus behavior
+    event.preventDefault();
+    
+    // Focus the Apply Now button
+    if (applyButtonRef.current) {
+      applyButtonRef.current.focus();
+    }
+  };
+
   // Do not render anything if the deadline has passed
   if (timeLeft?.isExpired || isDeadlinePassed) {
     return null;
@@ -236,6 +250,7 @@ export const JoinDialog = ({
               e.preventDefault();
             }
           }}
+          onOpenAutoFocus={handleOpenAutoFocus}
           forceMount
         >
           {/* Ornaments with animation */}
@@ -306,8 +321,8 @@ export const JoinDialog = ({
             <Button buttonType="secondary" onClick={handleDismiss}>
                 Dismiss for today
             </Button>
-            <Button asChild buttonType="cta" tabIndex={0}>
-              <Link href={joinUrl}>Apply Now</Link>
+            <Button asChild buttonType="cta">
+              <Link ref={applyButtonRef} href={joinUrl}>Apply Now</Link>
             </Button>
           </div>
         </Dialog.Content>
