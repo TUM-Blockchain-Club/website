@@ -1,5 +1,5 @@
 import { Social } from '@/components/social';
-import { faFacebook, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, createContext, useContext, forwardRef, useRef, useImperativeHandle } from "react";
+import React, { useState, useEffect, createContext, useContext, forwardRef, useRef } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import classNames from "classnames";
-import Image from 'next/image';
 
 import "./accordion.css";
 
@@ -48,7 +47,7 @@ export interface AccordionRootProps extends AccordionVariantProps, Pick<React.Co
   autoSlideInterval?: number;
 }
 
-export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps }, ref) => {
+export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps } ) => {
   const [openIndex, setOpenIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -115,7 +114,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
     setOpenIndex(index);
   };
 
-  const sizeAdjustment = `calc(${height}px - ${4 * (count - 1)}rem)`;
+  // const sizeAdjustment = `calc(${height}px - ${4 * (count - 1)}rem)`;
 
   return (
     <AccordionItemContext.Provider value={{ index }}>
@@ -127,8 +126,8 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
           "max-w-16": openIndex !== index && orientation === "horizontal",
           "cursor-pointer": openIndex !== index,
         })}
-        role="tabpanel"
-        aria-expanded={openIndex === index}
+        role="tab"
+        aria-selected={openIndex === index}
         onClick={handleToggle}
         onMouseEnter={() => context.setIsPaused(true)}
         onMouseLeave={() => context.setIsPaused(false)}
@@ -166,7 +165,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
   );
 };
 
-export interface AccordionContentProps extends Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'> {}
+export type AccordionContentProps = Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'>
 
 export const AccordionContent: React.FC<AccordionContentProps> = ({ children, className, ...divProps }) => {
   const context = useContext(AccordionContext);

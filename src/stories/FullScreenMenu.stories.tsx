@@ -1,7 +1,5 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { FullScreenMenu, MenuProps } from '@/components/header';
-import { ButtonProps } from '@/components/button';
 
 const meta: Meta<typeof FullScreenMenu> = {
   title: 'FullScreenMenu',

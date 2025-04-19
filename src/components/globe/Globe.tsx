@@ -75,7 +75,7 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
 
       const spawnFlyingDot = () => {
         if (activeAnimations < activeFlyingDots) {
-          let startIndex = Math.floor(Math.random() * dots.length);
+          const startIndex = Math.floor(Math.random() * dots.length);
           let endIndex = Math.floor(Math.random() * dots.length);
           while (endIndex === startIndex) {
             endIndex = Math.floor(Math.random() * dots.length);

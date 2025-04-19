@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import "./globals.css";
 import { MenuLink } from "@/components/header/Header";
 import { Footer } from "@/components/footer";
+import { JoinDialog } from "@/components/join_dialog";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -26,22 +27,24 @@ const menuLinks : MenuLink[] = [
   {
     name: "About",
     url: "/about",
-    buttonType: "link"
+    buttonType: "secondary"
   },
   {
     name: "Events",
     url: "/about",
-    buttonType: "link"
+    buttonType: "secondary"
   },
   {
     name: "Industry",
-    url: "/about",
-    buttonType: "link"
+    url: "https://industry.tum-blockchain.com",
+    buttonType: "secondary",
+    target: "_blank"
   },
   {
     name: "Conference",
-    url: "/about",
-    buttonType: "link"
+    url: "https://conference.tum-blockchain.com",
+    buttonType: "secondary",
+    target: "_blank"
   },
   {
     name: "Join Us",
@@ -49,6 +52,9 @@ const menuLinks : MenuLink[] = [
     buttonType: "primary"
   }
 ]
+
+// Set application deadline - example: one month from now
+const applicationDeadline = new Date(2025, 4, 17, 22, 59, 59);
 
 export default function RootLayout({
   children,
@@ -63,6 +69,11 @@ export default function RootLayout({
           {children}
         </main>
         <Footer/>
+        
+        <JoinDialog 
+          joinUrl="https://tally.so/r/wMGE7A" 
+          deadline={applicationDeadline}
+        />
       </body>
     </html>
   );

@@ -1,10 +1,12 @@
-import React, { forwardRef, useState, useEffect } from "react";
+import React, { ComponentProps, forwardRef, useState, useEffect } from "react";
 import { Button, ButtonProps } from "../button";
 import Link from "next/link";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 import Image from "next/image";
-export interface MenuLink extends Pick<ButtonProps, "buttonType"> {
+import "./Header.css";
+
+export interface MenuLink extends Pick<ButtonProps, "buttonType">, Pick<ComponentProps<"a">, "target"> {
     name: string;
     url: string;
 }
@@ -41,7 +43,7 @@ export const FullScreenMenu = forwardRef<HTMLDivElement, MenuProps>((props, ref)
             <div className="flex flex-col gap-4 w-48 max-w-4/5 bg-accent">
                 {menuLinks.map((link) => (
                     <Button asChild key={link.name} buttonType={link.buttonType}>
-                        <Link href={link.url} className={`text-sm w-full`}>{link.name}</Link>
+                        <Link href={link.url} className={`text-sm w-full`} target={link.target}>{link.name}</Link>
                     </Button>
                 ))}
             </div>
@@ -50,7 +52,7 @@ export const FullScreenMenu = forwardRef<HTMLDivElement, MenuProps>((props, ref)
 });
 FullScreenMenu.displayName = "FullScreenMenu";
 
-interface HeaderElement extends React.ComponentRef<"header"> { }
+export type HeaderElement = React.ComponentRef<"header">;
 export interface HeaderProps extends React.ComponentPropsWithoutRef<"header"> {
     logo?: string;
     menuLinks?: MenuLink[];
@@ -95,14 +97,14 @@ export const Header = forwardRef<HeaderElement, HeaderProps>((props, ref) => {
                 </Link>
 
                 {/* Desktop Menu */}
-                <nav className="hidden lg:flex gap-10 items-center">
+                <nav className="hidden lg:flex gap-6 items-center">
                     {menuLinks.map((link) => (
                         <Button 
                             key={link.name} 
                             buttonType={link.buttonType} 
                             asChild
                         >
-                            <Link href={link.url}>
+                            <Link href={link.url} target={link.target}>
                                 {link.name}
                             </Link>
                         </Button>

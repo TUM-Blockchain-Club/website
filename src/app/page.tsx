@@ -6,6 +6,15 @@ import { SponsorList } from "./sponsor_list";
 import { SlideShow } from "./slideshow";
 import Image from "next/image";
 
+import atRestaurant1 from "@/images/family_photos/at_restaurant_1.png";
+import ethLondon from "@/images/family_photos/eth_london.jpeg";
+import ethBerlin from "@/images/family_photos/eth_berlin.jpeg";
+import onboarding2017 from "@/images/family_photos/onboarding_2017.png";
+import onboardingWeekend from "@/images/family_photos/onboarding_weekend.jpg";
+import parisBlockchainWeek from "@/images/family_photos/paris_blockchain_week.jpeg";
+import algorand from "@/images/family_photos/algorand.jpeg";
+import conference from "@/images/family_photos/conference.jpeg";
+
 export default function Home() {
   const galleryImageWidth = 350 * 3 / 4;
   const galleryImageHeight = 264 * 3 / 4;
@@ -17,7 +26,7 @@ export default function Home() {
         <section>
           <div className="flex flex-col gap-2 lg:gap-4">
             <h1 className="text-4xl text-center lg:text-start lg:text-[64px] font-heading font-bold leading-tight">
-              Empowering<br />People's Technology
+              Empowering<br />People&apos;s Technology
             </h1>
             <p className="font-body text-center lg:text-start text-md lg:text-xl">
               TUM Blockchain Club is fostering innovation through education,
@@ -52,6 +61,9 @@ export default function Home() {
                 <br /> Less than a corporate
               </h1>
             </div>
+            <div className="relative w-full lg:hidden h-[360px] filter grayscale hover:grayscale-0 transition-all duration-150">
+              <Image src="/group_photo.webp" alt="Our group photo" fill className="object-cover" />
+            </div>
             <p className="font-body text-center lg:text-start text-md lg:text-lg">
               TUM Blockchain Club is a legally registered non-profit organization under German law and an officially accredited student club at the
               Technical University of Munich. Our mission extends beyond academics—we are committed to shaping the future of blockchain
@@ -59,7 +71,7 @@ export default function Home() {
               lasting mark on the global blockchain ecosystem.
             </p>
           </div>
-          <div className="relative w-full h-[720px] mt-20 filter grayscale hover:grayscale-0 transition-all duration-150">
+          <div className="relative w-full hidden lg:block h-[720px] mt-20 filter grayscale hover:grayscale-0 transition-all duration-150">
             <Image src="/group_photo.webp" alt="Our group photo" fill className="object-cover" />
           </div>
         </section>
@@ -80,7 +92,7 @@ export default function Home() {
               <br />various aspect of blockchain realm.
             </p>
           </div>
-          <div className="w-full h-[500px] mt-20">
+          <div className="w-full h-[500px] mt-10 lg:mt-20">
             <SlideShow />
           </div>
         </section>
@@ -110,20 +122,20 @@ export default function Home() {
               </div>
               <div className="w-1/2 flex flex-col gap-4" id={"side-gallery"}>
                 <div className="flex gap-4 overflow-x-hidden ps-8">
-                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                  <Image src={algorand} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+                  <Image src={atRestaurant1} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
                 </div>
                 <div className="flex gap-4 overflow-x-hidden">
-                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                    <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+                  <Image src={conference} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+                  <Image src={ethLondon} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
                 </div>
               </div>
             </div>
             <div className="flex gap-4 overflow-x-hidden justify-center" id="bottom-gallery">
-                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
-                <Image src={`/350x264.svg`} width={galleryImageWidth} height={galleryImageHeight} alt=""/>
+              <Image src={ethBerlin} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+              <Image src={onboarding2017} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+              <Image src={onboardingWeekend} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
+              <Image src={parisBlockchainWeek} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover"/>
             </div>
           </div>
         </section>
@@ -133,18 +145,18 @@ export default function Home() {
           <div className="flex flex-col gap-4 lg:gap-6">
             <div className="flex flex-col gap-2">
               <h3 className="text-accent uppercase font-heading font-bold tracking-widest text-center lg:text-start">
-                Open 
+                Open For Collaboration
               </h3>
               <h1 className="text-3xl text-center lg:text-start lg:text-[48px] font-heading font-bold leading-tight">
-                From the best, 
-                <br/>For the best
+                From the best,
+                <br />For the best
               </h1>
             </div>
-            <p>
-            As an accredited student club at the Technical University of Munich (TUM), the TUM Blockchain Club is 
-            driven by a team of dedicated TUM students. Our members are distinguished by their excellence in the field, 
-            embodying the problem-solving spirit and innovative thinking that TUM is renowned for. Notably, TUM 
-            has been recognized as the top university in Germany, ranking 28th worldwide in the QS World University Rankings 2025.
+            <p className="font-body text-center lg:text-start lg:text-lg">
+              As an accredited student club at the Technical University of Munich (TUM), the TUM Blockchain Club is
+              driven by a team of dedicated TUM students. Our members are distinguished by their excellence in the field,
+              embodying the problem-solving spirit and innovative thinking that TUM is renowned for. Notably, TUM
+              has been recognized as the top university in Germany, ranking 28th worldwide in the QS World University Rankings 2025.
             </p>
             <div className="flex gap-6 flex-col lg:flex-row items-center mt-10 lg:mt-3">
               <Button asChild buttonType="cta" className="w-fit">
