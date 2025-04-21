@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef, useState } from "react";
+import React, { ComponentProps, forwardRef, useState, useEffect } from "react";
 import { Button, ButtonProps } from "../button";
 import Link from "next/link";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
@@ -61,10 +61,33 @@ export interface HeaderProps extends React.ComponentPropsWithoutRef<"header"> {
 export const Header = forwardRef<HeaderElement, HeaderProps>((props, ref) => {
     const { logo, menuLinks = [], className, ...rest } = props;
 
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+
+            // If we're scrolling down (currentScrollY > lastScrollY) then add padding.
+            // If we're scrolling up (currentScrollY <= lastScrollY), remove padding.
+            if (window.scrollY < 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <header 
             ref={ref} 
-            className={classNames("web-header z-20 h-[120px] fixed w-screen pt-[35px]", className)} 
+            className={classNames(
+                "web-header z-20 fixed w-screen",
+                { 'pt-[35px]': scrolled, 'pt-[60px]': !scrolled },
+                className
+            )}
             {...rest}
         >
             <div className="container mx-auto lg:-translate-x-2 max-w-5xl flex items-center justify-between px-4 lg:px-0">

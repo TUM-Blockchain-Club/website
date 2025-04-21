@@ -42,5 +42,5 @@ next-env.d.ts
 
 *storybook.log
 
-# images
+# member images
 public/members
