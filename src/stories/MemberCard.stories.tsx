@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemberCard } from '@/components/member_card';
-import type { MemberCardProps } from '@/components/member_card';
-import { Degree, MembershipStatus } from '@/service/memberStrapi';
 
 const meta: Meta<typeof MemberCard> = {
     title: 'MemberCard',
@@ -23,8 +21,8 @@ const mockMember = {
     createdAt: '2023-01-01T00:00:00.000Z',
     updatedAt: '2023-01-01T00:00:00.000Z',
     publishedAt: '2023-01-01T00:00:00.000Z',
-    membership_status: MembershipStatus.CORE,
-    degree: Degree.MASTER,
+    membership_status: 'core' as const,
+    degree: 'master' as const,
     email: 'john.doe@example.com',
     profile_picture: {
         id: 1,
@@ -117,9 +115,10 @@ const mockMember = {
             updatedAt: '2023-01-01T00:00:00.000Z',
             publishedAt: '2023-01-01T00:00:00.000Z',
             discord_role_id: null,
+            description: 'Engineering department',
+            short_name: 'Eng',
         }
     ],
-    active_semesters: [],
 };
 
 // Default story
@@ -145,7 +144,7 @@ export const TraineeMember: Story = {
         member: {
             ...mockMember,
             name: 'Jane Smith',
-            membership_status: MembershipStatus.TRAINEES,
+            membership_status: 'trainees',
         },
     },
 };

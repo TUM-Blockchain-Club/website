@@ -7,8 +7,6 @@ import { fetchMembers, fetchDepartments } from "@/service/memberStrapi";
 import ClubStructure from "./club-structure/ClubStructure";
 
 export default async function AboutPage() {
-  const galleryImageWidth = 350 * 3 / 4;
-  const galleryImageHeight = 264 * 3 / 4;
   const members = await fetchMembers();
   const departments = await fetchDepartments();
 

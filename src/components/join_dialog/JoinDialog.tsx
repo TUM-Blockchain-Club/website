@@ -187,7 +187,9 @@ export const JoinDialog = ({
       }
     }, 1000);
     
-    return () => clearInterval(intervalId);
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
   }, [deadlineDate, isDeadlinePassed, closeDialog]);
 
   const handleDismiss = () => {

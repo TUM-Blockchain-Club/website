@@ -63,6 +63,7 @@ const Ribbon = React.forwardRef<HTMLDivElement, RibbonProps>(({ text, color }, r
         </div>
     )
 })
+Ribbon.displayName = "Ribbon";
 
 export const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(({ member }, ref) => {
     return (

@@ -10,7 +10,7 @@ export interface OurTeamProps {
   departments: Department[];
 }
 
-export const OurTeam = ({ members, departments }: OurTeamProps) => {
+export const OurTeam = ({ members }: OurTeamProps) => {
   const [selectedDepartment, setSelectedDepartment] = useState('');
 
   // Extract all departments

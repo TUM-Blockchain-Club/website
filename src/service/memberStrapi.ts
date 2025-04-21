@@ -56,7 +56,7 @@ export interface ProfilePicture {
     url: string;
     previewUrl: string | null;
     provider: string;
-    provider_metadata: any | null;
+    provider_metadata: never | null;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
@@ -92,7 +92,6 @@ export interface Member {
     email?: string | null;
     profile_picture?: ProfilePicture | null;
     social_media?: SocialMedia[];
-    active_semesters?: any[];
     departments?: Department[];
 }
 

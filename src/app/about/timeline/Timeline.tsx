@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from 'react';
-
+import Image from 'next/image';
 const timelineData = [
   {
     year: 'Founding',
@@ -49,12 +49,14 @@ const placeholderImage = 'https://raw.githubusercontent.com/SochavaAG/example-my
 
 const Timeline = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const timerRef = useRef(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
   const pauseRef = useRef(false);
 
   useEffect(() => {
     startAutoSlide();
-    return () => clearInterval(timerRef.current);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, []);
 
   const startAutoSlide = () => {
@@ -67,7 +69,7 @@ const Timeline = () => {
 
   const handleMouseEnter = () => (pauseRef.current = true);
   const handleMouseLeave = () => (pauseRef.current = false);
-  const handleClick = (index) => setActiveIndex(index);
+  const handleClick = (index: number) => setActiveIndex(index);
 
   return (
     <div className="py-0 text-white">
@@ -101,7 +103,7 @@ const Timeline = () => {
                     : 'border-fuchsia-800/30 grayscale hover:grayscale-0 hover:shadow-lg'
                 } transition-all duration-300 relative bg-black`}
               >
-                <img
+                <Image
                   src={placeholderImage}
                   alt={item.title}
                   className={`object-cover w-full h-full absolute inset-0 ${

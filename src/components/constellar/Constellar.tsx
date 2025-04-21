@@ -19,7 +19,7 @@ export const TeamConstellation: React.FC<TeamConstellationProps> = ({
     let scene: THREE.Scene;
     let camera: THREE.PerspectiveCamera;
     let renderer: THREE.WebGLRenderer;
-    let dots: THREE.Mesh[] = [];
+    const dots: THREE.Mesh[] = [];
     let lines: THREE.Line;
     const connections: [number, number][] = [];
 
