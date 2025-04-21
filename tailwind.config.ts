@@ -29,7 +29,21 @@ export default {
       },
       padding: {
         "4.5": "1.375rem",
-      }
+      },
+      keyframes: {
+        slideDown: {
+          from: { height: '0px' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        slideUp: {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0px' },
+        },
+      },
+      animation: {
+        slideDown: 'slideDown 300ms ease-out',
+        slideUp: 'slideUp 300ms ease-out',
+      },
     },
   },
   plugins: [],
