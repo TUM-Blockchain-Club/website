@@ -1,16 +1,8 @@
-import React from "react";
-
-import React from "react";
-
 import { Container } from "@/components/container";
-import Timeline from "./timeline/Timeline";
-import OurTeam from "./team/Team";
 import { fetchMembers, fetchDepartments } from "@/service/memberStrapi";
 import ClubStructure from "./club-structure/ClubStructure";
 import Timeline from "./timeline/Timeline";
 import OurTeam from "./team/Team";
-import { fetchMembers, fetchDepartments } from "@/service/memberStrapi";
-import ClubStructure from "./club-structure/ClubStructure";
 
 export default async function AboutPage() {
   const members = await fetchMembers();
