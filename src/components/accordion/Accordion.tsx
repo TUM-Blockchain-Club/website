@@ -47,12 +47,12 @@ export interface AccordionRootProps extends AccordionVariantProps, Pick<React.Co
   autoSlideInterval?: number;
 }
 
-export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps } ) => {
+export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps }, ref ) => {
   const [openIndex, setOpenIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const compRef = useRef<HTMLDivElement>(null);
-
+  ref = useRef<HTMLDivElement>(null);
+  const compRef = ref as React.RefObject<HTMLDivElement>;
   if (!orientation) {
     orientation = "vertical";
   }
