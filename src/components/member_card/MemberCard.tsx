@@ -77,7 +77,7 @@ export const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(({ m
                 <Avatar.Root className="w-20 h-20 lg:w-36 lg:h-36 rounded-full border flex items-center justify-center relative">
                     {member.profile_picture && 
                         <Avatar.Image asChild src={member.profile_picture.url} alt={member.name}>
-                            <Image src={member.profile_picture.url} alt={member.name} fill className="object-cover rounded-full" />
+                            <Image src={member.profile_picture.url} alt={member.name} fill sizes="(max-width: 124px), (max-height: 124px)" className="object-cover rounded-full" />
                         </Avatar.Image>
                     }
                     <Avatar.Fallback className="text-xl lg:text-3xl font-bold">{getInitials(member.name)}</Avatar.Fallback>
