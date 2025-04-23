@@ -45,7 +45,7 @@ const timelineData = [
   }
 ];
 
-const placeholderImage = 'https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/img-13.png';
+const placeholderImage = '/img-13.png';
 
 const Timeline = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -104,6 +104,8 @@ const Timeline = () => {
                 } transition-all duration-300 relative bg-black`}
               >
                 <Image
+                  width={1000}
+                  height={1000}
                   src={placeholderImage}
                   alt={item.title}
                   className={`object-cover w-full h-full absolute inset-0 ${

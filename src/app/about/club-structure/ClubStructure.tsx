@@ -1,15 +1,37 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Department } from '@/service/memberStrapi';
 import * as Accordion from '@radix-ui/react-accordion';
+import ClubStructureDiagram from './diagram';
+
 
 export interface ClubStructureProps {
   departments: Department[];
 }
 
 const ClubStructure = ({ departments }: ClubStructureProps) => {
+
+  const [activeItem, setActiveItem] = useState<string | undefined>();
+  const accordionRef = useRef<HTMLDivElement>(null);
+
+  const handleSelect = (deptName: string) => {
+
+    const idx = departments.findIndex((d) => d.name === deptName);
+    if (idx === -1) return;                // Filter out invalid items
+
+    setActiveItem(`item-${idx}`);
+
+    setTimeout(() => {
+      accordionRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }, 0);
+  };
+
+
   return (
     <div className="px-4 md:px-8 lg:px-16 py-4 text-white">
       {/* Page Title */}
@@ -21,11 +43,19 @@ const ClubStructure = ({ departments }: ClubStructureProps) => {
           Club Structure
         </h1>
       </div>
+      <ClubStructureDiagram className="mb-12" onSelect={handleSelect} />
 
       {/* Accordion */}
       <Accordion.Root 
-        type="single" 
-        collapsible 
+        ref={accordionRef}
+
+        type="single"
+        collapsible
+      
+        /* Give control to handleSelect */
+        value={activeItem}
+        onValueChange={setActiveItem}
+      
         className="space-y-4"
       >
         {departments.map((dept, index) => (
