@@ -18,10 +18,10 @@ export default function ClubStructureDiagram({  className = 'w-full',
   }) {
 
   const neon = "#672EB3";
-  const cardBg = "#13101d";
+  const cardBg = "transparent";
 
   // Helper to wrap description text to fit the card width
-  function wrapText(text, maxWidthPx, avgCharPx = 7) {
+  function wrapText(text: string, maxWidthPx: number, avgCharPx = 7) {
     const words = text.replace(/\n/g, " \n ").split(/\s+/);
     const lines = [];
     let current = "";
@@ -42,7 +42,7 @@ export default function ClubStructureDiagram({  className = 'w-full',
   }
 
   /** Card component */
-  const Card = ({ id, x, y, w = 190, h = 90, label, desc }) => {
+  const Card = ({ id, x, y, w = 190, h = 90, label, desc }: { id: string; x: number; y: number; w?: number; h?: number; label: string; desc?: string }) => {
     const labelY = y + 26;
     const descLines = useMemo(() => (desc ? wrapText(desc, w - 24) : []), [desc, w]);
     const descStartY = descLines.length === 3 && h === hMed ? labelY + 30: labelY + 18;
@@ -71,7 +71,7 @@ export default function ClubStructureDiagram({  className = 'w-full',
   };
 
   /** Connector line with bi‑directional arrow heads */
-  const Line = ({ x1, y1, x2, y2, oneWay = false }) => (
+  const Line = ({ x1, y1, x2, y2, oneWay = false }: { x1: number; y1: number; x2: number; y2: number; oneWay?: boolean }) => (
     <line
       x1={x1}
       y1={y1}
@@ -103,9 +103,9 @@ export default function ClubStructureDiagram({  className = 'w-full',
     partners: { x: 750, y: 690, w: 190, h: hSmall },
   };
 
-  const midX = (c) => pos[c].x + pos[c].w / 2;
-  const topY = (c) => pos[c].y;
-  const bottomY = (c) => pos[c].y + pos[c].h;
+  const midX = (c: keyof typeof pos) => pos[c].x + pos[c].w / 2;
+  const topY = (c: keyof typeof pos) => pos[c].y;
+  const bottomY = (c: keyof typeof pos) => pos[c].y + pos[c].h;
 
   return (
     <div className={className}>
