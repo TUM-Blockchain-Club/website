@@ -109,7 +109,7 @@ export default function ClubStructureDiagram({  className = 'w-full',
 
   return (
     <div className={className}>
-      <svg viewBox="0 0 1100 800" width="100%" height="100%" role="img" aria-label="Club Structure Diagram" style={{ maxWidth: "100%", height: "auto" }}>
+      <svg viewBox="0 0 1100 800" width="100%" height="100%" role="img" aria-label="Club Structure Diagram" style={{ maxWidth: "100%", height: "auto", transform: 'scale(var(--svgScale))', transformOrigin: 'top center'}}>
         {/* Arrowhead definitions */}
         <defs>
           {/* Head that points in the same direction as the line (→) */}
