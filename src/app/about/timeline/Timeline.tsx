@@ -99,8 +99,8 @@ const Timeline = () => {
               <div
                 className={`h-[500px] xl:h-[560px] rounded-3xl overflow-hidden border-2 ${
                   isActive
-                    ? 'border-fuchsia-500 shadow-[0_0_40px_rgba(255,0,255,0.4)]'
-                    : 'border-fuchsia-800/30 grayscale hover:grayscale-0 hover:shadow-lg'
+                    ? 'border-[#672EB3] shadow-[0_0_40px_rgba(255,0,255,0.4)]'
+                    : 'border-[#672EB3] grayscale hover:grayscale-0 hover:shadow-lg'
                 } transition-all duration-300 relative bg-black`}
               >
                 <Image
@@ -120,7 +120,7 @@ const Timeline = () => {
                 >
                   <h3
                     className={`text-lg sm:text-xl lg:text-2xl font-bold ${
-                      isActive ? 'text-fuchsia-400' : 'text-fuchsia-300'
+                      isActive ? 'text-[#672EB3]' : 'text-[#672EB3]'
                     }`}
                   >
                     {item.year}
@@ -138,7 +138,7 @@ const Timeline = () => {
                 {isActive ? (
                   
                   
-                  <div className="" /> // absolute inset-0 bg-gradient-to-t from-fuchsia-500/50 to-transparent
+                  <div className="" /> 
                 ) : (
                   <div className="absolute inset-0 bg-black" />
                 )}
