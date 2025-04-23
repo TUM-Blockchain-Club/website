@@ -1,11 +1,3 @@
-// ContactPage.tsx – a fully‑styled contact form page
-// -----------------------------------------------------
-// This Next.js/React page pairs the glass‑card aesthetic from your Membership
-// info design with the heading block you asked to preserve. On submit it calls
-// `/api/contact` which sends the e‑mail to info@tum-blockchain.com via
-// Nodemailer. Replace the SMTP environment variables in `.env.local` with your
-// provider’s credentials.
-
 'use client';
 
 import React, { useState } from 'react';
