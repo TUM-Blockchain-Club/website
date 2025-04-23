@@ -46,7 +46,7 @@ export default function ClubStructureDiagram({  className = 'w-full',
     const labelY = y + 26;
     const descLines = useMemo(() => (desc ? wrapText(desc, w - 24) : []), [desc, w]);
     const descStartY = descLines.length === 3 && h === hMed ? labelY + 30: labelY + 18;
-    const fontsize = descLines.length === 3 && h === hMed ? 14 : 12;
+    const fontsize = descLines.length === 3 && h === hMed ? 13 : 12;
 
     return (
       <motion.g
@@ -131,7 +131,7 @@ export default function ClubStructureDiagram({  className = 'w-full',
         <Card id="Marketing" {...pos.marketing} label="Marketing" desc="Create campaigns, branding & content, manage social media & interact with the community" />
         <Card id="Education" {...pos.education} label="Education" desc="Host courses & workshops, create learning content, and write & review papers" />
         <Card id="Legal & Finance" {...pos.legal} label="Legal & Finance" desc="Manage legal, financial & administrative matters" />
-        <Card id="Community" {...pos.community} label="Community" desc="Community Care & Engagement,\nresponsible for Discord" />
+        <Card id="Community" {...pos.community} label="Community" desc="Community Care & Engagement, responsible for Discord" />
         <Card id="IT & Development" {...pos.it} label="IT & Dev" desc="Host club infrastructure & support the club in development & technical issues" />
         <Card id="External Relations" {...pos.external} label="External Affairs" desc="Find, select and collaborate with partners" />
         <Card id="Industry" {...pos.industry} label="Industry" desc="Organize web3 projects for student teams in cooperation with industry partners" />
