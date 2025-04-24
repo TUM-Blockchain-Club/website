@@ -14,9 +14,6 @@ const buttonVariants = cva(
         primary: "tbc-button-primary",
         secondary: "tbc-button-secondary",
         link: "tbc-button-link",
-        sheen: "tbc-button-sheen",
-        sunray: "tbc-button-sunray",
-        aurora: "tbc-button-aurora",
       },
     },
     defaultVariants: {
@@ -41,8 +38,6 @@ export const Button = React.forwardRef<ButtonElement, ButtonProps>(
     const content = asChild ? children : <>{children} {Icon && <Icon />}</>;
 
     const Comp = asChild ? Slot : "button";
-
-
     return (
       <Comp
         data-disabled={disabled || undefined}
