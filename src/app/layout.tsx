@@ -6,6 +6,7 @@ import "./globals.css";
 import { MenuLink } from "@/components/header/Header";
 import { Footer } from "@/components/footer";
 import { JoinDialog } from "@/components/join_dialog";
+import PlausibleProvider from "next-plausible";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -64,16 +65,18 @@ export default function RootLayout({
   return (
     <html lang="en" data-mode="dark" className={`${manrope.variable} ${inter.variable} antialiased bg-background overflow-x-hidden max-w-screen`}>
       <body>
-        <Header menuLinks={menuLinks} logo="/tbc-wordmark.png"/>
-        <main className="text-foreground pb-24">
-          {children}
-        </main>
-        <Footer/>
-        
-        <JoinDialog 
-          joinUrl="https://tally.so/r/wMGE7A" 
-          deadline={applicationDeadline}
-        />
+        <PlausibleProvider domain="tum-blockchain.com" trackOutboundLinks={true} customDomain={"https://plausible.rbg.tum-blockchain.com"} selfHosted={true}>
+          <Header menuLinks={menuLinks} logo="/tbc-wordmark.png"/>
+          <main className="text-foreground pb-24">
+            {children}
+          </main>
+          <Footer/>
+          
+          <JoinDialog 
+            joinUrl="https://tally.so/r/wMGE7A" 
+            deadline={applicationDeadline}
+          />
+        </PlausibleProvider>
       </body>
     </html>
   );
