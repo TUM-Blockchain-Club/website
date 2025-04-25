@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
                   This Privacy Policy describes the policies of TUM Blockchain 
                   Club e.V., Arcisstraße 21, Bavaria 80333, Germany, email: legalfinance@tum-blockchain.com, 
                   on the collection, use and disclosure of your information that we collect when you use 
-                  our website ( https://www.tum-blockchain.com ). (the "Service"). 
+                  our website ( https://www.tum-blockchain.com ). (the &quot;Service&quot;). 
                 </p>
                 <p className="font-body text-left lg:text-start text-md lg:text-lg">
                   By accessing or using the Service, you are consenting to the collection, use 
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
                   Your personal data processed through Telly is only visible to the 
                   responsible persons within the association. Your personal 
                   data will not be shared with anyone outside the association.
-                  We require such third party's to use the personal information 
+                  We require such third party&apos;s to use the personal information 
                   we transfer to them only for the purpose for which it was transferred 
                   and not to retain it for longer than is required for fulfilling 
                   the said purpose. 
