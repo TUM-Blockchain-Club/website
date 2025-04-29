@@ -6,7 +6,7 @@ import { Fragment } from "react";
 
 const Card = ({ className = "", children, ...props }) => (
   <div
-    className={`rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-lg ${className}`}
+    className={`rounded-2xl overflow-hidden border border-white/10 bg-white/5  ${className}`}
     {...props}
   >
     {children}
@@ -52,32 +52,33 @@ const criteria = [
 
 export default function MembershipInfo() {
   return (
-    <div className="min-h-screen w-full text-white overflow-x-hidden font-sans">
+    <div className="w-full text-white overflow-x-hidden font-sans">
       {/* Star overlay */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.08),rgba(255,255,255,0)_70%)]"></div>
 
       <header className="lg:pb-28 relative z-10 flex flex-col items-center justify-center px-4 pt-24 pb-12 text-center">
+      <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+          className="text-accent text-center uppercase font-heading font-bold tracking-widest pb-4"
+        >
+          Shape the future of Web3 with Germany’s leading student blockchain community
+        </motion.p>
+      
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl md:text-6xl font-heading font-bold bg-clip-text text-[#672EB3]"
+          className="text-3xl lg:text-5xl font-heading font-bold bg-clip-text text-foreground"
         >
           Becoming a Core Member
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-          className="mt-4 max-w-2xl text-lg md:text-xl text-purple-200 font-body"
-        >
-          Shape the future of Web3 with Germany’s leading student blockchain community.
-        </motion.p>
       </header>
 
       {/* Community statistics */}
       <section className="relative z-10 px-4 md:px-12 lg:px-24 pb-20">
-        <h2 className="pb-4 text-3xl md:text-4xl font-heading font-bold mb-2 text-[#A76AFE] drop-shadow">
+        <h2 className="pb-4 text-2xl lg:text-4xl font-heading font-bold mb-2 text-foreground drop-shadow">
           Community Statistics
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -89,12 +90,12 @@ export default function MembershipInfo() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
             >
-              <Card className="bg-[#1d1b36]/70 backdrop-blur-md border border-rose-500/20 shadow-lg shadow-rose-800/20 hover:shadow-[#672EB3]/40 transition-shadow h-[160px] flex items-center justify-center text-center">
+              <Card className="bg-[#1d1b36]/70 shadow-lg h-[160px] flex items-center justify-center text-center">
                 <CardContent className="p-6 items-center space-y-2 flex flex-col justify-center">
-                  <p className="text-4xl font-bold text-[#A76AFE] font-heading">
+                  <p className="text-4xl font-bold text-foreground font-heading">
                     {value}
                   </p>
-                  <p className="text-sm text-purple-300 font-body">
+                  <p className="text-sm text-white font-body">
                     {label}
                   </p>
                 </CardContent>
@@ -106,7 +107,7 @@ export default function MembershipInfo() {
 
       {/* Important dates */}
       <section className="relative z-10 px-4 md:px-12 lg:px-24 pb-20">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-[#A76AFE] drop-shadow">
+        <h2 className="text-2xl lg:text-4xl font-heading font-bold mb-8 text-foreground drop-shadow">
           Most important dates
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -118,12 +119,12 @@ export default function MembershipInfo() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
             >
-              <Card className="bg-[#1d1b36]/70 backdrop-blur-md border border-rose-500/20 shadow-lg shadow-rose-800/20 hover:shadow-[#672EB3]/40 transition-shadow h-[200px]"> 
+              <Card className="bg-[#1d1b36]/70 backdrop-blur-md border h-[200px]"> 
                 <CardContent className="p-6 items-start space-y-4">
-                  <p className="absolute top-4 text-[#A76AFE] font-medium tracking-wide uppercase text-sm font-heading">
+                  <p className="absolute top-4 text-foreground font-medium tracking-wide text-sm font-heading">
                     {title}
                   </p>
-                  <p className="pt-8 text-xl font-semibold text-purple-100 font-body">
+                  <p className="pt-8 text-xl font-semibold text-white font-body">
                     {date.split(",").map((line, idx) => (
                         <Fragment key={idx}>
                         {line.trim()}
@@ -132,7 +133,7 @@ export default function MembershipInfo() {
                     ))}
                     </p>
                   {time !== "—" && (
-                    <p className="absolute top-25 text-sm text-purple-400 font-body">{time}</p>
+                    <p className="absolute top-25 text-sm text-white font-body">{time}</p>
                   )}
                 </CardContent>
               </Card>
@@ -143,7 +144,7 @@ export default function MembershipInfo() {
 
       {/* What awaits you */}
       <section className="relative z-10 px-4 md:px-12 lg:px-24 pb-20">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-[#A76AFE] drop-shadow">
+        <h2 className="text-2xl lg:text-4xl font-heading font-bold mb-8 text-foreground drop-shadow">
           What awaits you
         </h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -155,11 +156,11 @@ export default function MembershipInfo() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
             >
-              <Card className="bg-[#1d1b36]/70 backdrop-blur-md border border-rose-500/20 shadow-lg shadow-rose-800/20 hover:shadow-[#A76AFE]/40 transition-shadow h-[240px] flex items-center">
+              <Card className="bg-[#1d1b36]/70 backdrop-blur-md h-[240px] flex items-center">
                 <CardContent className="p-6 items-start space-y-4">
-                  <Icon size={32} className="text-[#A76AFE] absolute top-6" />
-                  <h3 className="text-lg font-semibold text-purple-100 font-heading absolute top-1/4">{label}</h3>
-                  <p className="text-sm text-purple-300 leading-relaxed font-body absolute top-1/2">
+                  <Icon size={32} className="text-foreground absolute top-6" />
+                  <h3 className="text-lg font-semibold text-white font-heading absolute top-1/4">{label}</h3>
+                  <p className="text-sm text-white leading-relaxed font-body absolute top-1/2">
                   {desc.split("\n").map((line, idx, array) => (
                         <Fragment key={idx}>
                         {line.trim()}
@@ -175,7 +176,7 @@ export default function MembershipInfo() {
 
       {/* Admission criteria */}
       <section className="relative z-10 px-4 md:px-12 lg:px-24 pb-20">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold mb-8 text-[#A76AFE] drop-shadow">
+        <h2 className="text-2xl lg:text-4xl font-heading font-bold mb-8 text-foreground drop-shadow">
           Admission criteria
         </h2>
         <motion.ul
@@ -186,7 +187,7 @@ export default function MembershipInfo() {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
           }}
-          className="space-y-4 list-disc list-inside text-purple-200 max-w-3xl font-body"
+          className="space-y-4 list-disc list-inside text-white max-w-3xl font-body"
         >
           {criteria.map((c) => (
             <motion.li key={c} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
@@ -198,7 +199,7 @@ export default function MembershipInfo() {
 
       {/* CTAs */}
       <section className="relative z-10 flex flex-col items-center justify-center pb-24 px-4 text-center space-y-8">
-        <p className="max-w-xl text-lg md:text-xl text-purple-200 font-body">
+        <p className="max-w-xl text-lg md:text-xl text-white font-body">
           Does this excite you? Are you ready to commit to an ambitious blockchain community?
         </p>
         <motion.div
@@ -207,7 +208,7 @@ export default function MembershipInfo() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <Button buttonType="sheen" className="px-12 py-4 text-lg">
+          <Button buttonType="primary" className="px-12 py-4 text-lg">
             APPLY NOW
           </Button>
         </motion.div>

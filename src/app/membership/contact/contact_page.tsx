@@ -6,11 +6,11 @@ import { SendHorizonal } from 'lucide-react';
 
 const Input = ({ label, ...props }: React.ComponentProps<'input'> & { label: string }) => (
   <label className="flex flex-col space-y-2 w-full">
-    <span className="text-sm font-medium text-purple-200 font-heading uppercase tracking-wide">
+    <span className="text-sm font-medium text-white font-heading uppercase tracking-wide">
       {label}
     </span>
     <input
-      className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent placeholder-purple-400 text-purple-100"
+      className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent placeholder-white-400 text-white-100"
       {...props}
     />
   </label>
@@ -18,11 +18,11 @@ const Input = ({ label, ...props }: React.ComponentProps<'input'> & { label: str
 
 const TextArea = ({ label, ...props }: React.ComponentProps<'textarea'> & { label: string }) => (
   <label className="flex flex-col space-y-2 w-full">
-    <span className="text-sm font-medium text-purple-200 font-heading uppercase tracking-wide">
+    <span className="text-sm font-medium text-white font-heading uppercase tracking-wide">
       {label}
     </span>
     <textarea
-      className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg px-4 py-3 h-40 resize-none focus:outline-none focus:ring-2 focus:ring-accent placeholder-purple-400 text-purple-100"
+      className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg px-4 py-3 h-40 resize-none focus:outline-none focus:ring-2 focus:ring-accent placeholder-white-400 text-white-100"
       {...props}
     />
   </label>
@@ -57,7 +57,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen w-full text-white overflow-x-hidden font-sans py-24 px-4 md:px-8 lg:px-16 relative">
+    <div className="w-full text-white overflow-x-hidden font-sans py-24 px-4 md:px-8 lg:px-16 relative">
 
       {/* Preserved heading block */}
       <div className="flex flex-col gap-2 w-full justify-center items-center mb-12 relative z-10">
@@ -75,7 +75,7 @@ export default function ContactPage() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="relative z-10 max-w-3xl mx-auto space-y-6 bg-[#1d1b36]/70 border border-[#672EB3] backdrop-blur-lg shadow-lg shadow-[#672EB3] rounded-2xl p-8"
+        className="relative z-10 max-w-3xl mx-auto space-y-6 backdrop-blur-lg border rounded-2xl p-8"
       >
         <div className="grid md:grid-cols-2 gap-6">
           <Input
@@ -119,7 +119,7 @@ export default function ContactPage() {
           type="submit"
           disabled={status === 'loading'}
           whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent disabled:opacity-50"
+          className="inline-flex items-center justify-center px-8 py-3 border"
         >
           {status === 'loading' ? (
             <span className="animate-pulse">Sending…</span>

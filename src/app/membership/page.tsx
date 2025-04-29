@@ -13,12 +13,12 @@ export default async function MembershipPage() {
         <Container asChild className="pt-[200px] lg:mb-12 relative text-foreground flex flex-col">
           <section>
             <div className="flex flex-col gap-4 lg:gap-2">
+            <p className="text-accent text-center uppercase font-heading font-bold tracking-widest">
+              Our membership is open to all university students in Munich!
+            </p>
               <h1 className="text-4xl text-center lg:text-center lg:text-[64px] font-heading font-bold leading-tight">
                 Become a Member!
               </h1>
-              <p className="text-accent text-center uppercase font-heading font-bold tracking-widest">
-              Our membership is open to all university students in Munich!
-            </p>
             <div className="relative pb-12 w-full h-[450px] hidden lg:block mt-8 filter grayscale hover:grayscale-0 transition-all duration-150">
             <Image
                 src={"/membership.png"}
@@ -36,7 +36,7 @@ export default async function MembershipPage() {
             </div>
           </section>
         </Container>
-        <Button buttonType="aurora" className="px-16 py-6 text-2xl justify-center mx-auto">
+        <Button buttonType="" className="px-16 py-6 text-2xl justify-center mx-auto">
             APPLY NOW
         </Button>
         <Container asChild className="py-0 mt-0 xl:mt-24">
