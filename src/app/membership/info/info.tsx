@@ -2,18 +2,29 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/button";
 import { CalendarHeart, Users, Trophy, Lightbulb, Code, BookText } from "lucide-react";
-import { Fragment } from "react";
+import { Fragment, HTMLAttributes, ReactNode } from "react";
 
-const Card = ({ className = "", children, ...props }) => (
+
+type CardProps = HTMLAttributes<HTMLDivElement> & {
+  className?: string;
+  children: ReactNode;
+};
+
+export const Card = ({ className = "", children, ...props }: CardProps) => (
   <div
-    className={`rounded-2xl overflow-hidden border border-white/10 bg-white/5  ${className}`}
+    className={`rounded-2xl overflow-hidden border border-white/10 bg-white/5 ${className}`}
     {...props}
   >
     {children}
   </div>
 );
 
-const CardContent = ({ className = "", children, ...props }) => (
+type CardContentProps = HTMLAttributes<HTMLDivElement> & {
+  className?: string;
+  children: ReactNode;
+};
+
+export const CardContent = ({ className = "", children, ...props }: CardContentProps) => (
   <div className={`p-6 ${className}`} {...props}>
     {children}
   </div>
