@@ -2,30 +2,42 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/button";
 import { CalendarHeart, Users, Trophy, Lightbulb, Code, BookText } from "lucide-react";
-import { Fragment } from "react";
+import { Fragment, HTMLAttributes, ReactNode } from "react";
 
-const Card = ({ className = "", children, ...props }) => (
+
+type CardProps = HTMLAttributes<HTMLDivElement> & {
+  className?: string;
+  children: ReactNode;
+};
+
+export const Card = ({ className = "", children, ...props }: CardProps) => (
   <div
-    className={`rounded-2xl overflow-hidden border border-white/10 bg-white/5  ${className}`}
+    className={`rounded-2xl overflow-hidden border border-white/10 bg-white/5 ${className}`}
     {...props}
   >
     {children}
   </div>
 );
 
-const CardContent = ({ className = "", children, ...props }) => (
+type CardContentProps = HTMLAttributes<HTMLDivElement> & {
+  className?: string;
+  children: ReactNode;
+};
+
+export const CardContent = ({ className = "", children, ...props }: CardContentProps) => (
+
   <div className={`p-6 ${className}`} {...props}>
     {children}
   </div>
 );
 
 const dates = [
-  { title: "Application start", date: "Wednesday, 16 April 2025", time: "—" },
-  { title: "Online info event", date: "Tuesday, 6 May 2025", time: "19:00" },
-  { title: "Application end", date: "Wednesday, 14 May 2025", time: "23:59" },
-  { title: "Acceptance notification", date: "Monday, 26 May 2025", time: "—" },
-  { title: "Mandatory welcome meeting", date: "Thursday, 29 May 2025", time: "19:00" },
-  { title: "Kick‑off weekend (mandatory)", date: "Fri 6 – Sun 8, Jun 2025", time: "in‑person" },
+  { title: "Application Start", date: "Wednesday, 16 April 2025", time: "—" },
+  { title: "Online Info Event", date: "Tuesday, 6 May 2025", time: "19:00" },
+  { title: "Application End", date: "Wednesday, 14 May 2025", time: "23:59" },
+  { title: "Acceptance Notification", date: "Monday, 26 May 2025", time: "—" },
+  { title: "Mandatory Welcome Meeting", date: "Thursday, 29 May 2025", time: "19:00" },
+  { title: "Kick‑off Weekend (mandatory)", date: "Fri 6 – Sun 8, Jun 2025", time: "in‑person" },
 ];
 
 const stats = [
@@ -63,7 +75,7 @@ export default function MembershipInfo() {
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           className="text-accent text-center uppercase font-heading font-bold tracking-widest pb-4"
         >
-          Shape the future of Web3 with Germany’s leading student blockchain community
+          Shape the future of Web3
         </motion.p>
       
         <motion.h1
@@ -72,7 +84,7 @@ export default function MembershipInfo() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-3xl lg:text-5xl font-heading font-bold bg-clip-text text-foreground"
         >
-          Becoming a Core Member
+          Participate Directly
         </motion.h1>
       </header>
 
