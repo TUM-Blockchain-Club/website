@@ -29,8 +29,11 @@ html[data-mode="dark"] {
   --accent: #672eb3;
 }
 
-#side-gallery {
-  mask: linear-gradient(280deg, #000000 20%, rgba(0, 0, 0, 0) 85%) add;
+/* Side gallery mask - only applied on large screens */
+@screen lg {
+  #side-gallery {
+    mask: linear-gradient(280deg, #000000 20%, rgba(0, 0, 0, 0) 85%) add;
+  }
 }
 
 #bottom-gallery {
