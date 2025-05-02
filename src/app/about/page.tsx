@@ -1,10 +1,8 @@
-import React from "react";
-
 import { Container } from "@/components/container";
-import Timeline from "./timeline/Timeline";
-import OurTeam from "./team/Team";
 import { fetchMembers, fetchDepartments } from "@/service/memberStrapi";
 import ClubStructure from "./club-structure/ClubStructure";
+import Timeline from "./timeline/Timeline";
+import OurTeam from "./team/Team";
 
 export default async function AboutPage() {
   const members = await fetchMembers();
@@ -19,7 +17,7 @@ export default async function AboutPage() {
             <h1 className="text-4xl text-left lg:text-start lg:text-[64px] font-heading font-bold leading-tight">
               About Us
             </h1>
-            <p className="font-body text-left lg:text-start text-md lg:text-xl">
+            <p className="font-body text-left lg:text-start text-md lg:text-lg">
               Advancing the student blockchain ecosystem and creating a <br />
               community of academics, students and professionals supporting <br />
               each other on their missions to use blockchain for good.
@@ -45,3 +43,4 @@ export default async function AboutPage() {
     </div>
   );
 }
+

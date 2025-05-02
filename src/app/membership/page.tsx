@@ -3,6 +3,7 @@ import Image from 'next/image';
 import  MembershipInfo from "./info/info";
 import FAQ from "./faq/faq";
 // import ContactPage from "./contact/contact_page";
+
 import { Button } from "@/components/button";
 
 

@@ -36,3 +36,11 @@ html[data-mode="dark"] {
 #bottom-gallery {
   mask: linear-gradient(180deg, #000000 40%, rgba(0, 0, 0, 0) 91%) add;
 }
+
+@media (max-width: 639px) {
+  /* target the svg, not the wrapper, so coordinates stay intact */
+  .club-diagram {
+    transform: scale(1.3);
+    transform-origin: top center;   /* grow downward, stay centred */
+  }
+}

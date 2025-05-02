@@ -25,6 +25,7 @@ type CardContentProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 export const CardContent = ({ className = "", children, ...props }: CardContentProps) => (
+
   <div className={`p-6 ${className}`} {...props}>
     {children}
   </div>

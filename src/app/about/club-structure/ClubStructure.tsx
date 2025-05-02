@@ -43,7 +43,7 @@ const ClubStructure = ({ departments }: ClubStructureProps) => {
           Club Structure
         </h1>
       </div>
-      <ClubStructureDiagram className="mb-12" onSelect={handleSelect} />
+      <ClubStructureDiagram className="pb-32 lg:pb-12 club-diagram" onSelect={handleSelect} />
 
       {/* Accordion */}
       <Accordion.Root 
