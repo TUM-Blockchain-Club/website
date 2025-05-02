@@ -17,7 +17,7 @@ export default async function MembershipPage() {
               <h1 className="text-4xl text-center lg:text-center lg:text-[64px] font-heading font-bold leading-tight">
                 Become a Member
               </h1>
-              <p className="text-white text-md text-center font-body tracking-wide">
+              <p className="text-white text-md lg:text-lg text-center font-body tracking-wide">
               Our membership is open to all university students in Munich!
             </p>
             <div className="relative pb-12 w-full h-[450px] hidden lg:block mt-8 filter grayscale hover:grayscale-0 transition-all duration-150">

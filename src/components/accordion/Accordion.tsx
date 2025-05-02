@@ -183,7 +183,9 @@ export const AccordionContent: React.FC<AccordionContentProps> = ({ children, cl
       })}
       {...divProps}
     >
-      {children}
+      <div className="max-w-full text-wrap">
+        {children}
+      </div>
     </div>
   );
 };
