@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { Accordion } from '@/components/accordion/Accordion';
 
 /**

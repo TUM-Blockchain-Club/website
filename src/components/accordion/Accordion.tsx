@@ -52,8 +52,7 @@ export const AccordionItem = React.forwardRef<AccordionItemElement, AccordionIte
 AccordionItem.displayName = "AccordionItem";
 
 type AccordionTriggerElement = React.ComponentRef<typeof RadixAccordion.Trigger>;
-export interface AccordionTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof RadixAccordion.Trigger> {}
+export type AccordionTriggerProps = React.ComponentPropsWithoutRef<typeof RadixAccordion.Trigger>
 
 export const AccordionTrigger = React.forwardRef<AccordionTriggerElement, AccordionTriggerProps>(
   (props, ref) => {
@@ -76,8 +75,7 @@ export const AccordionTrigger = React.forwardRef<AccordionTriggerElement, Accord
 AccordionTrigger.displayName = "AccordionTrigger";
 
 type AccordionContentElement = React.ComponentRef<typeof RadixAccordion.Content>;
-export interface AccordionContentProps
-  extends React.ComponentPropsWithoutRef<typeof RadixAccordion.Content> {}
+export type AccordionContentProps = React.ComponentPropsWithoutRef<typeof RadixAccordion.Content>
 
 export const AccordionContent = React.forwardRef<AccordionContentElement, AccordionContentProps>(
   (props, ref) => {

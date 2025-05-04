@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { Department } from '@/service/memberStrapi';
 import { Accordion } from '@/components/accordion/Accordion';
 import ClubStructureDiagram from './diagram';
