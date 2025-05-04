@@ -30,6 +30,7 @@
   --violet-a12: #420081fd;
 
   --violet-contrast: #fff;
+  --background: #ffffff;
   --violet-surface: #f9f6ffcc;
   --violet-indicator: #532096;
   --violet-track: #532096;
@@ -73,7 +74,7 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: var(--background);
   --foreground: #03000b;
   --interactive: var(--violet-3);
   --elevation-1: var(--violet-2);

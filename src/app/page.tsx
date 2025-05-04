@@ -17,6 +17,7 @@ import onboardingWeekend from "@/images/family_photos/onboarding_weekend.jpg";
 import parisBlockchainWeek from "@/images/family_photos/paris_blockchain_week.jpeg";
 import algorand from "@/images/family_photos/algorand.jpeg";
 import conference from "@/images/family_photos/conference.jpeg";
+import { HackathonMap } from "@/components/hack_map";
 
 export default function Home() {
   const [galleryImageWidth, setGalleryImageWidth] = useState(350 * 3 / 4);
@@ -154,6 +155,24 @@ export default function Home() {
               <Image src={parisBlockchainWeek} width={galleryImageWidth} height={galleryImageHeight} alt="" className="object-cover hidden lg:block"/>
             </div>
           </div>
+        </section>
+      </Container>
+      <Container asChild className="py-12 mt-12 xl:mt-24">
+        <section>
+          <div className="flex flex-col gap-4 lg:gap-6">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-accent uppercase font-heading font-bold tracking-widest text-center">
+                  Internationally active
+                </h3>
+                <h1 className="text-3xl text-center lg:text-[48px] font-heading font-bold leading-tight">
+                  We are everywhere
+                </h1>
+              </div>
+              <HackathonMap />
+              <p className="font-body text-center lg:text-lg">
+                Our members have been actively participating in various events and hackathons all around the world.
+              </p>
+            </div>
         </section>
       </Container>
       <Container asChild className="py-12 mt-12 xl:mt-24">
