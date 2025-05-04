@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import * as Accordion from '@radix-ui/react-accordion';
+import { Accordion } from '@/components/accordion/Accordion';
 
 /**
  * FAQ data – start with a single question/answer pair.
@@ -92,24 +92,9 @@ const FAQAccordion: React.FC = () => {
           <Accordion.Item
             key={index}
             value={`item-${index}`}
-            className="border border-accent rounded-lg overflow-hidden transition-all duration-300 bg-gradient-to-r from-zinc-900/50 to-zinc-800/50 shadow-[0_0_20px_rgba(168,85,247,0.2)]"
           >
-            <Accordion.Trigger
-              className="w-full flex justify-between items-center px-6 py-4 text-left font-semibold text-lg uppercase tracking-wide hover:bg-zinc-800 transition group"
-            >
-              {faq.question}
-              <ChevronDown
-                className="w-5 h-5 transition-transform duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-accent text-white"
-              />
-            </Accordion.Trigger>
-
-            <Accordion.Content
-              className="overflow-hidden data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp p-6"
-            >
-              <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-                {faq.answer}
-              </p>
-            </Accordion.Content>
+            <Accordion.Trigger>{faq.question}</Accordion.Trigger>
+            <Accordion.Content><p className='whitespace-pre-line'>{faq.answer}</p></Accordion.Content>
           </Accordion.Item>
         ))}
       </Accordion.Root>
