@@ -72,7 +72,7 @@ export default function RootLayout({
           <Footer/>
           
           <JoinDialog 
-            joinUrl="https://tally.so/r/wMGE7A" 
+            joinUrl="/membership" 
             deadline={applicationDeadline}
           />
         </PlausibleProvider>

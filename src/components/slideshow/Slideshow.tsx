@@ -2,9 +2,9 @@ import React, { useState, useEffect, createContext, useContext, forwardRef, useR
 import { cva, VariantProps } from "class-variance-authority";
 import classNames from "classnames";
 
-import "./accordion.css";
+import "./slideshow.css";
 
-const AccordionContext = createContext<{
+const SlideshowContext = createContext<{
   openIndex: number;
   setOpenIndex: (index: number) => void;
   setIsPaused: (isPaused: boolean) => void;
@@ -22,11 +22,11 @@ const AccordionContext = createContext<{
   height: 0,
 });
 
-const AccordionItemContext = createContext<{
+const SlideshowItemContext = createContext<{
   index: number;
 } | null>(null);
 
-const accordionVariants = cva(
+const slideshowVariants = cva(
   "flex w-full h-full",
   {
     variants: {
@@ -41,13 +41,13 @@ const accordionVariants = cva(
   },
 );
 
-type AccordionVariantProps = VariantProps<typeof accordionVariants>;
+type SlideshowVariantProps = VariantProps<typeof slideshowVariants>;
 
-export interface AccordionRootProps extends AccordionVariantProps, Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'> {
+export interface SlideshowRootProps extends SlideshowVariantProps, Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'> {
   autoSlideInterval?: number;
 }
 
-export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps }, ref ) => {
+export const SlideshowRoot = forwardRef<HTMLDivElement, SlideshowRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps }, ref ) => {
   const [openIndex, setOpenIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -82,31 +82,31 @@ export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ c
   }, [compRef, compRef.current?.offsetWidth, compRef.current?.offsetHeight]);
 
   return (
-    <AccordionContext.Provider value={{ openIndex, setOpenIndex, orientation, setIsPaused, count: React.Children.count(children), width: dimensions.width, height: dimensions.height }}>
+    <SlideshowContext.Provider value={{ openIndex, setOpenIndex, orientation, setIsPaused, count: React.Children.count(children), width: dimensions.width, height: dimensions.height }}>
       <div
         ref={compRef}
-        className={accordionVariants({ orientation , className: classNames(className, "w-full h-full text-white") })}
+        className={slideshowVariants({ orientation , className: classNames(className, "w-full h-full text-white") })}
         role="tablist"
         aria-orientation={orientation}
         {...divProps}
       >
         {children}
       </div>
-    </AccordionContext.Provider>
+    </SlideshowContext.Provider>
   );
 });
-AccordionRoot.displayName = "AccordionRoot";
+SlideshowRoot.displayName = "SlideshowRoot";
 
-export interface AccordionItemProps extends Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'> {
+export interface SlideshowItemProps extends Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'> {
   index: number;
   title: string;
   image?: string;
 }
 
-export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, image, children }) => {
-  const context = useContext(AccordionContext);
+export const SlideshowItem: React.FC<SlideshowItemProps> = ({ index, title, image, children }) => {
+  const context = useContext(SlideshowContext);
   if (!context) {
-    throw new Error("AccordionItem must be used within an AccordionRoot");
+    throw new Error("SlideshowItem must be used within an SlideshowRoot");
   }
   const { openIndex, setOpenIndex, orientation, count, width, height } = context;
 
@@ -117,7 +117,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
   // const sizeAdjustment = `calc(${height}px - ${4 * (count - 1)}rem)`;
 
   return (
-    <AccordionItemContext.Provider value={{ index }}>
+    <SlideshowItemContext.Provider value={{ index }}>
       <div
         className={classNames("overflow-hidden transition-max-height duration-300 w-full h-full relative", {
           "max-h-full": openIndex === index && orientation === "vertical",
@@ -161,17 +161,17 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, imag
         </div>
         {children}
       </div>
-    </AccordionItemContext.Provider>
+    </SlideshowItemContext.Provider>
   );
 };
 
-export type AccordionContentProps = Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'>
+export type SlideshowContentProps = Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'>
 
-export const AccordionContent: React.FC<AccordionContentProps> = ({ children, className, ...divProps }) => {
-  const context = useContext(AccordionContext);
-  const itemContext = useContext(AccordionItemContext);
+export const SlideshowContent: React.FC<SlideshowContentProps> = ({ children, className, ...divProps }) => {
+  const context = useContext(SlideshowContext);
+  const itemContext = useContext(SlideshowItemContext);
   if (!context || !itemContext) {
-    throw new Error("AccordionContent must be used within an AccordionItem and AccordionRoot");
+    throw new Error("SlideshowContent must be used within an SlideshowItem and SlideshowRoot");
   }
   const { openIndex } = context;
   const { index } = itemContext;
@@ -190,8 +190,8 @@ export const AccordionContent: React.FC<AccordionContentProps> = ({ children, cl
   );
 };
 
-export const Accordion = {
-  Root: AccordionRoot,
-  Item: AccordionItem,
-  Content: AccordionContent,
+export const Slideshow = {
+  Root: SlideshowRoot,
+  Item: SlideshowItem,
+  Content: SlideshowContent,
 };

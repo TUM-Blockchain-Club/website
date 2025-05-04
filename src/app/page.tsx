@@ -52,7 +52,7 @@ export default function Home() {
                 <Link href={"/membership"}>Join Us</Link>
               </Button>
               <Button asChild buttonType="secondary" className="w-fit">
-                <Link href={"#"}>Support our cause</Link>
+                <Link href={"https://apply.tum-blockchain.com/partner"}>Support our cause</Link>
               </Button>
             </div>
           </div>
@@ -176,7 +176,7 @@ export default function Home() {
             </p>
             <div className="flex gap-6 flex-col lg:flex-row items-center mt-10 lg:mt-3">
               <Button asChild buttonType="cta" className="w-fit">
-                <Link href={"#"}>Collaborate Together</Link>
+                <Link href={"https://apply.tum-blockchain.com/partner"}>Collaborate Together</Link>
               </Button>
             </div>
           </div>
