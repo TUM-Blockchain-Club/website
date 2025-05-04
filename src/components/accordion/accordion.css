@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .accordion-root {
+    @apply w-full;
+  }
+
+  .accordion-item {
+    @apply mt-4 first:mt-0 overflow-hidden;
+  }
+
+  .accordion-item-inner {
+    @apply bg-elevation-1;
+  }
+
+  .accordion-header {
+    @apply flex justify-between font-heading font-bold px-6 hover:bg-elevation-2 transition-all duration-300;
+  }
+
+  .accordion-trigger {
+    @apply flex items-center justify-between w-full py-4 text-left font-medium text-foreground transition-all;
+  }
+
+  .accordion-chevron {
+    @apply h-5 w-5 shrink-0 text-foreground transition-transform duration-300 group-data-[state=open]:rotate-180;
+  }
+
+  .accordion-content {
+    @apply overflow-hidden font-body text-foreground
+    data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown;
+  }
+
+  .accordion-content-inner {
+    @apply px-6 py-4;
+  }
+}
