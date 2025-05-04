@@ -1,6 +1,6 @@
 "use client"
 
-import { SlideshowRoot, SlideshowItem, SlideshowContent } from "@/components/slideshow";
+import { Slideshow } from "@/components/slideshow";
 import { useEffect, useState } from "react";
 
 const items = [
@@ -66,10 +66,10 @@ export const SlideShow = () => {
   }, []);
 
   return (
-    <SlideshowRoot orientation={orientation}>
+    <Slideshow.Root orientation={orientation}>
       {items.map((item, index) => (
-        <SlideshowItem key={index} index={index} title={item.title} image={item.image}>
-          <SlideshowContent>
+        <Slideshow.Item key={index} index={index} title={item.title} image={item.image}>
+          <Slideshow.Content>
             <div className='absolute w-full overflow-x-hidden h-full bottom-0 left-0 z-10 p-4 flex items-end' style={{ background: 'linear-gradient(0deg, rgba(10, 0, 22, 0.75) 30%, rgba(10, 0, 22, 0.00) 100%)' }}>
                 <div className='flex lg:min-w-96 w-[360px] flex-col gap-4 justify-end'>
                   <h3 className='font-heading font-bold lg:text-2xl'>{item.title}</h3>
@@ -78,9 +78,9 @@ export const SlideShow = () => {
                   </p>
                 </div>
             </div>  
-          </SlideshowContent>
-        </SlideshowItem>
+          </Slideshow.Content>
+        </Slideshow.Item>
       ))}
-    </SlideshowRoot>
+    </Slideshow.Root>
   )
 }

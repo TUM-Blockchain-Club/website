@@ -1,27 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Accordion, AccordionRootProps } from '@/components/slideshow';
+import { Slideshow, SlideshowRootProps } from '@/components/slideshow';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-interface AccordionStoryArgs extends AccordionRootProps { 
+interface SlideshowStoryArgs extends SlideshowRootProps { 
   width: number;
   height: number;
-}
+} 
 
 const meta = {
-  title: 'Accordion',
-  component: Accordion.Root,
+  title: 'Slideshow',
+  component: Slideshow.Root,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
     width: { control: 'number' },
-    height: { control: 'number' },
+    height: { control: 'number' },  
   },
-} satisfies Meta<AccordionStoryArgs>;
+} satisfies Meta<SlideshowStoryArgs>;
 
 export default meta;
-type Story = StoryObj<AccordionStoryArgs>;
+type Story = StoryObj<SlideshowStoryArgs>;
 
 const items = [
   { title: 'Item 1', content: 'Content 1', image: 'https://unsplash.com/photos/yQAuEZ6q2yo/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzM1MzMwMTM0fA&force=true&w=1920' },
@@ -33,15 +33,15 @@ const items = [
 export const Vertical: Story = {
   render: (args) => (
     <div className="block" style={{ width: args.width + "px", height: args.height + "px" }}>
-      <Accordion.Root orientation={"vertical"}>
+      <Slideshow.Root orientation={"vertical"}>
         {items.map((item, index) => (
-          <Accordion.Item key={index} index={index} title={item.title} image={item.image}>
-            <Accordion.Content>
+          <Slideshow.Item key={index} index={index} title={item.title} image={item.image}>
+            <Slideshow.Content>
               {item.content}
-            </Accordion.Content>
-          </Accordion.Item>
+            </Slideshow.Content>
+          </Slideshow.Item>
         ))}
-      </Accordion.Root>
+      </Slideshow.Root>
     </div>
   ),
   args: {
@@ -54,10 +54,10 @@ export const Vertical: Story = {
 export const Horizontal: Story = {
   render: (args) => (
     <div className="block" style={{ width: args.width + "px", height: args.height + "px" }}>
-      <Accordion.Root orientation={"horizontal"}>
+      <Slideshow.Root orientation={"horizontal"}>
         {items.map((item, index) => (
-          <Accordion.Item key={index} index={index} title={item.title} image={item.image}>
-            <Accordion.Content>
+          <Slideshow.Item key={index} index={index} title={item.title} image={item.image}>
+            <Slideshow.Content>
               <div className='absolute w-full overflow-x-hidden h-full bottom-0 left-0 z-10 p-4 flex items-end' style={{ background: 'linear-gradient(0deg, rgba(10, 0, 22, 0.75) 30%, rgba(10, 0, 22, 0.00) 100%)' }}>
                 <div className='flex min-w-96 w-96 flex-col gap-4 justify-end'>
                   <h3 className='font-heading font-bold text-xl'>{item.content}</h3>
@@ -68,10 +68,10 @@ export const Horizontal: Story = {
                   
                 </div>
               </div>
-            </Accordion.Content>
-          </Accordion.Item>
+            </Slideshow.Content>
+          </Slideshow.Item>
         ))}
-      </Accordion.Root>
+      </Slideshow.Root>
     </div>
   ),
   args: {
