@@ -35,7 +35,7 @@ interface HackathonMapProps {
   centerName?: string;
 }
 
-const HackathonMap: React.FC<HackathonMapProps> = ({
+export const HackathonMap: React.FC<HackathonMapProps> = ({
   hackathons = DEFAULT_HACKATHONS,
   center = DEFAULT_CENTER,
   centerName = DEFAULT_CENTER_NAME,
@@ -108,5 +108,3 @@ const HackathonMap: React.FC<HackathonMapProps> = ({
       </Marker>
     </ComposableMap>
 );
-
-export default HackathonMap;

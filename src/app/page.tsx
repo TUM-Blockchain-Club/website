@@ -17,7 +17,7 @@ import onboardingWeekend from "@/images/family_photos/onboarding_weekend.jpg";
 import parisBlockchainWeek from "@/images/family_photos/paris_blockchain_week.jpeg";
 import algorand from "@/images/family_photos/algorand.jpeg";
 import conference from "@/images/family_photos/conference.jpeg";
-import { HackathonMap } from "@/components/hack_map";
+import { TBCHackathonMap } from "@/app/hackathon_map";
 
 export default function Home() {
   const [galleryImageWidth, setGalleryImageWidth] = useState(350 * 3 / 4);
@@ -168,9 +168,10 @@ export default function Home() {
                   We are everywhere
                 </h1>
               </div>
-              <HackathonMap />
+              <TBCHackathonMap />
               <p className="font-body text-center lg:text-lg">
-                Our members have been actively participating in various events and hackathons all around the world.
+                From the heart of Europe, our members have been actively participating in various events and hackathons all around the world. 
+                We are proud to be part of the global blockchain community and we are always looking for new opportunities to connect with people.
               </p>
             </div>
         </section>

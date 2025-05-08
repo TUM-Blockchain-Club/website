@@ -1,1 +1,1 @@
-export { default as HackathonMap } from "./HackMap";
+export { HackathonMap } from "./HackathonMap";
