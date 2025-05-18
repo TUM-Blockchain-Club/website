@@ -1,4 +1,4 @@
-// src/components/HackathonMap.tsx
+"use client";
 import React from "react";
 import {
   ComposableMap,
@@ -8,21 +8,14 @@ import {
   Line,
   Sphere,
 } from "react-simple-maps";
-
-export type Hackathon = {
-  name: string;
-  // [lon, lat]
-  coordinates: [number, number];
-  description?: string;
-  image?: string;
-};
+import { Hackathon } from "@/service/hackathonStrapi";
 
 // Default hackathons data
 const DEFAULT_HACKATHONS: Hackathon[] = [
-  { name: "ETHGlobal Zürich", coordinates: [8.5417, 47.3769] },
-  { name: "Web3 Summit Berlin", coordinates: [13.4050, 52.5200] },
-  { name: "HackMIT", coordinates: [-71.0939, 42.3601] },
-  { name: "LA Blockchain Hackathon", coordinates: [-118.2437, 34.0522] },
+  { name: "ETHGlobal Zürich", coordinates: [8.5417, 47.3769], link: "https://ethglobal.com/events/zurich", image: null },
+  { name: "Web3 Summit Berlin", coordinates: [13.4050, 52.5200], link: "https://web3summit.com/berlin", image: null },
+  { name: "HackMIT", coordinates: [-71.0939, 42.3601], link: "https://hackmit.com", image: null },
+  { name: "LA Blockchain Hackathon", coordinates: [-118.2437, 34.0522], link: "https://la.blockchainhackathon.com", image: null },
 ];
 
 // Default center location
