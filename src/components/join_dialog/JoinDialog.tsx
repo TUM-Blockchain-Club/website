@@ -319,12 +319,12 @@ export const JoinDialog = ({
             </div>
           )}
           
-          <div className="flex flex-col-reverse lg:flex-row gap-2 lg:gap-4 justify-end">
+          <div className="flex flex-col-reverse items-center lg:flex-row gap-2 lg:gap-4 justify-end">
             <Button buttonType="secondary" onClick={handleDismiss}>
                 Dismiss for today
             </Button>
             <Button asChild buttonType="cta">
-              <Link ref={applyButtonRef} href={joinUrl}>Apply Now</Link>
+              <Link ref={applyButtonRef} href={joinUrl} onClick={handleDismiss}>Join Us</Link>
             </Button>
           </div>
         </Dialog.Content>

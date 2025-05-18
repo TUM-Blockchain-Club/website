@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .accordion-title-vertical {
+    @apply top-1/2 -translate-y-1/2 left-4;
+  }
+
+  .accordion-title-horizontal {
+    writing-mode: vertical-rl;
+    @apply transform
+      left-1/2 -translate-x-1/2 bottom-4 rotate-180;
+  }
+}

@@ -6,7 +6,7 @@
 
     .web-header {
         @apply before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-full lg:before:h-[150px] before:bg-gradient-to-b before:from-[#030007] before:via-[rgba(3,0,7,0.75)] before:to-[rgba(3,0,7,0)] before:z-[-1]
-            hover:before:bottom-[-30px] before:transition-all before:duration-300;
+            hover:lg:before:bottom-[-30px] before:lg:transition-all before:lg:duration-300;
     }
       
 }

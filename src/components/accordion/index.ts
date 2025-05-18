@@ -1,4 +1,16 @@
 "use client"
 
-export { Accordion, AccordionItem, AccordionRoot, AccordionContent } from './Accordion';
-export type { AccordionRootProps, AccordionItemProps, AccordionContentProps } from './Accordion';
+export { 
+  Accordion, 
+  AccordionRoot, 
+  AccordionItem, 
+  AccordionTrigger, 
+  AccordionContent 
+} from './Accordion';
+
+export type { 
+  AccordionRootProps,
+  AccordionItemProps,
+  AccordionTriggerProps,
+  AccordionContentProps 
+} from './Accordion';

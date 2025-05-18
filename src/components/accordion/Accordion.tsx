@@ -1,195 +1,104 @@
-import React, { useState, useEffect, createContext, useContext, forwardRef, useRef } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+import React from "react";
+import * as RadixAccordion from "@radix-ui/react-accordion";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 
 import "./accordion.css";
 
-const AccordionContext = createContext<{
-  openIndex: number;
-  setOpenIndex: (index: number) => void;
-  setIsPaused: (isPaused: boolean) => void;
-  orientation: "vertical" | "horizontal";
-  count: number;
-  width: number;
-  height: number;
-}>({
-  openIndex: 0,
-  setOpenIndex: () => {},
-  setIsPaused: () => {},
-  orientation: "vertical",
-  count: 0,
-  width: 0,
-  height: 0,
-});
+type AccordionRootElement = React.ComponentRef<typeof RadixAccordion.Root>;
+export type AccordionRootProps = 
+  | (RadixAccordion.AccordionSingleProps & React.RefAttributes<HTMLDivElement>)
+  | (RadixAccordion.AccordionMultipleProps & React.RefAttributes<HTMLDivElement>);
 
-const AccordionItemContext = createContext<{
-  index: number;
-} | null>(null);
-
-const accordionVariants = cva(
-  "flex w-full h-full",
-  {
-    variants: {
-      orientation: {
-        vertical: "flex-col",
-        horizontal: "flex-row",
-      },
-    },
-    defaultVariants: {
-      orientation: "vertical",
-    },
-  },
-);
-
-type AccordionVariantProps = VariantProps<typeof accordionVariants>;
-
-export interface AccordionRootProps extends AccordionVariantProps, Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'> {
-  autoSlideInterval?: number;
-}
-
-export const AccordionRoot = forwardRef<HTMLDivElement, AccordionRootProps>(({ children, orientation = "vertical", className, autoSlideInterval = 5000, ...divProps }, ref ) => {
-  const [openIndex, setOpenIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  ref = useRef<HTMLDivElement>(null);
-  const compRef = ref as React.RefObject<HTMLDivElement>;
-  if (!orientation) {
-    orientation = "vertical";
-  }
-
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setOpenIndex((prevIndex) => (prevIndex + 1) % React.Children.count(children));
-    }, autoSlideInterval);
-    return () => clearInterval(interval);
-  }, [isPaused, autoSlideInterval, children]);
-
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (compRef.current) {
-        setDimensions({
-          width: compRef.current.offsetWidth,
-          height: compRef.current.offsetHeight,
-        });
-      }
-    };
-
-    window.addEventListener("resize", updateDimensions);
-    updateDimensions();
-
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, [compRef, compRef.current?.offsetWidth, compRef.current?.offsetHeight]);
-
-  return (
-    <AccordionContext.Provider value={{ openIndex, setOpenIndex, orientation, setIsPaused, count: React.Children.count(children), width: dimensions.width, height: dimensions.height }}>
-      <div
-        ref={compRef}
-        className={accordionVariants({ orientation , className: classNames(className, "w-full h-full text-white") })}
-        role="tablist"
-        aria-orientation={orientation}
-        {...divProps}
+export const AccordionRoot = React.forwardRef<AccordionRootElement, AccordionRootProps>(
+  (props, ref) => {
+    return (
+      <RadixAccordion.Root
+        ref={ref}
+        className={classNames("accordion-root", props.className)}
+        {...props}
       >
-        {children}
-      </div>
-    </AccordionContext.Provider>
-  );
-});
+        {props.children}
+      </RadixAccordion.Root>
+    );
+  }
+);
 AccordionRoot.displayName = "AccordionRoot";
 
-export interface AccordionItemProps extends Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'> {
-  index: number;
-  title: string;
-  image?: string;
+type AccordionItemElement = React.ComponentRef<typeof RadixAccordion.Item>;
+export interface AccordionItemProps
+  extends React.ComponentPropsWithoutRef<typeof RadixAccordion.Item> {
+  value: string;
 }
 
-export const AccordionItem: React.FC<AccordionItemProps> = ({ index, title, image, children }) => {
-  const context = useContext(AccordionContext);
-  if (!context) {
-    throw new Error("AccordionItem must be used within an AccordionRoot");
+export const AccordionItem = React.forwardRef<AccordionItemElement, AccordionItemProps>(
+  (props, ref) => {
+    const { children, className, value, ...itemProps } = props;
+
+    return (
+        <RadixAccordion.Item
+            ref={ref}
+            className={classNames("accordion-item group", className)}
+            value={value}
+            {...itemProps}
+        >
+            <div className="accordion-item-inner">
+                {children}
+            </div>
+        </RadixAccordion.Item>
+    );
   }
-  const { openIndex, setOpenIndex, orientation, count, width, height } = context;
+);
+AccordionItem.displayName = "AccordionItem";
 
-  const handleToggle = () => {
-    setOpenIndex(index);
-  };
+type AccordionTriggerElement = React.ComponentRef<typeof RadixAccordion.Trigger>;
+export type AccordionTriggerProps = React.ComponentPropsWithoutRef<typeof RadixAccordion.Trigger>
 
-  // const sizeAdjustment = `calc(${height}px - ${4 * (count - 1)}rem)`;
+export const AccordionTrigger = React.forwardRef<AccordionTriggerElement, AccordionTriggerProps>(
+  (props, ref) => {
+    const { children, className, ...triggerProps } = props;
 
-  return (
-    <AccordionItemContext.Provider value={{ index }}>
-      <div
-        className={classNames("overflow-hidden transition-max-height duration-300 w-full h-full relative", {
-          "max-h-full": openIndex === index && orientation === "vertical",
-          "max-h-16": openIndex !== index && orientation === "vertical",
-          "max-w-full": openIndex === index && orientation === "horizontal",
-          "max-w-16": openIndex !== index && orientation === "horizontal",
-          "cursor-pointer": openIndex !== index,
-        })}
-        role="tab"
-        aria-selected={openIndex === index}
-        onClick={handleToggle}
-        onMouseEnter={() => context.setIsPaused(true)}
-        onMouseLeave={() => context.setIsPaused(false)}
-      >      
-          {image && (
-          <div
-            className={classNames("absolute inset-0 transition-opacity duration-300 grayscale left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2", 
-                {"brightness-75": openIndex !== index}
-            )}
-            style={{
-              backgroundImage: `url(${image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              height: orientation === "vertical" ? `calc(${height}px - ${4 * (count - 1)}rem)` : `${height}px`,
-              width: orientation === "horizontal" ? `calc(${width}px - ${4 * (count - 1)}rem)` : `${width}px`,
-            }}
-          />
-        )}
-        {
-          <div className={classNames("absolute inset-0 bg-[#0A0016] duration-300", 
-            {"opacity-75": openIndex !== index},
-            {"opacity-0": openIndex === index}
-          )}></div>
-        }
-        <div className={classNames("text-lg font-bold font-heading uppercase tracking-widest transition-all duration-300 absolute", {
-          "accordion-title-vertical": orientation === "vertical",
-          "accordion-title-horizontal": orientation === "horizontal",
-          "opacity-0": openIndex === index,
-        })}>
-          {title}
+    return (
+      <RadixAccordion.Header className="accordion-header">
+        <RadixAccordion.Trigger
+          ref={ref}
+          className={classNames("accordion-trigger", className)}
+          {...triggerProps}
+        >
+          {children}
+          <ChevronDownIcon className="accordion-chevron" aria-hidden />
+        </RadixAccordion.Trigger>
+      </RadixAccordion.Header>
+    );
+  }
+);
+AccordionTrigger.displayName = "AccordionTrigger";
+
+type AccordionContentElement = React.ComponentRef<typeof RadixAccordion.Content>;
+export type AccordionContentProps = React.ComponentPropsWithoutRef<typeof RadixAccordion.Content>
+
+export const AccordionContent = React.forwardRef<AccordionContentElement, AccordionContentProps>(
+  (props, ref) => {
+    const { children, className, ...contentProps } = props;
+
+    return (
+      <RadixAccordion.Content
+        ref={ref}
+        className={classNames("accordion-content", className)}
+        {...contentProps}
+      >
+        <div className="accordion-content-inner">
+          {children}
         </div>
-        {children}
-      </div>
-    </AccordionItemContext.Provider>
-  );
-};
-
-export type AccordionContentProps = Pick<React.ComponentPropsWithoutRef<'div'>, 'id' | 'style' | 'className' | 'children'>
-
-export const AccordionContent: React.FC<AccordionContentProps> = ({ children, className, ...divProps }) => {
-  const context = useContext(AccordionContext);
-  const itemContext = useContext(AccordionItemContext);
-  if (!context || !itemContext) {
-    throw new Error("AccordionContent must be used within an AccordionItem and AccordionRoot");
+      </RadixAccordion.Content>
+    );
   }
-  const { openIndex } = context;
-  const { index } = itemContext;
-
-  return (
-    <div
-      className={classNames("absolute w-full h-full transition-all duration-200", className, {
-        "opacity-0": openIndex !== index,
-      })}
-      {...divProps}
-    >
-      {children}
-    </div>
-  );
-};
+);
+AccordionContent.displayName = "AccordionContent";
 
 export const Accordion = {
   Root: AccordionRoot,
   Item: AccordionItem,
+  Trigger: AccordionTrigger,
   Content: AccordionContent,
 };
