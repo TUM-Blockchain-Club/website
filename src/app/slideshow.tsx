@@ -1,6 +1,6 @@
 "use client"
 
-import { AccordionRoot, AccordionItem, AccordionContent } from "@/components/accordion";
+import { Slideshow } from "@/components/slideshow";
 import { useEffect, useState } from "react";
 
 const items = [
@@ -9,11 +9,8 @@ const items = [
     image: '/conference.jpg',
     content: (
       <>
-        At TUM Blockchain Club, we host conferences, workshops, and 
-        events to educate and inspire the next generation of blockchain enthusiasts.
-        One of our flagship events is the annual <span className="font-bold">TUM Blockchain Conference</span>,
-        which brings together experts, enthusiasts, and professionals to discuss the
-        latest trends and developments in the blockchain space.
+        Our flagship annual <span className="font-bold">TUM Blockchain Conference</span> brings together experts, 
+        enthusiasts, and professionals to discuss the latest trends and developments in blockchain technology.
       </>
     )
   },
@@ -33,9 +30,7 @@ const items = [
     image: '/bootcamp.jpg',
     content: (
       <>
-        We offer a bootcamp to introduce students to the basics of blockchain technology.
-        This bootcamp is a great way to get started with blockchain and learn about the latest trends and developments in the industry.
-        The topics can range from basic concepts to more advanced topics like smart contracts and decentralized applications.
+        Our bootcamp introduces students to blockchain fundamentals and advanced topics like smart contracts and decentralized applications.
       </>
     )
   },
@@ -71,21 +66,21 @@ export const SlideShow = () => {
   }, []);
 
   return (
-    <AccordionRoot orientation={orientation}>
+    <Slideshow.Root orientation={orientation}>
       {items.map((item, index) => (
-        <AccordionItem key={index} index={index} title={item.title} image={item.image}>
-          <AccordionContent>
+        <Slideshow.Item key={index} index={index} title={item.title} image={item.image}>
+          <Slideshow.Content>
             <div className='absolute w-full overflow-x-hidden h-full bottom-0 left-0 z-10 p-4 flex items-end' style={{ background: 'linear-gradient(0deg, rgba(10, 0, 22, 0.75) 30%, rgba(10, 0, 22, 0.00) 100%)' }}>
-                <div className='flex min-w-96 w-[360px] flex-col gap-4 justify-end'>
+                <div className='flex lg:min-w-96 w-[360px] flex-col gap-4 justify-end'>
                   <h3 className='font-heading font-bold lg:text-2xl'>{item.title}</h3>
-                  <p className='text-md'>
+                  <p className='text-md text-wrap'>
                     {item.content}
                   </p>
                 </div>
             </div>  
-          </AccordionContent>
-        </AccordionItem>
+          </Slideshow.Content>
+        </Slideshow.Item>
       ))}
-    </AccordionRoot>
+    </Slideshow.Root>
   )
 }

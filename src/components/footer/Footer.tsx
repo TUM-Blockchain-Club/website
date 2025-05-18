@@ -37,7 +37,7 @@ export const Footer = forwardRef<FooterElement, FooterProps>((prop, ref) => {
                             <Link href="/imprint">Imprint</Link>
                         </Button>
                         <Button asChild buttonType="link">
-                            <Link href="/privacy-policy">Privacy Policy</Link>
+                            <Link href="https://drive.google.com/file/d/1TcXdGF5jARyVKreqJ4ht3Q2ICGOEuyPt/view">Privacy Policy</Link>
                         </Button>
                         <Button asChild buttonType="link">
                             <Link href="https://forms.tum-blockchain.com/contact">Contact</Link>

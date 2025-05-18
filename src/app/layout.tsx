@@ -31,8 +31,8 @@ const menuLinks : MenuLink[] = [
     buttonType: "secondary"
   },
   {
-    name: "Events",
-    url: "/about",
+    name: "Membership",
+    url: "/membership",
     buttonType: "secondary"
   },
   {
@@ -54,7 +54,6 @@ const menuLinks : MenuLink[] = [
   }
 ]
 
-// Set application deadline - example: one month from now
 const applicationDeadline = new Date(2025, 4, 17, 22, 59, 59);
 
 export default function RootLayout({
@@ -73,7 +72,7 @@ export default function RootLayout({
           <Footer/>
           
           <JoinDialog 
-            joinUrl="https://tally.so/r/wMGE7A" 
+            joinUrl="/membership" 
             deadline={applicationDeadline}
           />
         </PlausibleProvider>

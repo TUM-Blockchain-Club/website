@@ -25,6 +25,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         interactive: "var(--interactive)",
+        elevation: {
+          1: "var(--elevation-1)",
+          2: "var(--elevation-2)",
+          3: "var(--elevation-3)",
+        },
         accent: "var(--accent)",
       },
       padding: {
@@ -41,8 +46,8 @@ export default {
         },
       },
       animation: {
-        slideDown: 'slideDown 300ms ease-out',
-        slideUp: 'slideUp 300ms ease-out',
+        slideDown: 'slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1)',
+        slideUp: 'slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1)',
       },
     },
   },
