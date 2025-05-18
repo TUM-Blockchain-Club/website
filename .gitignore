@@ -44,3 +44,4 @@ next-env.d.ts
 
 # member images
 public/members
+public/hackathons
