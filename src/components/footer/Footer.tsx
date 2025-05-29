@@ -12,8 +12,8 @@ export type FooterProps = React.ComponentPropsWithoutRef<"footer">
 export const Footer = forwardRef<FooterElement, FooterProps>((prop, ref) => {
     const { className, ...footerProps } = prop;
     return (
-        <footer {...footerProps} className={classNames(className, "bg-accent px-4")} ref={ref}>
-            <Container className="flex flex-col justify-between py-4 min-h-[480px] lg:min-h-[360px]">
+        <footer {...footerProps} className={classNames(className, "bg-accent px-4 pt-[2em]")} ref={ref}>
+            <Container className="flex flex-col justify-between py-4 min-h-[360px] lg:min-h-[280px]">
                 <div className="flex flex-col gap-1">
                     <span className="font-heading font-bold text-xl md:text-3xl lg:text-5xl text-white">TUM Blockchain Club <span title="eingetragener Verein" className="cursor-help">e.V.</span></span>
                     <p className="font-body leading-tight text-white">
