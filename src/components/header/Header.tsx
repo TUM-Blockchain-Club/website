@@ -43,7 +43,7 @@ export const FullScreenMenu = forwardRef<HTMLDivElement, MenuProps>((props, ref)
             <div className="flex flex-col gap-4 w-48 max-w-4/5 bg-accent">
                 {menuLinks.map((link) => (
                     <Button asChild key={link.name} buttonType={link.buttonType}>
-                        <Link href={link.url} className={`text-sm w-full`} target={link.target}>{link.name}</Link>
+                        <Link href={link.url} className={`text-sm w-full`} target={link.target} onClick={() => setIsOpen(false)}>{link.name}</Link>
                     </Button>
                 ))}
             </div>
