@@ -44,8 +44,7 @@ export default function Home() {
               Empowering<br />People&apos;s Technology
             </h1>
             <p className="font-body text-center lg:text-start text-md lg:text-xl">
-              TUM Blockchain Club is fostering innovation through education,
-              <br className="hidden lg:block" />collaboration, and the transformative power of blockchain.
+              TUM Blockchain Club is fostering innovation through education, collaboration, and the transformative power of blockchain.
             </p>
             <div className="flex gap-6 flex-col lg:flex-row items-center mt-10 lg:mt-3">
               <Button asChild buttonType="cta" className="w-fit">
