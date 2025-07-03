@@ -87,6 +87,7 @@ export interface Member {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    is_board: boolean;
     membership_status?: (typeof MembershipStatus)[number] | null;
     degree?: (typeof Degree)[number] | null;
     email?: string | null;

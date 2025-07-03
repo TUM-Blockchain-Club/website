@@ -30,6 +30,10 @@ export const OurTeam = ({ members }: OurTeamProps) => {
         ? memberDepartments.includes(selectedDepartment)
         : true;
       return isMemberActive && matchesDepartment;
+    }).sort((a, b) => {
+      if (a.is_board && !b.is_board) return -1;
+      if (!a.is_board && b.is_board) return 1;
+      return 0;
     });
   }, [selectedDepartment, members]);
 

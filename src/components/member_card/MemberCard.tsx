@@ -58,7 +58,7 @@ const Ribbon = React.forwardRef<HTMLDivElement, RibbonProps>(({ text, color }, r
                 {/* Top triangle */}
                 <div className={classNames(`absolute bottom-0 left-0 w-[10px] h-1/2 border-r-[10px] border-t-[10px] border-t-transparent`, ribbonVariants({ borderColor: color }))}></div>
                 {/* Bottom triangle */}
-                <div className={classNames(`absolute top-0 left-0 w-[10px] h-1/2¥ border-r-[10px] border-b-[10px] border-b-transparent`, ribbonVariants({ borderColor: color }))}></div>
+                <div className={classNames(`absolute top-0 left-0 w-[10px] h-1/2 border-r-[10px] border-b-[10px] border-b-transparent`, ribbonVariants({ borderColor: color }))}></div>
             </div>
         </div>
     )
@@ -67,9 +67,10 @@ Ribbon.displayName = "Ribbon";
 
 export const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(({ member }, ref) => {
     return (
-        <div className="flex flex-row lg:flex-col items-center w-64 lg:w-60 h-auto lg:h-96 relative lg:opacity-60 hover:opacity-100 lg:scale-95 hover:scale-100 transition-all duration-200 font-body text-foreground ease-in-out border p-4 rounded-xl lg:pt-16 before:none lg:before:content-[''] lg:before:absolute lg:before:top-4 lg:before:left-1/2 lg:before:w-10 lg:before:h-2 lg:before:bg-background lg:before:border lg:before:rounded-full lg:before:scale-x-[-1] lg:before:scale-y-100 lg:before:translate-x-[-50%] lg:before:translate-y-[-50%] lg:before:z-[-1] gap-6" ref={ref}>
+        <div className="flex flex-row lg:flex-col items-center w-64 lg:w-60 h-auto lg:h-96 relative lg:opacity-80 hover:opacity-100 lg:scale-95 hover:scale-100 transition-all duration-200 font-body text-foreground ease-in-out border p-4 rounded-xl lg:pt-16 before:none lg:before:content-[''] lg:before:absolute lg:before:top-4 lg:before:left-1/2 lg:before:w-10 lg:before:h-2 lg:before:bg-background lg:before:border lg:before:rounded-full lg:before:scale-x-[-1] lg:before:scale-y-100 lg:before:translate-x-[-50%] lg:before:translate-y-[-50%] lg:before:z-[-1] gap-6" ref={ref}>
             {/* Ribbons */}
             <div className="absolute top-3 right-0 flex flex-col gap-1 items-end justify-end">
+                {member.is_board && <Ribbon text="Board" color="blue" />}
             </div>
             
             {/* Left column for mobile (Avatar) */}

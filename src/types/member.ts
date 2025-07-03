@@ -15,4 +15,5 @@ export interface Member {
     description: string;
     email: string;
     isAlumni: boolean;
+    isBoard: boolean;
 }
