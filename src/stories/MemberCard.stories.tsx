@@ -24,6 +24,7 @@ const mockMember = {
     membership_status: 'core' as const,
     degree: 'master' as const,
     email: 'john.doe@example.com',
+    is_board: false,
     profile_picture: {
         id: 1,
         documentId: 'profile1',
