@@ -32,14 +32,14 @@ export const CardContent = ({ className = "", children, ...props }: CardContentP
   </div>
 );
 
-const dates = [
+{/*const dates = [
   { title: "Application Start", date: "Wednesday, 16 April 2025", time: "—" },
   { title: "Online Info Event", date: "Tuesday, 6 May 2025", time: "19:00" },
   { title: "Application End", date: "Wednesday, 14 May 2025", time: "23:59" },
   { title: "Acceptance Notification", date: "Monday, 26 May 2025", time: "—" },
   { title: "Mandatory Welcome Meeting", date: "Thursday, 29 May 2025", time: "19:00" },
   { title: "Kick‑off Weekend (mandatory)", date: "Fri 6 – Sun 8, Jun 2025", time: "in‑person" },
-];
+];*/}
 
 const stats = [
     { value: "50+", label: "Core Team Members" },
