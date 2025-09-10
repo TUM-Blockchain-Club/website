@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Button } from "@/components/button";
+import Link from "next/link";
 import { CalendarHeart, Users, Trophy, Lightbulb, Code, BookText } from "lucide-react";
 import { Fragment, HTMLAttributes, ReactNode } from "react";
 
@@ -69,7 +70,7 @@ export default function MembershipInfo() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.08),rgba(255,255,255,0)_70%)]"></div>
 
       <header className="lg:pb-28 relative z-10 flex flex-col items-center justify-center px-4 pt-24 pb-12 text-center">
-      <motion.p
+        <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
@@ -77,7 +78,7 @@ export default function MembershipInfo() {
         >
           Shape the future of Web3
         </motion.p>
-      
+
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,9 +108,7 @@ export default function MembershipInfo() {
                   <p className="text-4xl font-bold text-foreground font-heading">
                     {value}
                   </p>
-                  <p className="text-sm text-white font-body">
-                    {label}
-                  </p>
+                  <p className="text-sm text-white font-body">{label}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -117,8 +116,8 @@ export default function MembershipInfo() {
         </div>
       </section>
 
-      {/* Important dates */}
-      <section className="relative z-10 px-4 md:px-12 lg:px-24 pb-20">
+      {/* Important dates Needs to be updated and modernized*/}
+      {/* <section className="relative z-10 px-4 md:px-12 lg:px-24 pb-20">
         <h2 className="text-2xl lg:text-4xl font-heading font-bold mb-8 text-foreground drop-shadow">
           Most important dates
         </h2>
@@ -131,28 +130,30 @@ export default function MembershipInfo() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
             >
-              <Card className="bg-[#1d1b36]/70 backdrop-blur-md border h-[200px]"> 
+              <Card className="bg-[#1d1b36]/70 backdrop-blur-md border h-[200px]">
                 <CardContent className="p-6 items-start space-y-4">
                   <p className="absolute top-4 text-foreground font-medium tracking-wide text-sm font-heading">
                     {title}
                   </p>
                   <p className="pt-8 text-xl font-semibold text-white font-body">
                     {date.split(",").map((line, idx) => (
-                        <Fragment key={idx}>
+                      <Fragment key={idx}>
                         {line.trim()}
                         {idx === 0 && <br />}
-                        </Fragment>
+                      </Fragment>
                     ))}
-                    </p>
+                  </p>
                   {time !== "—" && (
-                    <p className="absolute top-25 text-sm text-white font-body">{time}</p>
+                    <p className="absolute top-25 text-sm text-white font-body">
+                      {time}
+                    </p>
                   )}
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* What awaits you */}
       <section className="relative z-10 px-4 md:px-12 lg:px-24 pb-20">
@@ -171,14 +172,17 @@ export default function MembershipInfo() {
               <Card className="bg-[#1d1b36]/70 backdrop-blur-md h-[240px] flex items-center">
                 <CardContent className="p-6 items-start space-y-4">
                   <Icon size={32} className="text-foreground absolute top-6" />
-                  <h3 className="text-lg font-semibold text-white font-heading absolute top-1/4">{label}</h3>
+                  <h3 className="text-lg font-semibold text-white font-heading absolute top-1/4">
+                    {label}
+                  </h3>
                   <p className="text-sm text-white leading-relaxed font-body absolute top-1/2">
-                  {desc.split("\n").map((line, idx, array) => (
-                        <Fragment key={idx}>
+                    {desc.split("\n").map((line, idx, array) => (
+                      <Fragment key={idx}>
                         {line.trim()}
                         {idx < array.length - 1 && <br />}
-                        </Fragment>
-                    ))}</p>
+                      </Fragment>
+                    ))}
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -202,7 +206,13 @@ export default function MembershipInfo() {
           className="space-y-4 list-disc list-inside text-white max-w-3xl font-body"
         >
           {criteria.map((c) => (
-            <motion.li key={c} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
+            <motion.li
+              key={c}
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
               {c}
             </motion.li>
           ))}
@@ -212,7 +222,8 @@ export default function MembershipInfo() {
       {/* CTAs */}
       <section className="relative z-10 flex flex-col items-center justify-center pb-24 px-4 text-center space-y-8">
         <p className="max-w-xl text-lg md:text-xl text-white font-body">
-          Does this excite you? Are you ready to commit to an ambitious blockchain community?
+          Does this excite you? Are you ready to commit to an ambitious
+          blockchain community?
         </p>
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
@@ -221,7 +232,9 @@ export default function MembershipInfo() {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <Button buttonType="cta" className="px-12 py-4 text-lg">
-            APPLY NOW
+            <Link href="https://tally.so/r/mRAO1p">
+              APPLY NOW
+            </Link>
           </Button>
         </motion.div>
       </section>
