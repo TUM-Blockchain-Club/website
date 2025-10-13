@@ -95,7 +95,7 @@ export default function ClubStructureDiagram({  className = 'w-full',
     marketing: { x: 170, y: 250, w: 190, h: hMed },
     education: { x: 460, y: 240, w: 190, h: hMed },
     legal: { x: 750, y: 250, w: 190, h: hMed },
-    community: { x: 170, y: 390, w: 190, h: hMed },
+    web3: { x: 170, y: 390, w: 190, h: hMed },
     it: { x: 460, y: 380, w: 190, h: hMed },
     external: { x: 750, y: 390, w: 190, h: hMed },
     industry: { x: 460, y: 520, w: 190, h: hMed },
@@ -131,7 +131,7 @@ export default function ClubStructureDiagram({  className = 'w-full',
         <Card id="Marketing" {...pos.marketing} label="Marketing" desc="Create campaigns, branding & content, manage social media & interact with the community" />
         <Card id="Education" {...pos.education} label="Education" desc="Host courses & workshops, create learning content, and write & review papers" />
         <Card id="Legal & Finance" {...pos.legal} label="Legal & Finance" desc="Manage legal, financial & administrative matters" />
-        <Card id="Community" {...pos.community} label="Community" desc="Community Care & Engagement, responsible for Discord" />
+        <Card id="Web3 Talents" {...pos.web3} label="Web3 Talents" desc="Educate Web3 talents & connect them through community programs" />
         <Card id="IT & Development" {...pos.it} label="IT & Dev" desc="Host club infrastructure & support the club in development & technical issues" />
         <Card id="External Relations" {...pos.external} label="External Affairs" desc="Find, select and collaborate with partners" />
         <Card id="Industry" {...pos.industry} label="Industry" desc="Organize web3 projects for student teams in cooperation with industry partners" />
@@ -142,8 +142,8 @@ export default function ClubStructureDiagram({  className = 'w-full',
         {/* Advisors → Board (single‑headed) */}
         <Line x1={midX("advisors")} y1={bottomY("advisors")} x2={midX("board")} y2={topY("board") - 6} oneWay />
 
-        {/* Community vertical */}
-        <Line x1={midX("community")} y1={bottomY("community") + 6} x2={midX("network")} y2={topY("network") - 6} />
+        {/* Web3 Talents vertical */}
+        <Line x1={midX("web3")} y1={bottomY("web3") + 6} x2={midX("network")} y2={topY("network") - 6} />
 
         {/* External vertical */}
         <Line x1={midX("external")} y1={bottomY("external") + 6} x2={midX("partners")} y2={topY("partners") - 6} />

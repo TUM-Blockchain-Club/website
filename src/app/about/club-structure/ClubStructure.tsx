@@ -17,7 +17,7 @@ const ClubStructure = ({ departments }: ClubStructureProps) => {
 
   const handleSelect = (deptName: string) => {
 
-    const idx = departments.findIndex((d) => d.name === deptName);
+    const idx = departments.filter((d) => d.name !== "Community").findIndex((d) => d.name === deptName);
     if (idx === -1) return;                // Filter out invalid items
 
     setActiveItem(`item-${idx}`);
@@ -56,7 +56,7 @@ const ClubStructure = ({ departments }: ClubStructureProps) => {
         onValueChange={setActiveItem}
       
       >
-        {departments.map((dept, index) => (
+        {departments.filter((dept) => dept.name !== "Community").map((dept, index) => (
           <Accordion.Item
             key={index}
             value={`item-${index}`}
