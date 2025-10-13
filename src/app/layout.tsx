@@ -54,7 +54,7 @@ const menuLinks : MenuLink[] = [
   }
 ]
 
-const applicationDeadline = new Date(2025, 4, 17, 22, 59, 59);
+const applicationDeadline = new Date(2025, 10, 4, 22, 59, 59);
 
 export default function RootLayout({
   children,
