@@ -232,7 +232,7 @@ export default function MembershipInfo() {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <Button buttonType="cta" className="px-12 py-4 text-lg">
-            <Link href="https://tally.so/r/mRAO1p">
+            <Link href="https://tally.so/r/mRXQkj">
               APPLY NOW
             </Link>
           </Button>

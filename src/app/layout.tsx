@@ -49,7 +49,7 @@ const menuLinks : MenuLink[] = [
   },
   {
     name: "Join Us",
-    url: "https://tally.so/r/mRAO1p",
+    url: "https://tally.so/r/mRXQkj",
     buttonType: "primary"
   }
 ]

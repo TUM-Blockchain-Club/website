@@ -46,7 +46,7 @@ export default async function MembershipPage() {
           buttonType="cta"
           className="px-8 py-4 text-xl justify-center mx-auto"
         >
-          <Link href="https://tally.so/r/mRAO1p">APPLY NOW</Link>
+          <Link href="https://tally.so/r/mRXQkj">APPLY NOW</Link>
         </Button>
         <Container asChild className="py-0 mt-0 xl:mt-24">
           <section>
