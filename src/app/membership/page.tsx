@@ -45,8 +45,9 @@ export default async function MembershipPage() {
         <Button
           buttonType="cta"
           className="px-8 py-4 text-xl justify-center mx-auto"
+          disabled
         >
-          <Link href="https://tally.so/r/mRXQkj">APPLY NOW</Link>
+          <Link href="">CURRENTLY CLOSED</Link>
         </Button>
         <Container asChild className="py-0 mt-0 xl:mt-24">
           <section>

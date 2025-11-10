@@ -231,9 +231,9 @@ export default function MembershipInfo() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <Button buttonType="cta" className="px-12 py-4 text-lg">
-            <Link href="https://tally.so/r/mRXQkj">
-              APPLY NOW
+          <Button buttonType="cta" className="px-12 py-4 text-lg" disabled>
+            <Link href="">
+              CURRENTLY CLOSED
             </Link>
           </Button>
         </motion.div>
