@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const timelineData = [
   {
@@ -49,7 +49,7 @@ const timelineData = [
 // const placeholderImage = "/img-13.png";
 
 /* ---------------- MOBILE CARD MOTION ---------------- */
-const cardVariants = {
+const cardVariants: Variants = {
   hiddenL: { opacity: 0, x: -50 },
   hiddenR: { opacity: 0, x: 50 },
   visible: {
