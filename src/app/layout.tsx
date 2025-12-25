@@ -42,6 +42,12 @@ const menuLinks : MenuLink[] = [
     target: "_blank"
   },
   {
+    name: "Education",
+    url: "https://www.web3-talents.com/",
+    buttonType: "secondary",
+    target: "_blank"
+  },
+  {
     name: "Conference",
     url: "https://conference.tum-blockchain.com",
     buttonType: "secondary",
