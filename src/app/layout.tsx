@@ -42,7 +42,7 @@ const menuLinks : MenuLink[] = [
     target: "_blank"
   },
   {
-    name: "Education",
+    name: "Web3 Talents",
     url: "https://www.web3-talents.com/",
     buttonType: "secondary",
     target: "_blank"
