@@ -30,13 +30,13 @@ export default function Imprint() {
                         <div className="flex flex-col gap-1 lg:gap-2">
                             <h2 className="font-heading text-2xl font-bold">Represented by</h2>
                             <ul className="list-disc pl-6 font-body text-left lg:text-start text-md lg:text-lg">
-                                <li>Yudhistira Arief Wibowo (IT and Development)</li>
-                                <li>Rami Ezzeddine (Legal and Finance)</li>
-                                <li>Tobias Kotzian (Public Relations)</li>
-                                <li>Gopi Mehta (Education)</li>
-                                <li>Eva Freiberger (Marketing)</li>
-                                <li>Salan Isaqzoi (Community and Human Resources)</li>
-                                <li>Ayşenur Özbek (Events)</li>
+                                <li>Amelie Leininger (Marketing)</li>
+                                <li>Damian Mayr (Web3 Talents)</li>
+                                <li>Nikolas Hack (IT & Dev)</li>
+                                <li>Felix Rihacek (Industry)</li>
+                                <li>Kerem Eskici (Ext. Relations)</li>
+                                <li>Ivan von Greiff (Research)</li>
+                                <li>Rami Ezzeddine (Legal & Fin.)</li>
                             </ul>
                         </div>
                         
