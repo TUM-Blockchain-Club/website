@@ -76,8 +76,8 @@ export default function Home() {
                 <br /> Less than a corporate
               </h1>
             </div>
-            <div className="relative w-full lg:hidden h-[360px] filter grayscale hover:grayscale-0 transition-all duration-150">
-              <Image src="/group_photo.webp" alt="Our group photo" fill className="object-cover" />
+            <div className="relative w-full lg:hidden h-[360px] rounded-2xl overflow-hidden">
+              <Image src="/group_photo.jpeg" alt="Our group photo" fill className="object-cover" />
             </div>
             <p className="font-body text-center lg:text-start text-md lg:text-lg">
               TUM Blockchain Club is a legally registered non-profit organization under German law and an officially accredited student club at the
@@ -86,8 +86,8 @@ export default function Home() {
               lasting mark on the global blockchain ecosystem.
             </p>
           </div>
-          <div className="relative w-full hidden lg:block h-[720px] mt-20 filter grayscale hover:grayscale-0 transition-all duration-150">
-            <Image src="/group_photo.webp" alt="Our group photo" fill className="object-cover" />
+          <div className="relative w-full hidden lg:block h-[720px] mt-20 rounded-2xl overflow-hidden">
+            <Image src="/group_photo.jpeg" alt="Our group photo" fill className="object-cover" />
           </div>
         </section>
       </Container>

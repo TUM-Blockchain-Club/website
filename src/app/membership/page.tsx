@@ -23,20 +23,14 @@ export default async function MembershipPage() {
               <p className="text-white text-md lg:text-lg text-center font-body tracking-wide">
                 Our membership is open to all university students in Munich!
               </p>
-              <div className="relative pb-12 w-full h-[450px] hidden lg:block mt-8 filter grayscale hover:grayscale-0 transition-all duration-150">
+              <div className="w-full mt-8 mb-12 lg:mb-0">
                 <Image
-                  src={"/membership.png"}
-                  alt="text"
-                  fill
-                  className="object-cover mx-auto"
-                />
-              </div>
-              <div className="elative mb-12 w-full lg:hidden h-[160px] filter grayscale hover:grayscale-0 transition-all duration-150">
-                <Image
-                  src={"/membership.png"}
-                  alt="text"
-                  fill
-                  className="object-cover mx-auto"
+                  src="/group_photo.webp"
+                  alt="Our group photo"
+                  width={6000}
+                  height={4000}
+                  className="w-full h-auto rounded-2xl"
+                  sizes="(max-width: 1024px) 100vw, 1024px"
                 />
               </div>
             </div>

@@ -25,11 +25,11 @@ export default async function AboutPage() {
           </div>
         </section>
       </Container>
-      <Container asChild className="py-12 mt-12 xl:mt-24">
+      {/* <Container asChild className="py-12 mt-12 xl:mt-24">
         <section>
           <Timeline />
         </section>
-      </Container>
+      </Container> */}
       <Container asChild className="py-12 mt-12 xl:mt-24">
         <section>
           <ClubStructure departments={departments} />
