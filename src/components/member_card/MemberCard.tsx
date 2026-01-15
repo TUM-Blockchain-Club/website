@@ -75,7 +75,7 @@ export const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(({ m
             {/* Ribbons */}
             <div className="absolute top-3 right-0 flex flex-col gap-1 items-end justify-end">
                 {member.is_board && <Ribbon text="Board" color="blue" />}
-                {member.membership_status === 'advisor' && <Ribbon text="Advisor" color="blue" />}
+                {member.membership_status === 'advisor' && <Ribbon text="Advisor" color="green" />}
                 {member.membership_status === 'alumni' && <Ribbon text="Alumni" color="gray" />}
                 {member.membership_status === 'honorary' && <Ribbon text="Honorary" color="orange" />}
             </div>
