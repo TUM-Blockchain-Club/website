@@ -36,18 +36,22 @@ const ribbonVariants = cva("", {
             blue: "bg-blue-600",
             green: "bg-green-600",
             yellow: "bg-yellow-600",
+            gray: "bg-gray-600",
+            orange: "bg-orange-600",
         },
         borderColor: {
             blue: "border-blue-600",
             green: "border-green-600",
             yellow: "border-yellow-600",
+            gray: "border-gray-600",
+            orange: "border-orange-600",
         }
     }
 })
 
 interface RibbonProps {
     text: string;
-    color: "blue" | "green" | "yellow";
+    color: "blue" | "green" | "yellow" | "gray" | "orange";
 }   
 
 const Ribbon = React.forwardRef<HTMLDivElement, RibbonProps>(({ text, color }, ref) => {
@@ -71,6 +75,9 @@ export const MemberCard = React.forwardRef<HTMLDivElement, MemberCardProps>(({ m
             {/* Ribbons */}
             <div className="absolute top-3 right-0 flex flex-col gap-1 items-end justify-end">
                 {member.is_board && <Ribbon text="Board" color="blue" />}
+                {member.membership_status === 'advisor' && <Ribbon text="Advisor" color="blue" />}
+                {member.membership_status === 'alumni' && <Ribbon text="Alumni" color="gray" />}
+                {member.membership_status === 'honorary' && <Ribbon text="Honorary" color="orange" />}
             </div>
             
             {/* Left column for mobile (Avatar) */}

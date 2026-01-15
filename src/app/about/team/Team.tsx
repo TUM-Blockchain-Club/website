@@ -24,7 +24,8 @@ export const OurTeam = ({ members }: OurTeamProps) => {
 
   const filteredMembers = useMemo(() => {
     return members.filter(member => {
-      const isMemberActive = member.membership_status === 'core' || member.membership_status === 'trainees' ;
+      const allowedStatuses = ['core', 'trainees', 'alumni', 'advisor', 'supporting', 'honorary'];
+      const isMemberActive = member.membership_status && allowedStatuses.includes(member.membership_status);
       const memberDepartments = member.departments?.map(dep => dep.name) || [];
       const matchesDepartment = selectedDepartment
         ? memberDepartments.includes(selectedDepartment)
@@ -33,6 +34,24 @@ export const OurTeam = ({ members }: OurTeamProps) => {
     }).sort((a, b) => {
       if (a.is_board && !b.is_board) return -1;
       if (!a.is_board && b.is_board) return 1;
+
+      const statusOrder: Record<string, number> = {
+        advisor: 1,
+        core: 2,
+        trainees: 2,
+        honorary: 3,
+        supporting: 3,
+        alumni: 4,
+        passive: 5
+      };
+
+      const statusA = a.membership_status ? (statusOrder[a.membership_status] ?? 99) : 99;
+      const statusB = b.membership_status ? (statusOrder[b.membership_status] ?? 99) : 99;
+
+      if (statusA !== statusB) {
+          return statusA - statusB;
+      }
+
       return 0;
     });
   }, [selectedDepartment, members]);
