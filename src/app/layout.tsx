@@ -36,6 +36,11 @@ const menuLinks : MenuLink[] = [
     buttonType: "secondary"
   },
   {
+    name: "Events",
+    url: "/events",
+    buttonType: "secondary"
+  },
+  {
     name: "Industry",
     url: "https://industry.tum-blockchain.com",
     buttonType: "secondary",
