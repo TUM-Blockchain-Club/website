@@ -2,16 +2,60 @@
 
 import { Container } from "@/components/container";
 import Script from "next/script";
+import { useEffect, useRef } from "react";
 
 function YardCalendar() {
-  const authcode = "Vqy00I8V";
+  const authcode = "ljiF3y90";
+  const yardRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const host = yardRef.current;
+    if (!host) return;
+
+    const applyFix = () => {
+      const shadow = host.shadowRoot;
+      if (!shadow) return false;
+
+      if (shadow.querySelector('style[data-yard-text-fix="1"]')) {
+        return true;
+      }
+
+      const style = document.createElement("style");
+      style.setAttribute("data-yard-text-fix", "1");
+      style.textContent = `
+        .yard-event-title,
+        .yard-event-title a,
+        .yard-shorten-text {
+          color: #111 !important;
+        }
+
+        .yard-event,
+        .yard-event * {
+          text-shadow: none !important;
+        }
+      `;
+
+      shadow.appendChild(style);
+      return true;
+    };
+
+    const tryApply = () => {
+      if (!applyFix()) {
+        requestAnimationFrame(tryApply);
+      }
+    };
+
+    tryApply();
+  }, [authcode]);
 
   return (
     <>
       <Script
         src="https://remote.yard.global/yard.js"
+        strategy="afterInteractive"
       />
       <div
+        ref={yardRef}
         key={authcode}
         className="yard"
         data-product="calendar"
