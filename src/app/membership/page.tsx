@@ -6,6 +6,7 @@ import FAQ from "./faq/faq";
 import Link from "next/link";
 import { Button } from "@/components/button";
 
+const joinApplicationUrl = "https://tally.so/r/MeYDBY";
 
 export default async function MembershipPage() {
     return (
@@ -36,13 +37,20 @@ export default async function MembershipPage() {
             </div>
           </section>
         </Container>
-        <Button
-          buttonType="cta"
-          className="px-8 py-4 text-xl justify-center mx-auto"
-          disabled
-        >
-          <Link href="">CURRENTLY CLOSED</Link>
-        </Button>
+        <div className="flex flex-col items-center gap-3">
+          <Button
+            asChild
+            buttonType="cta"
+            className="px-8 py-4 text-xl justify-center mx-auto"
+          >
+            <Link href={joinApplicationUrl} target="_blank" rel="noopener noreferrer">
+              Apply Now
+            </Link>
+          </Button>
+          <p className="text-center text-sm text-white/80 font-body">
+            Applications close on Sunday, 3 May 2026 at 23:59 CEST.
+          </p>
+        </div>
         <Container asChild className="py-0 mt-0 xl:mt-24">
           <section>
             <MembershipInfo />
