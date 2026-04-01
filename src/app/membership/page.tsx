@@ -24,15 +24,11 @@ export default async function MembershipPage() {
               <p className="text-white text-md lg:text-lg text-center font-body tracking-wide">
                 Our membership is open to all university students in Munich!
               </p>
-              <div className="w-full mt-8 mb-12 lg:mb-0">
-                <Image
-                  src="/group_photo.webp"
-                  alt="Our group photo"
-                  width={6000}
-                  height={4000}
-                  className="w-full h-auto rounded-2xl"
-                  sizes="(max-width: 1024px) 100vw, 1024px"
-                />
+              <div className="relative w-full lg:hidden h-[360px] rounded-2xl overflow-hidden mt-8 mb-12 lg:mb-0">
+                <Image src="/group_photo.jpeg" alt="Our group photo" fill className="object-cover" />
+              </div>
+              <div className="relative w-full hidden lg:block h-[720px] mt-8 mb-12 lg:mb-0 rounded-2xl overflow-hidden">
+                <Image src="/group_photo.jpeg" alt="Our group photo" fill className="object-cover" />
               </div>
             </div>
           </section>

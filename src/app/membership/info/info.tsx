@@ -5,6 +5,8 @@ import Link from "next/link";
 import { CalendarHeart, Users, Trophy, Lightbulb, Code, BookText } from "lucide-react";
 import { Fragment, HTMLAttributes, ReactNode } from "react";
 
+const joinApplicationUrl = "https://tally.so/r/MeYDBY";
+
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
   className?: string;
@@ -42,17 +44,17 @@ export const CardContent = ({ className = "", children, ...props }: CardContentP
 ];*/}
 
 const stats = [
-    { value: "50+", label: "Core Team Members" },
-    { value: "10+", label: "Events Organized" },
-    { value: "2000+", label: "Student Reach" },
+    { value: "16", label: "Hackathon Wins" },
+    { value: "15+", label: "Countries Reached" },
+    { value: "50+", label: "Events Organized" },
   ];
 
 const awaits = [
-  { icon: Trophy, label: "Hackathons", desc: "• 10× wins \n • $30k+ prize money \n • 10+ countries" },
+  { icon: Trophy, label: "Hackathons", desc: "Winning teams, intense sprints \n and international hackathon trips" },
   { icon: Users, label: "Events & Conferences", desc: "TUM Blockchain Conference \n with 1 000+ attendees & \n 100+ speakers" },
-  { icon: Lightbulb, label: "Industry Projects", desc: "Real‑world blockchain projects \n with major partners" },
+  { icon: Lightbulb, label: "Industry Projects", desc: "Real-world blockchain projects \n with partners like Bitvavo, \n Boerse Stuttgart Digital & StableLab" },
   { icon: BookText, label: "Research Group", desc: "Explore tech shaping the \n next decade of blockchain" },
-  { icon: CalendarHeart, label: "Paper Club & Teaching", desc: "Discuss latest papers, design lectures & workshops" },
+  { icon: CalendarHeart, label: "Internal Lectures & Workshops", desc: "Internal lectures, deep dives \n and hands-on workshops" },
   { icon: Code, label: "Web3 Dev Projects", desc: "NFT memberships, DAO delegations & more" },
 ];
 
@@ -230,12 +232,16 @@ export default function MembershipInfo() {
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex flex-col items-center gap-3"
         >
-          <Button buttonType="cta" className="px-12 py-4 text-lg" disabled>
-            <Link href="">
-              CURRENTLY CLOSED
+          <Button asChild buttonType="cta" className="px-12 py-4 text-lg">
+            <Link href={joinApplicationUrl} target="_blank" rel="noopener noreferrer">
+              Apply Now
             </Link>
           </Button>
+          <p className="text-center text-sm text-white/80 font-body">
+            Applications close on Sunday, 3 May 2026 at 23:59 CEST.
+          </p>
         </motion.div>
       </section>
     </div>
