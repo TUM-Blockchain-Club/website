@@ -97,57 +97,86 @@ export interface Member {
 }
 const CACHE_DURATION_DAYS = Number(process.env.IMAGE_CACHE_DURATION_DAYS) || 1;
 const CACHE_DURATION_MS = CACHE_DURATION_DAYS * 24 * 60 * 60 * 1000;
+const STRAPI_API_URL = "https://strapi.rbg.tum-blockchain.com";
+
+const getStrapiHeaders = () => {
+    if (!process.env.STRAPI_API_TOKEN) {
+        console.warn("STRAPI_API_TOKEN is not set. Skipping Strapi content fetch.");
+        return null;
+    }
+
+    return {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+    };
+};
+
+const handleStrapiError = (error: unknown, resource: string) => {
+    if (axios.isAxiosError(error)) {
+        console.warn(`Could not fetch ${resource} from Strapi: ${error.response?.status ?? error.code}`);
+        return;
+    }
+
+    console.warn(`Could not fetch ${resource} from Strapi:`, error);
+};
 
 export const fetchDepartments = async () : Promise<Department[]> => {
+    const headers = getStrapiHeaders();
+    if (!headers) return [];
+
     const departments: Department[] = [];
     let hasMore = true;
     let page = 1;
 
-    do {
-        const res = await axios.get(
-            `https://strapi.rbg.tum-blockchain.com/api/Departments?sort=name:asc&pagination[page]=${page}&pagination[pageSize]=25&populate=head`,
-            {
-            headers: {
-                Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-            },
-        }
-        )
+    try {
+        do {
+            const res = await axios.get(
+                `${STRAPI_API_URL}/api/Departments?sort=name:asc&pagination[page]=${page}&pagination[pageSize]=25&populate=head`,
+                { headers }
+            )
 
-        departments.push(...res.data.data);
-        hasMore = res.data.meta.pagination.page < res.data.meta.pagination.pageCount;
-        page = page + 1;
+            departments.push(...res.data.data);
+            hasMore = res.data.meta.pagination.page < res.data.meta.pagination.pageCount;
+            page = page + 1;
 
-    } while (hasMore);
+        } while (hasMore);
+    } catch (error) {
+        handleStrapiError(error, "departments");
+        return [];
+    }
 
     return departments;
 }
 
 export const fetchMembers = async () : Promise<Member[]> => {    
+    const headers = getStrapiHeaders();
+    if (!headers) return [];
+
     const members: Member[] = [];
 
     let hasMore = true;
     let page = 1;
-    do {
-        const res = await axios.get(
-            `https://strapi.rbg.tum-blockchain.com/api/Members?sort=name:asc&pagination[page]=${page}&pagination[pageSize]=25&populate=*`,
-            {
-                headers: {
-                    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-                },
-            }
-        )
+    try {
+        do {
+            const res = await axios.get(
+                `${STRAPI_API_URL}/api/Members?sort=name:asc&pagination[page]=${page}&pagination[pageSize]=25&populate=*`,
+                { headers }
+            )
 
-        for (const member of res.data.data) {
-            if (member.profile_picture) {
-                await downloadProfilePicture(member);
+            for (const member of res.data.data) {
+                if (member.profile_picture) {
+                    await downloadProfilePicture(member);
+                }
+                members.push(member);
             }
-            members.push(member);
-        }
-        
-        hasMore = res.data.meta.pagination.page < res.data.meta.pagination.pageCount;
+            
+            hasMore = res.data.meta.pagination.page < res.data.meta.pagination.pageCount;
 
-        page = page + 1;
-    } while (hasMore);
+            page = page + 1;
+        } while (hasMore);
+    } catch (error) {
+        handleStrapiError(error, "members");
+        return [];
+    }
     console.log(`Fetched ${members.length} members in ${page} requests`);
 
     return members;
@@ -183,7 +212,7 @@ const downloadProfilePicture = async (member: Member) => {
         // Download base image if missing
         if (!fs.existsSync(filePath)) {
             const response = await axios({
-                url: 'https://strapi.rbg.tum-blockchain.com' + member.profile_picture.url,
+                url: STRAPI_API_URL + member.profile_picture.url,
                 method: 'GET',
                 responseType: 'stream'
             });
@@ -223,7 +252,7 @@ const downloadProfilePicture = async (member: Member) => {
                     }
             
                     const formatResponse = await axios({
-                        url: 'https://strapi.rbg.tum-blockchain.com' + formats[size].url,
+                        url: STRAPI_API_URL + formats[size].url,
                         method: 'GET',
                         responseType: 'stream'
                     });

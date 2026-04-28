@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/button";
 
 const joinApplicationUrl = "https://tally.so/r/MeYDBY";
+const infoEventUrl = "http://luma.com/avgsyu6n";
 
 export default async function MembershipPage() {
     return (
@@ -33,16 +34,30 @@ export default async function MembershipPage() {
             </div>
           </section>
         </Container>
-        <div className="flex flex-col items-center gap-3">
-          <Button
-            asChild
-            buttonType="cta"
-            className="px-8 py-4 text-xl justify-center mx-auto"
-          >
-            <Link href={joinApplicationUrl} target="_blank" rel="noopener noreferrer">
-              Apply Now
-            </Link>
-          </Button>
+        <div className="flex flex-col items-center gap-3 px-4">
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <Button
+              asChild
+              buttonType="cta"
+              className="px-8 py-4 text-xl justify-center mx-auto"
+            >
+              <Link href={joinApplicationUrl} target="_blank" rel="noopener noreferrer">
+                Apply Now
+              </Link>
+            </Button>
+            <Button
+              asChild
+              buttonType="cta"
+              className="px-8 py-4 text-xl justify-center mx-auto"
+            >
+              <Link href={infoEventUrl} target="_blank" rel="noopener noreferrer">
+                Register for our online info event
+              </Link>
+            </Button>
+          </div>
+          <p className="text-center text-sm text-accent font-heading font-bold uppercase tracking-wide">
+            Last Online Q&amp;A Session: May 2nd 2026, 3PM
+          </p>
           <p className="text-center text-sm text-white/80 font-body">
             Applications close on Sunday, 3 May 2026 at 23:59 CEST.
           </p>

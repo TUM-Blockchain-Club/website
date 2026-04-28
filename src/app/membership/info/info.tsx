@@ -6,6 +6,7 @@ import { CalendarHeart, Users, Trophy, Lightbulb, Code, BookText } from "lucide-
 import { Fragment, HTMLAttributes, ReactNode } from "react";
 
 const joinApplicationUrl = "https://tally.so/r/MeYDBY";
+const infoEventUrl = "http://luma.com/avgsyu6n";
 
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
@@ -234,11 +235,21 @@ export default function MembershipInfo() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="flex flex-col items-center gap-3"
         >
-          <Button asChild buttonType="cta" className="px-12 py-4 text-lg">
-            <Link href={joinApplicationUrl} target="_blank" rel="noopener noreferrer">
-              Apply Now
-            </Link>
-          </Button>
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <Button asChild buttonType="cta" className="px-12 py-4 text-lg">
+              <Link href={joinApplicationUrl} target="_blank" rel="noopener noreferrer">
+                Apply Now
+              </Link>
+            </Button>
+            <Button asChild buttonType="cta" className="px-6 py-4 text-lg">
+              <Link href={infoEventUrl} target="_blank" rel="noopener noreferrer">
+                Register for our online info event
+              </Link>
+            </Button>
+          </div>
+          <p className="text-center text-sm text-accent font-heading font-bold uppercase tracking-wide">
+            Last Online Q&amp;A Session: May 2nd 2026, 3PM
+          </p>
           <p className="text-center text-sm text-white/80 font-body">
             Applications close on Sunday, 3 May 2026 at 23:59 CEST.
           </p>

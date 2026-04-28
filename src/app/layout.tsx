@@ -66,6 +66,7 @@ const menuLinks : MenuLink[] = [
 ]
 
 const joinApplicationUrl = "https://tally.so/r/MeYDBY";
+const infoEventUrl = "http://luma.com/avgsyu6n";
 const applicationDeadline = new Date(2026, 4, 3, 23, 59, 59);
 
 export default function RootLayout({
@@ -85,6 +86,7 @@ export default function RootLayout({
           
           <JoinDialog 
             joinUrl={joinApplicationUrl}
+            infoEventUrl={infoEventUrl}
             deadline={applicationDeadline}
           />
         </PlausibleProvider>

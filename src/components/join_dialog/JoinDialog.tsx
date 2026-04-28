@@ -34,6 +34,7 @@ interface Ornament {
 
 export interface JoinDialogProps {
   joinUrl?: string;
+  infoEventUrl?: string;
   deadline?: Date | string; // Application deadline
 }
 
@@ -57,6 +58,7 @@ const calculateTimeLeft = (deadline: Date) => {
 
 export const JoinDialog = ({
   joinUrl = 'https://tum-blockchain.com/join',
+  infoEventUrl = 'http://luma.com/avgsyu6n',
   deadline,
 }: JoinDialogProps) => {
   // Using a simpler approach with only one state for dialog visibility
@@ -293,6 +295,10 @@ export const JoinDialog = ({
           <Dialog.Description className="text-center">
             Become a part of our community and join us on our journey to explore blockchain technology.
           </Dialog.Description>
+          <div className="border border-white/10 bg-white/5 px-4 py-3 text-center">
+            <p className="text-sm uppercase font-semibold tracking-wide text-accent">Last Online Q&amp;A Session</p>
+            <p className="mt-1 font-heading text-xl font-bold">May 2nd 2026, 3PM</p>
+          </div>
           
           {/* Countdown timer */}
           {timeLeft && deadlineDate && (
@@ -323,7 +329,12 @@ export const JoinDialog = ({
             <Button buttonType="secondary" onClick={handleDismiss}>
                 Dismiss for today
             </Button>
-            <Button asChild buttonType="cta">
+            <Button asChild buttonType="cta" className="min-w-fit whitespace-nowrap text-sm sm:text-base">
+              <Link href={infoEventUrl} target="_blank" rel="noopener noreferrer" onClick={handleDismiss}>
+                Register for our online info event
+              </Link>
+            </Button>
+            <Button asChild buttonType="cta" className="min-w-fit whitespace-nowrap">
               <Link ref={applyButtonRef} href={joinUrl} onClick={handleDismiss}>Join Us</Link>
             </Button>
           </div>
