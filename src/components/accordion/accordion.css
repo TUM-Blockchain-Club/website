@@ -24,7 +24,11 @@
   }
 
   .accordion-chevron {
-    @apply h-5 w-5 shrink-0 text-foreground transition-transform duration-300 group-data-[state=open]:rotate-180;
+    @apply h-5 w-5 shrink-0 text-foreground transition-transform duration-300;
+  }
+
+  .accordion-item[data-state="open"] .accordion-chevron {
+    @apply rotate-180;
   }
 
   .accordion-content {
