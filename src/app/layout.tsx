@@ -59,6 +59,12 @@ const menuLinks : MenuLink[] = [
     target: "_blank"
   },
   {
+    name: "Hackathon",
+    url: "https://hackathon.tum-blockchain.com/",
+    buttonType: "secondary",
+    target: "_blank"
+  },
+  {
     name: "Join Us",
     url: "https://tally.so/r/MeYDBY",
     buttonType: "primary"
