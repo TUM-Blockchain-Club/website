@@ -3,6 +3,7 @@
 import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { ThreeJSGlobe } from "@/components/globe";
+import { NewsletterSignup } from "@/components/newsletter";
 import Link from "next/link";
 import { SponsorList } from "./sponsor_list";
 import { SlideShow } from "./slideshow";
@@ -55,6 +56,12 @@ export default function Home() {
                 <Link href={"https://apply.tum-blockchain.com/partner"}>Support our cause</Link>
               </Button>
             </div>
+            <NewsletterSignup
+              className="mt-4 w-full max-w-md self-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_24px_80px_rgba(103,46,179,0.22)] backdrop-blur lg:self-start"
+              label="Stay in the loop"
+              initialMessage="Get club updates, events, and opportunities in your inbox."
+              source="website-hero"
+            />
           </div>
           <div className="flex flex-col gap-4">
             <h3 className="text-accent uppercase font-heading font-bold tracking-widest text-sm text-center lg:text-start">
