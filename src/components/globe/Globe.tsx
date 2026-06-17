@@ -21,8 +21,7 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
       camera = new THREE.PerspectiveCamera(75, 1, 0.1, 2000);
       renderer = new THREE.WebGLRenderer({ antialias: true });
       
-      let size = Math.max(window.innerWidth, window.innerHeight);
-      size = Math.min(size, 1820);
+      const size = getRendererSize();
       renderer.setSize(size, size);
 
       if (containerRef.current) {
@@ -138,7 +137,7 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
     };
 
     const handleResize = () => {
-      const size = Math.min(window.innerWidth, window.innerHeight);
+      const size = getRendererSize();
       camera.aspect = 1;
       camera.updateProjectionMatrix();
       renderer.setSize(size, size);
@@ -159,3 +158,7 @@ export const ThreeJSGlobe: React.FC<ThreeJSGlobeProps> = ({ className, rotationS
 
   return <div ref={containerRef} className={classNames(className, "overflow-x-hidden", "flex items-center justify-center w-screen")} />;
 };
+
+function getRendererSize(): number {
+  return Math.min(Math.max(window.innerWidth, window.innerHeight), 1820);
+}
