@@ -57,7 +57,7 @@ export default function Home() {
               </Button>
             </div>
             <NewsletterSignup
-              className="mt-4 w-full max-w-xl self-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_24px_80px_rgba(103,46,179,0.22)] backdrop-blur"
+              className="mt-4 w-full max-w-xl self-center rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_24px_80px_rgba(103,46,179,0.22)] backdrop-blur lg:self-start"
               label="Stay in the loop"
               initialMessage="Get club updates, events, and opportunities in your inbox."
               source="website-hero"
