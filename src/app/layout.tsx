@@ -54,7 +54,7 @@ const menuLinks : MenuLink[] = [
   },
   {
     name: "Conference",
-    url: "https://conference25.tum-blockchain.com",
+    url: "https://conference.tum-blockchain.com",
     buttonType: "secondary",
     target: "_blank"
   },

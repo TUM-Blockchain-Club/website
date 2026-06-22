@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/conference",
-        destination: "https://conference25.tum-blockchain.com",
+        destination: "https://conference.tum-blockchain.com",
         permanent: true,
       },
     ];
