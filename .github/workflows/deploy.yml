@@ -35,8 +35,8 @@ jobs:
         run: |
           if [ "${{ inputs.environment }}" = "prod" ]; then 
             vercel pull --environment=production --yes --token=${{ secrets.vercel_token }}
-            vercel deploy --public --yes --prod --logs --token=${{ secrets.vercel_token }}
+            vercel deploy --yes --prod --logs --token=${{ secrets.vercel_token }}
           else
             vercel pull --environment=preview --yes --token=${{ secrets.vercel_token }}
-            vercel deploy --public --yes --logs --token=${{ secrets.vercel_token }}
+            vercel deploy --yes --logs --token=${{ secrets.vercel_token }}
           fi
