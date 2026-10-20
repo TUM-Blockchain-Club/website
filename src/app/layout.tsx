@@ -66,14 +66,14 @@ const menuLinks : MenuLink[] = [
   },
   {
     name: "Join Us",
-    url: "https://tally.so/r/MeYDBY",
+    url: "https://tally.so/r/Qo2WEk",
     buttonType: "primary"
   }
 ]
 
-const joinApplicationUrl = "https://tally.so/r/MeYDBY";
-const infoEventUrl = "http://luma.com/avgsyu6n";
-const applicationDeadline = new Date(2026, 4, 3, 23, 59, 59);
+const joinApplicationUrl = "https://tally.so/r/Qo2WEk";
+const infoEventUrl = "/info-event";
+const applicationDeadline = new Date(2026, 10, 8, 23, 59, 59);
 
 export default function RootLayout({
   children,
