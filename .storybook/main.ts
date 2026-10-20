@@ -1,6 +1,9 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 
+import { createRequire } from "module";
 import { join, dirname } from "path";
+
+const require = createRequire(import.meta.url);
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -13,10 +16,8 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     getAbsolutePath("@storybook/addon-onboarding"),
-    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-docs"),
     getAbsolutePath("@chromatic-com/storybook"),
-    getAbsolutePath("@storybook/addon-interactions"),
-    getAbsolutePath("@storybook/addon-styling-webpack"),
     getAbsolutePath("@storybook/addon-themes")
   ],
   framework: {
