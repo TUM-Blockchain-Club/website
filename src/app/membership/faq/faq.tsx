@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     question: 'How much time do I have to spend for the Club?',
-    answer: 'There\'s no formal time requirement for the club. However, to get the most out of the experience,  consider being actively involved in key events, discussions, and projects. It\'s also important to know that we are a team of highly motivated individuals passionate about becoming the leading student Blockchain club worldwide! While we don\'t have rigid working hours, our members consistently put in around 10 hours a week – and often much more – because the impact of our work drives them. This version focuses on motivation and dedication while subtly suggesting a level of expected commitment.  Of course, we understand that your schedule can fluctuate, and we\'ll always be flexible, especially during exam periods.'
+    answer: 'There\'s no formal time requirement for the club. However, to get the most out of the experience, consider being actively involved in key events, discussions, and projects. It\'s also important to know that we are a team of highly motivated individuals passionate about becoming the leading student Blockchain club worldwide! While we don\'t have rigid working hours, our members consistently put in around 10 hours a week – and often much more – because the impact of our work drives them.  Of course, we understand that your schedule can fluctuate, and we\'ll always be flexible, especially during exam periods.'
   },
   {
     question: 'What does the application process look like?',
@@ -50,8 +50,12 @@ const faqs = [
     answer: 'At the onboarding event, you will get to know all active members and new joiners and be onboarded to all IT tools. You will also learn everything you need to know about your membership and get to know the department you will be working in. That\'s why it\'s super important that you are there in person for the entire period! If you can\'t be there and have a really good reason for this, please let us know when you submit your application.'
   },
   {
+    question: 'Can I meet the club before applying?',
+    answer: 'Yes! Come to the TUM Blockchain Conference, 29–31 October 2026 at the House of Communication in Munich (conference.tum-blockchain.com). The whole club runs it, so it is the best place to meet our members and ask your questions in person. Applications stay open until Sunday, 8 November 2026, 23:59 CET.'
+  },
+  {
     question: 'How can I reach out to the TBC?',
-    answer: 'To reach out to us, you can either fill out the contact form on our website to leave your email, and we will get back to you promptly. Alternatively, you can directly email us at info@tum-blockchain.com for any inquiries.'
+    answer: 'Email us at info@tum-blockchain.com and we will get back to you promptly. You can also meet us in person at the TUM Blockchain Conference, 29–31 October 2026 at the House of Communication in Munich.'
   }
 
 ];
