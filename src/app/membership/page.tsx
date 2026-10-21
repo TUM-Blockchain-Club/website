@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Button } from "@/components/button";
 
 const joinApplicationUrl = "https://tally.so/r/Qo2WEk";
+const conferenceUrl = "https://conference.tum-blockchain.com";
 
 export default async function MembershipPage() {
     return (
@@ -44,9 +45,21 @@ export default async function MembershipPage() {
                 Apply Now
               </Link>
             </Button>
+            <Button
+              asChild
+              buttonType="cta"
+              className="px-8 py-4 text-xl justify-center mx-auto text-center"
+            >
+              <Link href={conferenceUrl} target="_blank" rel="noopener noreferrer">
+                Come to the TUM Blockchain Conference and meet us
+              </Link>
+            </Button>
           </div>
           <p className="text-center text-sm text-white/80 font-body">
             Applications are open until Sunday, 8 November 2026, 23:59 CET.
+          </p>
+          <p className="text-center text-sm text-white/80 font-body">
+            TUM Blockchain Conference: 29–31 October 2026, House of Communication, Munich.
           </p>
         </div>
         <Container asChild className="py-0 mt-0 xl:mt-24">

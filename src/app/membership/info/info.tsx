@@ -6,6 +6,7 @@ import { CalendarHeart, Users, Trophy, Lightbulb, Code, BookText } from "lucide-
 import { Fragment, HTMLAttributes, ReactNode } from "react";
 
 const joinApplicationUrl = "https://tally.so/r/Qo2WEk";
+const conferenceUrl = "https://conference.tum-blockchain.com";
 
 
 type CardProps = HTMLAttributes<HTMLDivElement> & {
@@ -36,7 +37,6 @@ export const CardContent = ({ className = "", children, ...props }: CardContentP
 
 {/*const dates = [
   { title: "Application Start", date: "Wednesday, 16 April 2025", time: "—" },
-  { title: "Online Info Event", date: "Tuesday, 6 May 2025", time: "19:00" },
   { title: "Application End", date: "Wednesday, 14 May 2025", time: "23:59" },
   { title: "Acceptance Notification", date: "Monday, 26 May 2025", time: "—" },
   { title: "Mandatory Welcome Meeting", date: "Thursday, 29 May 2025", time: "19:00" },
@@ -240,9 +240,17 @@ export default function MembershipInfo() {
                 Apply Now
               </Link>
             </Button>
+            <Button asChild buttonType="cta" className="px-6 py-4 text-lg text-center">
+              <Link href={conferenceUrl} target="_blank" rel="noopener noreferrer">
+                Come to the TUM Blockchain Conference and meet us
+              </Link>
+            </Button>
           </div>
           <p className="text-center text-sm text-white/80 font-body">
             Applications are open until Sunday, 8 November 2026, 23:59 CET.
+          </p>
+          <p className="text-center text-sm text-white/80 font-body">
+            TUM Blockchain Conference: 29–31 October 2026, House of Communication, Munich.
           </p>
         </motion.div>
       </section>

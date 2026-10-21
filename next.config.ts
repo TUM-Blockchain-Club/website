@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         destination: "https://conference.tum-blockchain.com",
         permanent: true,
       },
+      {
+        source: "/info-event",
+        destination: "/membership",
+        permanent: false,
+      },
     ];
   },
 };

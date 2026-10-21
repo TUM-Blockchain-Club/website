@@ -323,6 +323,11 @@ export const JoinDialog = ({
             <Button buttonType="secondary" onClick={handleDismiss}>
                 Dismiss for today
             </Button>
+            <Button asChild buttonType="cta" className="min-w-fit whitespace-nowrap text-sm sm:text-base">
+              <Link href="https://conference.tum-blockchain.com" target="_blank" rel="noopener noreferrer" onClick={handleDismiss}>
+                Meet us at the Conference
+              </Link>
+            </Button>
             <Button asChild buttonType="cta" className="min-w-fit whitespace-nowrap">
               <Link ref={applyButtonRef} href={joinUrl} onClick={handleDismiss}>Join Us</Link>
             </Button>
