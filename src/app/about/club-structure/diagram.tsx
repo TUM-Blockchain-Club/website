@@ -129,7 +129,7 @@ export default function ClubStructureDiagram({  className = 'w-full',
         <Card id="advisors" {...pos.advisors} label="Advisors" desc="Experts from industry & academia" />
         <Card id="board" {...pos.board} label="Board" desc="Taking operational decisions Department Head" />
         <Card id="Marketing" {...pos.marketing} label="Marketing" desc="Create campaigns, branding & content, manage social media & interact with the community" />
-        <Card id="Education" {...pos.education} label="Education" desc="Host courses & workshops, create learning content, and write & review papers" />
+        <Card id="Research" {...pos.education} label="Research" desc="Several research groups exploring the latest web3 papers and technology" />
         <Card id="Legal & Finance" {...pos.legal} label="Legal & Finance" desc="Manage legal, financial & administrative matters" />
         <Card id="Web3 Talents" {...pos.web3} label="Web3 Talents" desc="Educate Web3 talents & connect them through community programs" />
         <Card id="IT & Development" {...pos.it} label="IT & Dev" desc="Host club infrastructure & support the club in development & technical issues" />

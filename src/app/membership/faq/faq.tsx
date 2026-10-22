@@ -11,7 +11,7 @@ import { Accordion } from '@/components/accordion/Accordion';
 const faqs = [
   {
     question: 'What departments are there?',
-    answer: `Education: The Education team ensures everyone in the club as well as our events and our projects stay at the cutting edge of web3. To that end, we constantly review the latest research, prepare internal and external study programs, and organize educational events.
+    answer: `Research: The Research department keeps the club, our events and our projects at the cutting edge of web3. It is organized into several research groups, each focusing on its own topic: they read and discuss the latest papers, explore the technology shaping the next decade of blockchain, and share what they learn with the rest of the club.
 
             Community: The tasks include distributing informative as well as fun newsletters, organizing meetups, and hosting internal club events to keep our members connected and informed.
 

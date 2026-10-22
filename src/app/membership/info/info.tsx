@@ -44,7 +44,7 @@ export const CardContent = ({ className = "", children, ...props }: CardContentP
 ];*/}
 
 const stats = [
-    { value: "16", label: "Hackathon Wins" },
+    { value: "20+", label: "Hackathon Wins" },
     { value: "15+", label: "Countries Traveled" },
     { value: "50+", label: "Events Organized" },
   ];
