@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link';
-import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { Button } from '@/components/button';
 import Image from 'next/image';
@@ -34,57 +34,18 @@ interface Ornament {
 
 export interface JoinDialogProps {
   joinUrl?: string;
-  deadline?: Date | string; // Application deadline
 }
-
-// Function to calculate time difference
-const calculateTimeLeft = (deadline: Date) => {
-  const now = new Date();
-  const difference = deadline.getTime() - now.getTime();
-  
-  if (difference <= 0) {
-    return { isExpired: true, days: 0, hours: 0, minutes: 0, seconds: 0 };
-  }
-  
-  return {
-    isExpired: false,
-    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((difference / 1000 / 60) % 60),
-    seconds: Math.floor((difference / 1000) % 60)
-  };
-};
 
 export const JoinDialog = ({
   joinUrl = 'https://tum-blockchain.com/join',
-  deadline,
 }: JoinDialogProps) => {
   // Using a simpler approach with only one state for dialog visibility
   const [dialogOpen, setDialogOpen] = useState(false);
   const [animatingOut, setAnimatingOut] = useState(false);
-  const [timeLeft, setTimeLeft] = useState<{
-    isExpired: boolean;
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  } | null>(null);
   
   // Create a ref for the Apply Now button
   const applyButtonRef = useRef<HTMLAnchorElement>(null);
   
-  // Parse the deadline
-  const deadlineDate = useMemo(() => {
-    if (!deadline) return null;
-    return deadline instanceof Date ? deadline : new Date(deadline);
-  }, [deadline]);
-  
-  // Check if deadline has already passed
-  const isDeadlinePassed = useMemo(() => {
-    if (!deadlineDate) return false;
-    return new Date() > deadlineDate;
-  }, [deadlineDate]);
-
   // Hardcoded ornaments with fixed positions
   const ornaments: Record<string, Ornament> = {
     fox: {
@@ -145,9 +106,6 @@ export const JoinDialog = ({
 
   // Initialization effect
   useEffect(() => {
-    // Don't initialize anything if deadline has passed
-    if (isDeadlinePassed) return;
-    
     // Check if the dialog has been dismissed today
     const dismissedUntil = localStorage.getItem('join-dialog-dismissed-until');
     if (dismissedUntil) {
@@ -166,31 +124,7 @@ export const JoinDialog = ({
     }, 1000);
     
     return () => clearTimeout(timer);
-  }, [isDeadlinePassed]);
-  
-  // Update countdown timer every second
-  useEffect(() => {
-    if (!deadlineDate || isDeadlinePassed) return;
-    
-    // Initialize time left
-    setTimeLeft(calculateTimeLeft(deadlineDate));
-    
-    // Update timer every second
-    const intervalId = setInterval(() => {
-      const newTimeLeft = calculateTimeLeft(deadlineDate);
-      setTimeLeft(newTimeLeft);
-      
-      // If deadline has passed during the countdown, close the dialog
-      if (newTimeLeft.isExpired) {
-        closeDialog();
-        clearInterval(intervalId);
-      }
-    }, 1000);
-    
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, [deadlineDate, isDeadlinePassed, closeDialog]);
+  }, []);
 
   const handleDismiss = () => {
     // Set the dismissal date to the end of today
@@ -210,11 +144,6 @@ export const JoinDialog = ({
       applyButtonRef.current.focus();
     }
   };
-
-  // Do not render anything if the deadline has passed
-  if (timeLeft?.isExpired || isDeadlinePassed) {
-    return null;
-  }
 
   // Custom Dialog implementation to have full control over the animation states
   return dialogOpen ? (
@@ -293,31 +222,6 @@ export const JoinDialog = ({
           <Dialog.Description className="text-center">
             Become a part of our community and join us on our journey to explore blockchain technology.
           </Dialog.Description>
-          
-          {/* Countdown timer */}
-          {timeLeft && deadlineDate && (
-            <div className="text-center">
-              <p className="text-md uppercase font-semibold tracking-wide mb-2">Application Deadline</p>
-              <div className="flex justify-center gap-4">
-                <div className="text-center">
-                  <span className="text-2xl font-bold">{timeLeft.days}</span>
-                  <p className="text-xs uppercase">Days</p>
-                </div>
-                <div className="text-center">
-                  <span className="text-2xl font-bold">{timeLeft.hours}</span>
-                  <p className="text-xs uppercase">Hours</p>
-                </div>
-                <div className="text-center">
-                  <span className="text-2xl font-bold">{timeLeft.minutes}</span>
-                  <p className="text-xs uppercase">Minutes</p>
-                </div>
-                <div className="text-center">
-                  <span className="text-2xl font-bold">{timeLeft.seconds}</span>
-                  <p className="text-xs uppercase">Seconds</p>
-                </div>
-              </div>
-            </div>
-          )}
           
           <div className="flex flex-col-reverse items-center lg:flex-row gap-2 lg:gap-4 justify-end">
             <Button buttonType="secondary" onClick={handleDismiss}>
