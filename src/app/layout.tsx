@@ -72,6 +72,7 @@ const menuLinks : MenuLink[] = [
 ]
 
 const joinApplicationUrl = "https://tally.so/r/Qo2WEk";
+const applicationDeadline = new Date(2026, 10, 15, 23, 59, 59);
 
 export default function RootLayout({
   children,
@@ -88,7 +89,10 @@ export default function RootLayout({
           </main>
           <Footer/>
           
-          <JoinDialog joinUrl={joinApplicationUrl}/>
+          <JoinDialog 
+            joinUrl={joinApplicationUrl}
+            deadline={applicationDeadline}
+          />
         </PlausibleProvider>
       </body>
     </html>

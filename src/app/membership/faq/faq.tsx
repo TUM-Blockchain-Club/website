@@ -50,12 +50,8 @@ const faqs = [
     answer: 'At the onboarding event, you will get to know all active members and new joiners and be onboarded to all IT tools. You will also learn everything you need to know about your membership and get to know the department you will be working in. That\'s why it\'s super important that you are there in person for the entire period! If you can\'t be there and have a really good reason for this, please let us know when you submit your application.'
   },
   {
-    question: 'Can I meet the club before applying?',
-    answer: 'Yes! Come to the TUM Blockchain Conference, 29–31 October 2026 at the House of Communication in Munich (conference.tum-blockchain.com). The whole club runs it, so it is the best place to meet our members and ask your questions in person. Applications stay open until Sunday, 8 November 2026, 23:59 CET.'
-  },
-  {
     question: 'How can I reach out to the TBC?',
-    answer: 'Email us at info@tum-blockchain.com and we will get back to you promptly. You can also meet us in person at the TUM Blockchain Conference, 29–31 October 2026 at the House of Communication in Munich.'
+    answer: 'Email us at info@tum-blockchain.com and we will get back to you promptly.'
   }
 
 ];
